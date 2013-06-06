@@ -1,8 +1,45 @@
-<% if @article.annotation %>
-  <div class="well">
-    <%= @article.annotation %>
-  </div>
-<% end %>
+<div class="well">
+  <h4><%= @article.title %></h4>
+</div>
+
 <div class="well">
   <%= @article.content %>
 </div>
+
+<div class="well">
+  <%= link_to @article.user.username, @article.user %>
+</div>
+
+<% if comments_filter("show", { :user => current_user, :article => @article}) %>
+  <div class="well">
+    <div class="row-fluid">
+      <% for comment in @article.comments %>
+        <%= render :partial => 'comment', :locals => {:comment => comment} %>
+      <% end %>
+      <% if comments_filter("create", { :user => current_user, :article => @article}) %>
+        <div class="well">
+          <div class="row-fluid">
+            <%= form_for @comment do |f| %>
+              <fieldset class="control-group">
+                <%= f.label :title, I18n.t("messages.base.title"), :class => "control-label" %>
+                <div class="controls">
+                  <%= f.text_field :title, :class => "span12" %>
+                </div>
+              </fieldset>
+              <fieldset class="control-group">
+                <%= f.label :title, I18n.t("messages.base.comment"), :class => "control-label" %>
+                <div class="controls">
+                  <%= f.text_area :content, :class => "span12", :rows => 3 %>
+                </div>
+              </fieldset>
+              <fieldset class="form-actions">
+                <%= f.hidden_field :article_id %>
+                <%= f.submit I18n.t("messages.articles.show.add_comment"), :class => "btn btn-primary" %>
+              </fieldset>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<%  end %>

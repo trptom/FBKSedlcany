@@ -1,26 +1,32 @@
+include CommentsHelper 
+
 class CommentsController < ApplicationController
 
-  # musi mit (jinak hazi error):
-  #   params[:comment]
-  #   params[:comment][:article_id]
-  # mel by mit (jinak se comment neprida):
-  #   params[:comment][:title]
-  #   params[:comment][:content]
-  def create
-    if !params[:comment] || !params[:comment][:article_id] || !current_user
-      wrong_params
-    end
+  def react
+    @reacted_comment = get_comment_by_params_id
+    @comment = Comment.new
+    @comment.article = nil
+    @comment.comment = @reacted_comment
+  end
 
-    @res = false
-    if params[:comment][:title] && params[:comment][:content]
-      @comment = Comment.new(params[:comment])
-      @comment.user = current_user
-      @res = @comment.save
-    end
+  def create
+    @comment = Comment.new(params[:comment])
+    @comment.user = current_user
+
+    @res = @comment.save
 
     respond_to do |format|
       format.html {
-        redirect_to article_path(params[:comment][:article_id])
+        @root_comment = @comment
+        while !@root_comment.article && @root_comment.comment do
+          @root_comment = @root_comment.comment
+        end
+
+        if @root_comment.article
+          redirect_to @root_comment.article
+        else
+          redirect_to "/"
+        end
       }
       format.json {
         render json: {
@@ -31,23 +37,62 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    @comment = get_comment_by_params_id
+  end
+
+  def update
+    @comment = get_comment_by_params_id
+    @comment.update_attributes(params[:comment])
+    @res = @comment.save
+
+    respond_to do |format|
+      format.html {
+        @root_comment = @comment
+        while !@root_comment.article && @root_comment.comment do
+          @root_comment = @root_comment.comment
+        end
+
+        if @root_comment.article
+          redirect_to @root_comment.article
+        else
+          redirect_to "/"
+        end
+      }
+      format.json {
+        if @res
+          render json: {
+            :result => true,
+            :comment => @comment
+          }
+        else
+          render json: {
+            :result => false
+          }
+        end
+      }
+    end
+  end
+
   def destroy
-    if !params[:id]
-      page_not_found
+    @comment = get_comment_by_params_id
+
+    @root_comment = @comment
+    while !@root_comment.article && @root_comment.comment do
+      @root_comment = @root_comment.comment
     end
 
-    @comment = Comment.find_by_id(params[:id]);
-    if !@comment
-      page_not_found
+    if @root_comment.article
+      @redirect = @root_comment.article
+    else
+      @redirect = "/"
     end
-
-    @article = @comment.article
 
     @res = @comment.destroy
 
     respond_to do |format|
       format.html {
-        redirect_to @article
+        redirect_to @redirect
       }
       format.json {
         render json: {

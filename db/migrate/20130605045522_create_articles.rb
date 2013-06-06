@@ -1,11 +1,10 @@
 class CreateArticles < ActiveRecord::Migration
   def change
     create_table :articles do |t|
-      t.string :title
-      t.text :annotation
-      t.text :content
-      t.references :user
-      t.references :articleCategory
+      t.string :title,              :null => false
+      t.text :annotation,           :null => true, :default => nil
+      t.text :content,              :null => false
+      t.references :user,           :null => false
 
       t.timestamps
     end

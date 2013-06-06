@@ -24,8 +24,8 @@
         </fieldset>
 
         <fieldset class="form-actions">
-          <%= f.button "xxxxxx", :type => "submit", :class => "btn btn-primary" %>
-          <%= f.button "xxxxxx", :type => "reset", :class => "btn" %>
+          <%= f.submit @form_submit, :class => "btn btn-primary" %>
+          <%= f.submit I18n.t("messages.base.form.reset"), :type => "reset", :class => "btn" %>
         </fieldset>
       <% end %>
     </div>

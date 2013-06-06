@@ -6,14 +6,10 @@ ul.nav > li > .btn-toolbar {
     margin-top: 60px;
 }
 
-body {
-    background-color: #fdc26f;
+.container.contanier-content > .well {
+    border: solid 2px #dba400;
 }
 
-.container.contanier-content {
-    border: solid 2px;
-    border-right-color: #dba400;
-    border-left-color: #dba400;
-    border-bottom-color: #dba400;
-    border-top-color: #dba400;
+body {
+    background-color: #fdc26f;
 }

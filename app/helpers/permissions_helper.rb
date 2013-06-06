@@ -90,16 +90,18 @@ module PermissionsHelper
     comment = atts[:comment] ? atts[:comment] : (atts[:comment_id] ? Comment.find_by_id(atts[:comment_id]) : nil)
 
     case action
-    when "create"
+    when "show"
+      return true
+    when "new", "create"
       return has_at_least_one_of_roles({
         :roles => [ :admin, :commenter ],
         :user => atts[:user]
       })
-    when "destroy"
+    when "edit", "update", "destroy"
       return has_at_least_one_of_roles({
         :roles => [ :admin, :comments_editor ],
         :user => atts[:user]
-      })# || (comment && atts[:user] == comment.user) # pro mazani vlastnich
+      }) && comment.comments.length == 0 # || (comment && atts[:user] == comment.user) # pro mazani vlastnich
     else
       return false
     end
@@ -111,14 +113,12 @@ module PermissionsHelper
     case action
     when "show"
       return true
-    when "edit"
-    when "update"
+    when "edit", "update"
       return has_at_least_one_of_roles({
         :roles => [ :admin, :users_editor ],
         :user => atts[:user]
       }) || atts[:user] == user
-    when "new"
-    when "create"
+    when "new", "create"
       return !current_user
     else
       return false

@@ -5,6 +5,21 @@ cs:
 
   messages:
     base:
+      comment: Komentář
+      title: Nadpis
+      form:
+        submit: Odeslat
+        reset: Smazat změny
+    articles:
+      new:
+        create: Vytvořit článek
+      edit:
+        update: Upravit článek
+      show:
+        add_comment: Přidat komentář
+        edit_comment: Upravit komentář
+        delete_comment: Smazat komentář
+        answer_comment: Reagovat na komentář
     user_sessions:
       create:
         succesfull: Prihlašování proběhlo úspěšně.

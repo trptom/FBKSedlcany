@@ -14,39 +14,40 @@
 ActiveRecord::Schema.define(:version => 20130605045803) do
 
   create_table "article_categories", :force => true do |t|
-    t.string   "name"
+    t.string   "name",        :null => false
     t.text     "desctiption"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "articles", :force => true do |t|
-    t.string   "title"
+    t.string   "title",      :null => false
     t.text     "annotation"
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "articleCategory_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.text     "content",    :null => false
+    t.integer  "user_id",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.string   "title"
-    t.text     "content"
-    t.integer  "user_id"
+    t.text     "content",    :null => false
+    t.integer  "user_id",    :null => false
     t.integer  "article_id"
+    t.integer  "comment_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   add_index "comments", ["article_id"], :name => "index_comments_on_article_id"
+  add_index "comments", ["comment_id"], :name => "index_comments_on_comment_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "email"
+    t.string   "username",                                                :null => false
+    t.string   "email",                                                   :null => false
     t.string   "crypted_password"
     t.string   "salt"
     t.text     "role",                            :default => "--- {}\n", :null => false

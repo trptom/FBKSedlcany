@@ -24,7 +24,9 @@ FBKSedlcany::Application.routes.draw do
   end
 
   resources :comments do # komentare k clanku
-
+    member do
+      get :react
+    end
   end
 
   namespace :home do
