@@ -1,0 +1,16 @@
+<div class="well span12">
+  <div class="row-fluid">
+    Role:
+    "<%= @user.role %>"
+  </div>
+  <div class="row-fluid">
+    Role detailně:
+    "<%
+      a = 0;
+      for role in @user.role
+        concat role
+        concat ", "
+      end
+      %>"
+  </div>
+</div>

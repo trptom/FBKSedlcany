@@ -1,0 +1,33 @@
+<div class="well">
+  <div class="row">
+    <div class="span8 offset2">
+      <%= form_for @article, :html => { :class => "form-horizontal"} do |f| %>
+        <fieldset class="control-group">
+          <%= f.label :title, "xxxxxx", :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :title, :class => "span3" %>
+          </div>
+        </fieldset>
+
+        <fieldset class="control-group">
+          <%= f.label :annotation, "xxxxxx", :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_area :annotation, :rows => 3, :class => "" %>
+          </div>
+        </fieldset>
+
+        <fieldset class="control-group">
+          <%= f.label :content, "xxxxxx", :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_area :content, :rows => 10, :class => "input-xlarge" %>
+          </div>
+        </fieldset>
+
+        <fieldset class="form-actions">
+          <%= f.button "xxxxxx", :type => "submit", :class => "btn btn-primary" %>
+          <%= f.button "xxxxxx", :type => "reset", :class => "btn" %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>

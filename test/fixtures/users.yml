@@ -1,0 +1,26 @@
+# coding:utf-8
+
+admin:
+  id: 1
+  username: admin
+  email: fbksedlcany-root@email.cz
+  salt: <%= salt = "asdasdastr4325234324sdfds" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("root", salt) %>
+#  role: <%= [ :admin ] %>
+  activation_state: active
+
+one:
+  username: MyString
+  email: MyString
+  salt: <%= salt = "asdasdastr4325234324sdfds" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("root", salt) %>
+  first_name: MyString
+  second_name: MyString
+
+two:
+  username: MyString
+  email: MyString
+  salt: <%= salt = "asdasdastr4325234324sdfds" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("root", salt) %>
+  first_name: MyString
+  second_name: MyString

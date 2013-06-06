@@ -1,0 +1,16 @@
+comment:
+  content: "obsah nesmí být prázdný"
+  user_id: "chybný uživatel"
+  user_id: "chybný článek"
+user:
+  username:
+    format: "chybný formát uživatelského jména (může obsahovat znaky A-Z (bez diakritiky), čísla a znaky ._-, délka 3-30)"
+    uniqueness: "uživatel s daným uživatelským jménem již existuje"
+  email:
+    format: "chybný formát emailu"
+    uniqueness: "uživatel s daným emailem již existuje"
+  password:
+    length: "špatná délka hesla (musí mít 3-255 znaků)"
+    confirmation: "heslo a kontrola hesla jsou různé"
+  first_name: "chybný formát jména (musí mít alespoň 2 znaky)"
+  second_name: "chybný formát příjmení (musí mít alespoň 2 znaky)"

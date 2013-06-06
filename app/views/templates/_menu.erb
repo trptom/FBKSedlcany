@@ -1,0 +1,116 @@
+<div class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="/">Florbal Sedlčany</a>
+      <ul class="nav">
+        <li>
+          <div class="btn-toolbar">
+            <div class="btn-group">
+              <%= link_to I18n.t("messages.templates.menu.articles"), "#", :class => "btn btn-warning" %>
+              <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+                <span class="caret"></span>
+              </div>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to I18n.t("messages.templates.menu.newest"), "/" %>
+                </li>
+                <li>
+                  <%= link_to I18n.t("messages.templates.menu.best"), "/" %>
+                </li>
+                <li>
+                  <%= link_to I18n.t("messages.templates.menu.most_commented"), "/" %>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to I18n.t("messages.templates.menu.search_article"), "/" %>
+                </li>
+              </ul>
+            </div>
+
+            <div class="btn-group">
+              <%= link_to I18n.t("messages.templates.menu.team"), "#", :class => "btn btn-warning" %>
+              <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+                <span class="caret"></span>
+              </div>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to I18n.t("messages.templates.menu.squad"), "/" %>
+                </li>
+                <li>
+                  <%= link_to I18n.t("messages.templates.menu.matches"), "/" %>
+                </li>
+              </ul>
+            </div>
+
+            <% if current_user %>
+              <div class="btn-group">
+                <a class="btn btn-warning" href="<%= current_user_url %>">
+                  <span class="icon-user"></span>
+                  <%= current_user.username %>
+                </a>
+                <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to I18n.t("messages.templates.menu.edit_user"), "/" %>
+                  </li>
+                  <li>
+                    <%= link_to I18n.t("messages.templates.menu.change_password"), "/" %>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <%= link_to I18n.t("messages.templates.menu.logout"), "/" %>
+                  </li>
+                </ul>
+              </div>
+            <% end %>
+
+            <% menu = get_admin_menu_structure %>
+            <% if menu %>
+              <div class="btn-group">
+                <div class="btn btn-warning" data-toggle="dropdown">
+                  <%= I18n.t("messages.templates.menu.admin_zone") %>
+                </div>
+                <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu">
+                  <% menu[:structure].keys.each do |key| %>
+                    <li class="dropdown-submenu">
+                      <%= link_to menu[:messages][key], "#", :tabindex => -1 %>
+                      <ul class="dropdown-menu">
+                        <% if menu[:structure][key].length > 0 %>
+                          <% for item in menu[:structure][key] %>
+                            <li>
+                              <%= item %>
+                            </li>
+                          <% end %>
+                        <% else %>
+                          <li class="disabled">
+                            <a href="#"><%= I18n.t("messages.templates.menu.no_possible_actions") %></a>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+          </div>
+        </li>
+      </ul>
+      <div class="pull-right">
+        <% if current_user %>
+          <%= link_to I18n.t("messages.templates.menu.logout"), logout_url, :class => "btn" %>
+        <% else %>
+          <%= link_to I18n.t("messages.templates.menu.register"), register_url, :class => "btn" %>
+          <div class="btn" href="#login" role="button" data-toggle="modal">
+            <%= I18n.t("messages.templates.menu.login") %>
+          </div>
+        <% end %>
+      </div>
+      <div class="nav-collapse collapse"><!-- hidden when 940px or less --></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+ul.nav > li > .btn-toolbar {
+    margin: 0px;
+}
+
+.container.contanier-content {
+    margin-top: 60px;
+}
+
+body {
+    background-color: #fdc26f;
+}
+
+.container.contanier-content {
+    border: solid 2px;
+    border-right-color: #dba400;
+    border-left-color: #dba400;
+    border-bottom-color: #dba400;
+    border-top-color: #dba400;
+}
