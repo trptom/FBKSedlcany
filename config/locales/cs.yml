@@ -10,6 +10,13 @@ cs:
       form:
         submit: Odeslat
         reset: Smazat změny
+      role:
+        root: Superuživatel
+        admin: Administrátor
+        articles_editor: Editor článků
+        comments_editor: Editor komentářů
+        users_editor: Editor uživatel
+        commenter: Komentátor
     articles:
       new:
         create: Vytvořit článek
@@ -20,6 +27,11 @@ cs:
         edit_comment: Upravit komentář
         delete_comment: Smazat komentář
         answer_comment: Reagovat na komentář
+    users:
+      show:
+        login: Login
+        email: E-mailová adresa
+        role: Role
     user_sessions:
       create:
         succesfull: Prihlašování proběhlo úspěšně.

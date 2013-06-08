@@ -1,16 +1,25 @@
 <div class="well span12">
   <div class="row-fluid">
-    Role:
-    "<%= @user.role %>"
+    <%= I18n.t "messages.users.show.login" %>:
+    <%= @user.username %>
   </div>
   <div class="row-fluid">
-    Role detailně:
-    "<%
-      a = 0;
+    <%= I18n.t "messages.users.show.email" %>:
+    <%= @user.email %>
+  </div>
+  <div class="row-fluid">
+    <%= I18n.t "messages.users.show.role" %>:
+    <%
+      first_time = true
       for role in @user.role
-        concat role
-        concat ", "
+        if first_time
+          first_time = false
+        else
+          concat ", "
+        end
+
+        concat I18n.t(ROLE_MESSAGES[role])
       end
-      %>"
+    %>
   </div>
 </div>

@@ -16,7 +16,11 @@ FBKSedlcany::Application.routes.draw do
   end
 
   resources :articles do
-
+    collection do
+      get :newest
+      get :best
+      get :most_commented
+    end
   end
 
   resources :article_categories do # kategorie clanku

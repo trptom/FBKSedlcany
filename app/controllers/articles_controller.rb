@@ -58,4 +58,18 @@ class ArticlesController < ApplicationController
   def destroy
 
   end
+
+  def newest
+    @articles = Article.order(:updated_at).limit(ARTICLES_LIST_PAGE_LIMIT).all
+  end
+
+  def best
+    # TODO
+    @articles = []
+  end
+
+  def most_commented
+    # TODO
+    @articles = []
+  end
 end

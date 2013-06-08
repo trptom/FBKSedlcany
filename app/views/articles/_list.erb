@@ -1,0 +1,8 @@
+<% if @articles %>
+  <% for article in @articles %>
+    <div class="well">
+      <h4><%= article.title %></h4>
+      <%= article.annotation ? article.annotation : "XXXXXXX" %>
+    </div>
+  <% end %>
+<% end %>

@@ -5,43 +5,6 @@
       <ul class="nav">
         <li>
           <div class="btn-toolbar">
-            <div class="btn-group">
-              <%= link_to I18n.t("messages.templates.menu.articles"), "#", :class => "btn btn-warning" %>
-              <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
-                <span class="caret"></span>
-              </div>
-              <ul class="dropdown-menu">
-                <li>
-                  <%= link_to I18n.t("messages.templates.menu.newest"), "/" %>
-                </li>
-                <li>
-                  <%= link_to I18n.t("messages.templates.menu.best"), "/" %>
-                </li>
-                <li>
-                  <%= link_to I18n.t("messages.templates.menu.most_commented"), "/" %>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <%= link_to I18n.t("messages.templates.menu.search_article"), "/" %>
-                </li>
-              </ul>
-            </div>
-
-            <div class="btn-group">
-              <%= link_to I18n.t("messages.templates.menu.team"), "#", :class => "btn btn-warning" %>
-              <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
-                <span class="caret"></span>
-              </div>
-              <ul class="dropdown-menu">
-                <li>
-                  <%= link_to I18n.t("messages.templates.menu.squad"), "/" %>
-                </li>
-                <li>
-                  <%= link_to I18n.t("messages.templates.menu.matches"), "/" %>
-                </li>
-              </ul>
-            </div>
-
             <% if current_user %>
               <div class="btn-group">
                 <a class="btn btn-warning" href="<%= current_user_url %>">
@@ -65,6 +28,45 @@
                 </ul>
               </div>
             <% end %>
+
+            <div class="btn-group">
+              <%= link_to I18n.t("messages.templates.menu.articles"), "#", :class => "btn btn-warning" %>
+              <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+                <span class="caret"></span>
+              </div>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to I18n.t("messages.templates.menu.newest"), "/articles/newest" %>
+                </li>
+                <li class="disabled">
+                  <%= link_to I18n.t("messages.templates.menu.best"), "#" %>
+                  <%#= link_to I18n.t("messages.templates.menu.best"), "/articles/best" TODO %>
+                </li>
+                <li class="disabled">
+                  <%= link_to I18n.t("messages.templates.menu.most_commented"), "#" %>
+                  <%#= link_to I18n.t("messages.templates.menu.most_commented"), "/articles/most_commented" TODO %>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to I18n.t("messages.templates.menu.search_article"), "/" %>
+                </li>
+              </ul>
+            </div>
+
+            <div class="btn-group">
+              <%= link_to I18n.t("messages.templates.menu.team"), "#", :class => "btn btn-warning" %>
+              <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+                <span class="caret"></span>
+              </div>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to I18n.t("messages.templates.menu.squad"), "/" %>
+                </li>
+                <li>
+                  <%= link_to I18n.t("messages.templates.menu.matches"), "/" %>
+                </li>
+              </ul>
+            </div>
 
             <% menu = get_admin_menu_structure %>
             <% if menu %>

@@ -12,3 +12,8 @@ ROLES = [
 
   :commenter # muze komentovat
 ]
+
+ROLE_MESSAGES = Hash.new
+for key in ROLES
+  ROLE_MESSAGES[key] = "messages.base.role." + key.to_s
+end

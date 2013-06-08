@@ -57,6 +57,11 @@ module PermissionsHelper
     atts[:user] = atts[:user] && atts[:user].is_a?(User) ? atts[:user] : current_user
     atts[:entity_id] = params[:id] ? params[:id] : nil
 
+    # root smi vsechno
+    if atts[:user] && has_role(:role => :root, :user => atts[:user])
+      return true
+    end
+
     case atts[:controller]
     when "comments"
       @res = comments_filter(atts[:action], {
@@ -83,7 +88,19 @@ module PermissionsHelper
   ##############################################################################
 
   def articles_filter(action, atts)
-    return !!current_user
+    article = atts[:article] ? atts[:article] : (atts[:article_id] ? Article.find_by_id(atts[:article_id]) : nil)
+
+    case action
+    when "show", "newest", "best"
+      return true
+    when "new", "create", "edit", "update", "destroy"
+      return has_at_least_one_of_roles({
+        :roles => [ :admin, :articles_editor ],
+        :user => atts[:user]
+      })
+    else
+      return false
+    end
   end
 
   def comments_filter(action, atts)
