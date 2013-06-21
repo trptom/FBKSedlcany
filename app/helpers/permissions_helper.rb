@@ -73,6 +73,16 @@ module PermissionsHelper
         :user => atts[:user],
         :entity_id => atts[:entity_id]
       })
+    when "players"
+      @res = players_filter(atts[:action], {
+        :user => atts[:user],
+        :entity_id => atts[:entity_id]
+      })
+    when "teams"
+      @res = teams_filter(atts[:action], {
+        :user => atts[:user],
+        :entity_id => atts[:entity_id]
+      })
     else
       @res = true
     end
@@ -137,6 +147,34 @@ module PermissionsHelper
       }) || atts[:user] == user
     when "new", "create"
       return !current_user
+    else
+      return false
+    end
+  end
+
+  def players_filter(action, atts)
+    case action
+    when "show"
+      return true
+    when "edit", "update", "new", "create"
+      return has_at_least_one_of_roles({
+        :roles => [ :admin, :players_editor ],
+        :user => atts[:user]
+      })
+    else
+      return false
+    end
+  end
+
+  def teams_filter(action, atts)
+    case action
+    when "show"
+      return true
+    when "edit", "update", "new", "create"
+      return has_at_least_one_of_roles({
+        :roles => [ :admin, :teams_editor ],
+        :user => atts[:user]
+      })
     else
       return false
     end

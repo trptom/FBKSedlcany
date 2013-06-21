@@ -33,6 +33,18 @@ FBKSedlcany::Application.routes.draw do
     end
   end
 
+  resources :players do # hraci
+
+  end
+
+  resources :clubs do
+    
+  end
+
+  resources :teams do
+
+  end
+
   namespace :home do
     get :error
   end

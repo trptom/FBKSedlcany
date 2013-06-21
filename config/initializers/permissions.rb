@@ -9,6 +9,8 @@ ROLES = [
   :articles_editor,
   :comments_editor, # muze pridavat a mazat komentare (ne komentovat)
   :users_editor,
+  :players_editor,
+  :teams_editor, # vztahuje se na oddily i tymy
 
   :commenter # muze komentovat
 ]

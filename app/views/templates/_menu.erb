@@ -84,9 +84,13 @@
                       <ul class="dropdown-menu">
                         <% if menu[:structure][key].length > 0 %>
                           <% for item in menu[:structure][key] %>
-                            <li>
-                              <%= item %>
-                            </li>
+                            <% if item == nil %>
+                              <li class="divider"></li>
+                            <% else %>
+                              <li>
+                                <%= item %>
+                              </li>
+                            <% end %>
                           <% end %>
                         <% else %>
                           <li class="disabled">

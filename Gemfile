@@ -8,6 +8,10 @@ gem 'rails', '3.2.8'
 gem 'pg'
 gem 'sorcery'
 
+# uploading obrazku
+gem 'carrierwave'
+gem 'cloudinary'
+
 #testovaci gemy
 gem 'simplecov', :require => false, :group => :test
 

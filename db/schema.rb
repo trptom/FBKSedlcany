@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605045803) do
+ActiveRecord::Schema.define(:version => 20130620171336) do
 
   create_table "article_categories", :force => true do |t|
     t.string   "name",        :null => false
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(:version => 20130605045803) do
 
   add_index "articles", ["user_id"], :name => "index_articles_on_user_id"
 
+  create_table "clubs", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "short_name", :null => false
+    t.string   "shortcut",   :null => false
+    t.string   "logo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "comments", :force => true do |t|
     t.string   "title"
     t.text     "content",    :null => false
@@ -44,6 +53,33 @@ ActiveRecord::Schema.define(:version => 20130605045803) do
   add_index "comments", ["article_id"], :name => "index_comments_on_article_id"
   add_index "comments", ["comment_id"], :name => "index_comments_on_comment_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "players", :force => true do |t|
+    t.string   "first_name",  :null => false
+    t.string   "second_name", :null => false
+    t.string   "nick_name"
+    t.datetime "birthday"
+    t.text     "note"
+    t.string   "icon"
+    t.integer  "team_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "players", ["team_id"], :name => "index_players_on_team_id"
+
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.string   "short_name"
+    t.string   "shortcut"
+    t.integer  "level",      :default => 0, :null => false
+    t.string   "logo"
+    t.integer  "club_id",                   :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "teams", ["club_id"], :name => "index_teams_on_club_id"
 
   create_table "users", :force => true do |t|
     t.string   "username",                                                :null => false

@@ -16,6 +16,7 @@ cs:
         articles_editor: Editor článků
         comments_editor: Editor komentářů
         users_editor: Editor uživatel
+        players_editor: Editor hráčů
         commenter: Komentátor
     articles:
       new:
@@ -27,11 +28,19 @@ cs:
         edit_comment: Upravit komentář
         delete_comment: Smazat komentář
         answer_comment: Reagovat na komentář
+      form:
+        add_player: Vložit odkaz na hráče
+        no_player: Žádný hráč, kterého by šlo přidat
     users:
       show:
         login: Login
         email: E-mailová adresa
         role: Role
+    players:
+      new:
+        create: Vytvořit hráče
+      edit:
+        update: Upravit hráče
     user_sessions:
       create:
         succesfull: Prihlašování proběhlo úspěšně.
@@ -56,6 +65,13 @@ cs:
         register: Registrovat
         admin_zone: Admin zóna
         create_article: Vytvořit článek
+        players: Hráči
+        create_player: Vytvořit hráče
+        teams: Týmy
+        create_club: Vytvořit oddíl
+        create_team: Vytvořit tým
+        list_of_clubs: Seznam oddílů
+        list_of_teams: Seznam týmů
         no_possible_actions: Žádné akce
       login_form:
         title: Přihlášení

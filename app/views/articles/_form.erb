@@ -3,23 +3,42 @@
     <div class="span8 offset2">
       <%= form_for @article, :html => { :class => "form-horizontal"} do |f| %>
         <fieldset class="control-group">
-          <%= f.label :title, "xxxxxx", :class => "control-label" %>
+          <%= f.label :title, "TODO", :class => "control-label" %>
           <div class="controls">
             <%= f.text_field :title, :class => "span3" %>
           </div>
         </fieldset>
 
         <fieldset class="control-group">
-          <%= f.label :annotation, "xxxxxx", :class => "control-label" %>
+          <%= f.label :annotation, "TODO", :class => "control-label" %>
           <div class="controls">
             <%= f.text_area :annotation, :rows => 3, :class => "" %>
           </div>
         </fieldset>
 
         <fieldset class="control-group">
-          <%= f.label :content, "xxxxxx", :class => "control-label" %>
+          <%= f.label :content, "TODO", :class => "control-label" %>
           <div class="controls">
             <%= f.text_area :content, :rows => 10, :class => "input-xlarge" %>
+            <div class="btn-group">
+              <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+                <%= I18n.t("messages.articles.form.add_player") %>
+                <span class="caret"></span>
+              </div>
+              <ul class="dropdown-menu">
+                <% if Player.count > 0 %>
+                  <% for player in Player.all %>
+                    <li>
+                      <span class="disabled"><%= Player.get_name_including_nick %></span>
+                    </li>
+                  <% end %>
+                <% else %>
+                  <li>
+                    <a href="#"><%= I18n.t("messages.articles.form.no_player") %></a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
           </div>
         </fieldset>
 
