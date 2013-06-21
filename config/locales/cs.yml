@@ -7,6 +7,9 @@ cs:
     base:
       comment: Komentář
       title: Nadpis
+      show: Zobrazit
+      edit: Editovat
+      delete: Smazat
       form:
         submit: Odeslat
         reset: Smazat změny
@@ -41,6 +44,21 @@ cs:
         create: Vytvořit hráče
       edit:
         update: Upravit hráče
+    clubs:
+      index:
+        new_club: Nový oddíl
+        delete_confirmation: Opravdu si přejete smazat tento oddíl?
+      new:
+        create: Vytvořit oddíl
+      edit:
+        create: Upravit oddíl
+      form:
+        name: Název *
+        short_name: Krátký název *
+        shortcut: Zkratka *
+    teams:
+      index:
+        new_team: Nový tým
     user_sessions:
       create:
         succesfull: Prihlašování proběhlo úspěšně.

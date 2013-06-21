@@ -13,7 +13,7 @@
 <% if comments_filter("show", { :user => current_user, :article => @article}) %>
   <div class="well">
     <div class="row-fluid">
-      <% for comment in @article.comments %>
+      <% for comment in @article.comments.where(:comment_id => nil).all %>
         <%= render :partial => 'comment', :locals => {:comment => comment} %>
       <% end %>
       <% if comments_filter("create", { :user => current_user, :article => @article}) %>

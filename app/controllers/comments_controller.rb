@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   def react
     @reacted_comment = get_comment_by_params_id
     @comment = Comment.new
-    @comment.article = nil
+    @comment.article = @reacted_comment.article
     @comment.comment = @reacted_comment
   end
 
@@ -17,16 +17,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        @root_comment = @comment
-        while !@root_comment.article && @root_comment.comment do
-          @root_comment = @root_comment.comment
-        end
-
-        if @root_comment.article
-          redirect_to @root_comment.article
-        else
-          redirect_to "/"
-        end
+        redirect_to article_path(@comment.article_id)
       }
       format.json {
         render json: {
@@ -48,16 +39,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html {
-        @root_comment = @comment
-        while !@root_comment.article && @root_comment.comment do
-          @root_comment = @root_comment.comment
-        end
-
-        if @root_comment.article
-          redirect_to @root_comment.article
-        else
-          redirect_to "/"
-        end
+        redirect_to @comment.article
       }
       format.json {
         if @res
@@ -76,17 +58,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = get_comment_by_params_id
-
-    @root_comment = @comment
-    while !@root_comment.article && @root_comment.comment do
-      @root_comment = @root_comment.comment
-    end
-
-    if @root_comment.article
-      @redirect = @root_comment.article
-    else
-      @redirect = "/"
-    end
+    @redirect = @comment.article
 
     @res = @comment.destroy
 
