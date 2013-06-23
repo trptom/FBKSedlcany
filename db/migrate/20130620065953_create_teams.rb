@@ -5,7 +5,7 @@ class CreateTeams < ActiveRecord::Migration
       t.string :short_name,  :null => true, :default => nil
       t.string :shortcut,    :null => true, :default => nil
       t.integer :level,      :null => false, :default => 0
-      t.string :logo,        :null => true, :default => nil
+      t.string :logo
       t.references :club,    :null => false
 
       t.timestamps

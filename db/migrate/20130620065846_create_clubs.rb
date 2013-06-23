@@ -4,7 +4,7 @@ class CreateClubs < ActiveRecord::Migration
       t.string :name,       :null => false
       t.string :short_name, :null => false
       t.string :shortcut,   :null => false
-      t.string :logo,       :null => true, :default => nil
+      t.string :logo
 
       t.timestamps
     end

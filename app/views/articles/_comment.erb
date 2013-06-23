@@ -1,18 +1,23 @@
-<div class="well">
+<div class="comment<%= comment.comment ? nil : " root" %>">
   <div class="row-fluid">
     <div class="control-group">
-      <h4><%= comment.title %> (<%= link_to comment.user.username, comment.user %>)
-      <div class="pull-right">
-        <% if comments_filter("new", { :user => current_user, :comment => comment}) %>
-          <%= link_to "", react_comment_path(comment), :class => "icon-retweet", :title => I18n.t("messages.articles.show.answer_comment") %>
-        <% end %>
-        <% if comments_filter("edit", { :user => current_user, :comment => comment}) %>
-          <%= link_to "", edit_comment_path(comment), :method => :delete, :class => "icon-edit", :title => I18n.t("messages.articles.show.edit_comment") %>
-        <% end %>
-        <% if comments_filter("destroy", { :user => current_user, :comment => comment}) %>
-          <%= link_to "", comment, :method => :delete, :class => "icon-trash", :title => I18n.t("messages.articles.show.delete_comment") %>
-        <% end %>
-      </div></h4>
+      <h1>
+        <%= comment.title %>
+        (<%= link_to comment.user.username, comment.user %>, <%= l comment.updated_at %>)
+        <div class="pull-right icons"
+             onmouseover="$(this.parentNode.parentNode.parentNode.parentNode).addClass('active')"
+             onmouseout="$(this.parentNode.parentNode.parentNode.parentNode).removeClass('active')">
+          <% if comments_filter("new", { :user => current_user, :comment => comment}) %>
+            <%= link_to "", react_comment_path(comment), :class => "icon-retweet", :title => I18n.t("messages.articles.show.answer_comment") %>
+          <% end %>
+          <% if comments_filter("edit", { :user => current_user, :comment => comment}) %>
+            <%= link_to "", edit_comment_path(comment), :method => :delete, :class => "icon-edit", :title => I18n.t("messages.articles.show.edit_comment") %>
+          <% end %>
+          <% if comments_filter("destroy", { :user => current_user, :comment => comment}) %>
+            <%= link_to "", comment, :method => :delete, :class => "icon-trash", :title => I18n.t("messages.articles.show.delete_comment") %>
+          <% end %>
+        </div>
+      </h1>
     </div>
   </div>
   <div class="row-fluid">
@@ -21,7 +26,7 @@
   <% if comment.comments.length > 0 %>
   <div class="offset1">
     <div class="row-fluid">
-      <% for item in comment.comments %>
+      <% for item in comment.comments.order(COMMENTS_ORDER).all %>
         <%= render :partial => 'comment', :locals => {:comment => item} %>
       <% end %>
     </div>

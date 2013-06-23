@@ -52,4 +52,38 @@ module ApplicationHelper
 
     return count > 0 ? menu : nil;
   end
+
+  def get_additional_styles
+    ctrl_style_url = "pages/" + params[:controller] + "/overall.css"
+    page_style_url = "pages/" + params[:controller] + "/" + params[:action] + ".css"
+
+    res = Array.new
+
+    if Rails.application.assets.find_asset ctrl_style_url
+      res << asset_path(ctrl_style_url)
+    end
+
+    if Rails.application.assets.find_asset page_style_url
+      res << asset_path(page_style_url)
+    end
+
+    return res
+  end
+
+  def get_additional_scripts
+    ctrl_script_url = "pages/" + params[:controller] + "/overall.js"
+    page_script_url = "pages/" + params[:controller] + "/" + params[:action] + ".js"
+
+    res = Array.new
+
+    if Rails.application.assets.find_asset ctrl_script_url
+      res << asset_path(ctrl_script_url)
+    end
+
+    if Rails.application.assets.find_asset page_script_url
+      res << asset_path(page_script_url)
+    end
+
+    return res
+  end
 end

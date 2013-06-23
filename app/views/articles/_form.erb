@@ -28,11 +28,14 @@
               <ul class="dropdown-menu">
                 <% if Player.count > 0 %>
                   <% for player in Player.all %>
-                    <li>
+                    <li onclick="add_into_active_area('#{P<%= Player.id %>; <%= Player.get_name_including_nick %>}', 'article_content')">
                       <span class="disabled"><%= Player.get_name_including_nick %></span>
                     </li>
                   <% end %>
                 <% else %>
+                  <li>
+                    <span onclick="add_into_active_area('pokus', 'article_content')">fdafdafdas</span>
+                  </li>
                   <li>
                     <a href="#"><%= I18n.t("messages.articles.form.no_player") %></a>
                   </li>

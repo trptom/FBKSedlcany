@@ -6,7 +6,7 @@ class CreatePlayers < ActiveRecord::Migration
       t.string :nick_name,        :null => true, :default => nil
       t.datetime :birthday,       :null => true, :default => nil
       t.text :note,               :null => true, :default => nil
-      t.string :icon,             :null => true, :default => nil
+      t.string :icon
       t.references :team,         :null => true, :default => nil
 
       t.timestamps

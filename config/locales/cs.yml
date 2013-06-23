@@ -27,6 +27,8 @@ cs:
       edit:
         update: Upravit článek
       show:
+        comments: Komentáře ke článku
+        new_comment: Nový komentář
         add_comment: Přidat komentář
         edit_comment: Upravit komentář
         delete_comment: Smazat komentář
@@ -56,6 +58,8 @@ cs:
         name: Název *
         short_name: Krátký název *
         shortcut: Zkratka *
+        logo: Logo týmu
+        logo_title: Obrázek bude převeden do formátu PNG a upraven na velikost 200x200 px.
     teams:
       index:
         new_team: Nový tým
@@ -306,7 +310,8 @@ cs:
   time:
     am: am
     formats:
-      default: ! '%a %d. %B %Y %H:%M %z'
+#      default: ! '%a %d. %B %Y %H:%M %z'
+      default: ! '%d. %m. %Y, %H:%M'
       long: ! '%A %d. %B %Y %H:%M'
       short: ! '%d. %m. %H:%M'
     pm: pm

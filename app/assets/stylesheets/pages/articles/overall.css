@@ -1,0 +1,25 @@
+.comment.root {
+    border-bottom: solid #e5e5e5 2px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.comment.root:last-of-type {
+    padding-top: 0px;
+}
+
+.comment.root:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+
+.comment h1 {
+    font-size: 100%;
+    font-weight: bold;
+    line-height: normal;
+}
+
+.comment.active {
+    background-color: #efdddd;
+}

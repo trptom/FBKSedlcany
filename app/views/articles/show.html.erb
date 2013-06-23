@@ -1,45 +1,44 @@
 <div class="well">
-  <h4><%= @article.title %></h4>
+  <h1><%= @article.title %></h1>
+  <%= @article.content.html_safe %>
+  <div class="footer">
+    <%= link_to @article.user.username, @article.user %>
+  </div>
 </div>
 
-<div class="well">
-  <%= @article.content %>
-</div>
-
-<div class="well">
-  <%= link_to @article.user.username, @article.user %>
-</div>
-
-<% if comments_filter("show", { :user => current_user, :article => @article}) %>
+<% if comments_filter("show", { :user => current_user, :article => @article}) && @article.comments.count > 0 %>
   <div class="well">
+    <h1><%= I18n.t("messages.articles.show.comments") %></h1>
     <div class="row-fluid">
-      <% for comment in @article.comments.where(:comment_id => nil).all %>
+      <% for comment in @article.comments.where(:comment_id => nil).order(COMMENTS_ORDER).all %>
         <%= render :partial => 'comment', :locals => {:comment => comment} %>
-      <% end %>
-      <% if comments_filter("create", { :user => current_user, :article => @article}) %>
-        <div class="well">
-          <div class="row-fluid">
-            <%= form_for @comment do |f| %>
-              <fieldset class="control-group">
-                <%= f.label :title, I18n.t("messages.base.title"), :class => "control-label" %>
-                <div class="controls">
-                  <%= f.text_field :title, :class => "span12" %>
-                </div>
-              </fieldset>
-              <fieldset class="control-group">
-                <%= f.label :title, I18n.t("messages.base.comment"), :class => "control-label" %>
-                <div class="controls">
-                  <%= f.text_area :content, :class => "span12", :rows => 3 %>
-                </div>
-              </fieldset>
-              <fieldset class="form-actions">
-                <%= f.hidden_field :article_id %>
-                <%= f.submit I18n.t("messages.articles.show.add_comment"), :class => "btn btn-primary" %>
-              </fieldset>
-            <% end %>
-          </div>
-        </div>
       <% end %>
     </div>
   </div>
 <%  end %>
+
+<% if comments_filter("create", { :user => current_user, :article => @article}) %>
+  <div class="well">
+    <h1><%= I18n.t("messages.articles.show.new_comment") %></h1>
+    <div class="row-fluid">
+      <%= form_for @comment do |f| %>
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.title"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :title, :class => "span12" %>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.comment"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_area :content, :class => "span12", :rows => 3 %>
+          </div>
+        </fieldset>
+        <fieldset class="form-actions">
+          <%= f.hidden_field :article_id %>
+          <%= f.submit I18n.t("messages.articles.show.add_comment"), :class => "btn btn-primary" %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+<% end %>

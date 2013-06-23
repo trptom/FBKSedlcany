@@ -2,33 +2,33 @@
 # and open the template in the editor.
 
 class Player < ActiveRecord::Base
-  attr_accessible :first_name, :second_name, :nick_name, :birthday, :note
+  attr_accessible :first_name, :second_name, :nick_name, :birthday, :note, :icon, :team
 
   belongs_to :team
 
-  mount_uploader :image, PlayerIconUploader
+  mount_uploader :icon, PlayerIconUploader
 
-  def self.get_name
-    if (self.first_name == nil && self.second_name == nil)
+  def get_name
+    if (first_name == nil && second_name == nil)
       return nil;
     end
 
-    if (self.first_name == nil)
-      return self.second_name
+    if (first_name == nil)
+      return second_name
     end
 
-    if (self.second_name == nil)
-      return self.first_name
+    if (second_name == nil)
+      return first_name
     end
 
-    return self.first_name + " " + self.second_name
+    return first_name + " " + second_name
   end
 
-  def self.get_name_including_nick
-    if (self.nick_name != nil)
-      return self.nick_name
+  def get_name_including_nick
+    if (nick_name != nil)
+      return nick_name
     end
 
-    return self.get_name
+    return get_name
   end
 end

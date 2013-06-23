@@ -1,8 +1,10 @@
 class Team < ActiveRecord::Base
-  attr_accessible :level, :logo, :name, :short_name, :shortcut, :club
+  mount_uploader :logo, ClubLogoUploader
 
   belongs_to :club
   has_many :players
+
+  attr_accessible :level, :logo, :name, :short_name, :shortcut, :club
 
   def self.get_name
     if self.name != nil
@@ -25,7 +27,7 @@ class Team < ActiveRecord::Base
     return self.club.shortcut
   end
 
-  def self.get_logo_url(type)
+  def self.get_logo(type)
     if self.image
       return self.logo_url(type)
     end

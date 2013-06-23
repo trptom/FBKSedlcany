@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class RecipeIconUploader < CarrierWave::Uploader::Base
+class PlayerIconUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -36,11 +36,11 @@ class RecipeIconUploader < CarrierWave::Uploader::Base
 
   process :convert => 'png'
 
-  version :standard do
+  version :full do
     process :resize_to_fit => [200, 200]
   end
 
-  version :thumb do
+  version :small do
     process :resize_to_fit => [80,80]
   end
 

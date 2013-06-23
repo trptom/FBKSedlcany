@@ -4,11 +4,12 @@ class ClubsController < ApplicationController
   end
 
   def show
-
+    @club = Club.find(params[:id])
   end
 
   def new
     @club = Club.new
+    @club.logo = ""
 
     @form_submit = I18n.t("messages.clubs.new.create");
   end
