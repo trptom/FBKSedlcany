@@ -11,6 +11,7 @@ class ClubsController < ApplicationController
     @club = Club.new
     @club.logo = ""
 
+    @form_title = I18n.t("messages.clubs.new.title");
     @form_submit = I18n.t("messages.clubs.new.create");
   end
 
@@ -46,6 +47,7 @@ class ClubsController < ApplicationController
   def edit
     @club = Club.find(params[:id])
 
+    @form_title = I18n.t("messages.clubs.edit.title");
     @form_submit = I18n.t("messages.clubs.edit.create");
   end
 

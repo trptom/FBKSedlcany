@@ -51,8 +51,10 @@ cs:
         new_club: Nový oddíl
         delete_confirmation: Opravdu si přejete smazat tento oddíl?
       new:
+        title: Nový oddíl
         create: Vytvořit oddíl
       edit:
+        title: Editace oddílu
         create: Upravit oddíl
       form:
         name: Název *
