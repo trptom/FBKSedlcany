@@ -10,6 +10,11 @@ cs:
       show: Zobrazit
       edit: Editovat
       delete: Smazat
+      first_name: Křestní jméno
+      second_name: Příjmení
+      nick_name: Přezdívka
+      age: Věk
+      date_of_birth: Datum narození
       form:
         submit: Odeslat
         reset: Smazat změny
@@ -23,8 +28,10 @@ cs:
         commenter: Komentátor
     articles:
       new:
+        title: Nový článek
         create: Vytvořit článek
       edit:
+        title: Editace článku
         update: Upravit článek
       show:
         comments: Komentáře ke článku
@@ -43,9 +50,12 @@ cs:
         role: Role
     players:
       new:
+        title: Nový hráč
         create: Vytvořit hráče
       edit:
+        title: Editace hráče
         update: Upravit hráče
+      form:
     clubs:
       index:
         new_club: Nový oddíl

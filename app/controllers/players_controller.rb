@@ -6,6 +6,7 @@ class PlayersController < ApplicationController
   def new
     @player = Player.new
 
+    @form_title = I18n.t("messages.players.new.title")
     @form_submit = I18n.t("messages.players.new.create")
   end
 
@@ -16,6 +17,7 @@ class PlayersController < ApplicationController
   def edit
     @player = Player.find(:player_id)
 
+    @form_title = I18n.t("messages.players.edit.title")
     @form_submit = I18n.t("messages.players.edit.update")
   end
 

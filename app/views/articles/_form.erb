@@ -1,4 +1,5 @@
 <div class="well">
+  <h1><%= @form_title %></h1>
   <div class="row">
     <div class="span8 offset2">
       <%= form_for @article, :html => { :class => "form-horizontal"} do |f| %>
@@ -28,14 +29,11 @@
               <ul class="dropdown-menu">
                 <% if Player.count > 0 %>
                   <% for player in Player.all %>
-                    <li onclick="add_into_active_area('#{P<%= Player.id %>; <%= Player.get_name_including_nick %>}', 'article_content')">
-                      <span class="disabled"><%= Player.get_name_including_nick %></span>
+                    <li onclick="add_into_active_area('<a href=\'<%= player_path player %>\'><%= player.get_name_including_nick %></a>', 'article_content')">
+                      <span class="disabled"><%= player.get_name_including_nick %></span>
                     </li>
                   <% end %>
                 <% else %>
-                  <li>
-                    <span onclick="add_into_active_area('pokus', 'article_content')">fdafdafdas</span>
-                  </li>
                   <li>
                     <a href="#"><%= I18n.t("messages.articles.form.no_player") %></a>
                   </li>

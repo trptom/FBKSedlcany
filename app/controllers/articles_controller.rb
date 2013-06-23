@@ -11,7 +11,8 @@ class ArticlesController < ApplicationController
     @article = Article.new
 
     #nastaveni textaci
-    @form_submit = I18n.t("messages.articles.new.create");
+    @form_title = I18n.t("messages.articles.new.title")
+    @form_submit = I18n.t("messages.articles.new.create")
   end
 
   def create
@@ -48,7 +49,8 @@ class ArticlesController < ApplicationController
     @article = @article.find(params[:id])
 
     #nastaveni textaci
-    @form_submit = I18n.t("messages.articles.edit.update");
+    @form_title = I18n.t("messages.articlesedit.title")
+    @form_submit = I18n.t("messages.articles.edit.update")
   end
 
   def update

@@ -1,30 +1,31 @@
 <div class="well">
+  <h1><%= @form_title %></h1>
   <div class="row">
     <div class="span8 offset2">
       <%= form_for @player, :html => { :class => "form-horizontal"} do |f| %>
         <fieldset class="control-group">
-          <%= f.label :title, "TODO", :class => "control-label" %>
+          <%= f.label :title, I18n.t("messages.base.first_name"), :class => "control-label" %>
           <div class="controls">
             <%= f.text_field :first_name, :class => "span3" %>
           </div>
         </fieldset>
 
         <fieldset class="control-group">
-          <%= f.label :title, "TODO", :class => "control-label" %>
+          <%= f.label :title, I18n.t("messages.base.second_name"), :class => "control-label" %>
           <div class="controls">
             <%= f.text_field :second_name, :class => "span3" %>
           </div>
         </fieldset>
 
         <fieldset class="control-group">
-          <%= f.label :title, "TODO", :class => "control-label" %>
+          <%= f.label :title, I18n.t("messages.base.nick_name"), :class => "control-label" %>
           <div class="controls">
             <%= f.text_field :nick_name, :class => "span3" %>
           </div>
         </fieldset>
 
         <fieldset class="control-group">
-          <%= f.label :title, "TODO", :class => "control-label" %>
+          <%= f.label :title, I18n.t("messages.base.date_of_birth"), :class => "control-label" %>
           <div class="controls">
             <%= f.date_select :birthday %>
           </div>
