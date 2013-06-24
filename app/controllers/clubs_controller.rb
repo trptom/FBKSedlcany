@@ -9,7 +9,6 @@ class ClubsController < ApplicationController
 
   def new
     @club = Club.new
-    @club.logo = ""
 
     @form_title = I18n.t("messages.clubs.new.title");
     @form_submit = I18n.t("messages.clubs.new.create");
@@ -58,7 +57,7 @@ class ClubsController < ApplicationController
   def destroy
     @club = Club.find(params[:id])
 
-    @res = Club.destroy
+    @res = @club.destroy
 
     respond_to do |format|
       format.html {

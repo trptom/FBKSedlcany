@@ -1,5 +1,10 @@
 FBKSedlcany::Application.routes.draw do
 
+  get "oauths/oauth"
+  get "oauths/callback"
+  match "oauth/callback" => "oauths#callback"
+  match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+
   resources :users do
     collection do
       get :login

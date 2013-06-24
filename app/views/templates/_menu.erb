@@ -114,6 +114,8 @@
           <div class="btn" href="#login" role="button" data-toggle="modal">
             <%= I18n.t("messages.templates.menu.login") %>
           </div>
+          <%= link_to 'TODO Login with Twitter', auth_at_provider_path(:provider => :twitter), :class => "btn" %>
+          <%= link_to 'TODO Login with Facebook', auth_at_provider_path(:provider => :facebook), :class => "btn" %>
         <% end %>
       </div>
       <div class="nav-collapse collapse"><!-- hidden when 940px or less --></div>

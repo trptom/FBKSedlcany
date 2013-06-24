@@ -1,12 +1,18 @@
 # coding:utf-8
 
 class User < ActiveRecord::Base
-  authenticates_with_sorcery!
+  authenticates_with_sorcery! do |config|
+    config.authentications_class = Authentication
+  end
+
+  has_many :authentications, :dependent => :destroy
+  accepts_nested_attributes_for :authentications
 
   has_many :articles
   has_many :comments
 
-  attr_accessible :activation_expires_at, :activation_state, :activation_token, :password, :password_confirmation, :salt,
+  attr_accessible :activation_expires_at, :activation_state, :activation_token,
+    :password, :password_confirmation, :salt, :authentications_attributes,
     :username, :email, :first_name, :second_name, :role
 
   serialize :role

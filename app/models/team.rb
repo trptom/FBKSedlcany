@@ -33,4 +33,26 @@ class Team < ActiveRecord::Base
     end
     return self.club.logo_url(type)
   end
+
+  def self.get_options(atts)
+    if (atts[:where])
+      res = Team.where(atts[:where])
+    else
+      res = Team;
+    end
+
+    if (atts[:order_by])
+      res = res.order(atts[:order_by])
+    end
+
+    ary = Array.new
+    if (atts[:empty])
+      ary << [ I18n.t("messages.base.no_team"), "" ]
+    end
+    res.all.each do |item|
+      ary << [item.name, item.id];
+    end
+
+    return ary;
+  end
 end

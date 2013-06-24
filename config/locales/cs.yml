@@ -15,6 +15,17 @@ cs:
       nick_name: Přezdívka
       age: Věk
       date_of_birth: Datum narození
+      no_club: Žádný oddíl
+      no_team: Žádný tým
+      club: Oddíl
+      name: Jméno
+      team_name: Název týmu
+      club_name: Název oddílu
+      short_name: Krátký název
+      shortcut: Zkratka
+      logo: Logo
+      logo_of_club: Logo oddílu
+      logo_of_team: Logo týmu
       form:
         submit: Odeslat
         reset: Smazat změny
@@ -67,14 +78,21 @@ cs:
         title: Editace oddílu
         create: Upravit oddíl
       form:
-        name: Název *
-        short_name: Krátký název *
-        shortcut: Zkratka *
-        logo: Logo týmu
+        logo: Logo oddílu
         logo_title: Obrázek bude převeden do formátu PNG a upraven na velikost 200x200 px.
     teams:
       index:
         new_team: Nový tým
+        delete_confirmation: Opravdu si přejete smazat tento tým?
+      new:
+        title: Nový tým
+        create: Vytvořit tým
+      edit:
+        title: Editace týmu
+        create: Upravit tým
+      form:
+        logo: Logo týmu
+        logo_title: Obrázek bude převeden do formátu PNG a upraven na velikost 200x200 px.
     user_sessions:
       create:
         succesfull: Prihlašování proběhlo úspěšně.
