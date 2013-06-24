@@ -5,27 +5,27 @@ cs:
 
   messages:
     base:
-      comment: Komentář
-      title: Nadpis
-      show: Zobrazit
-      edit: Editovat
-      delete: Smazat
-      first_name: Křestní jméno
-      second_name: Příjmení
-      nick_name: Přezdívka
       age: Věk
-      date_of_birth: Datum narození
-      no_club: Žádný oddíl
-      no_team: Žádný tým
       club: Oddíl
-      name: Jméno
-      team_name: Název týmu
       club_name: Název oddílu
-      short_name: Krátký název
-      shortcut: Zkratka
+      comment: Komentář
+      date_of_birth: Datum narození
+      delete: Smazat
+      edit: Editovat
+      first_name: Křestní jméno
       logo: Logo
       logo_of_club: Logo oddílu
       logo_of_team: Logo týmu
+      name: Jméno
+      nick_name: Přezdívka
+      no_club: Žádný oddíl
+      no_team: Žádný tým
+      second_name: Příjmení
+      short_name: Krátký název
+      shortcut: Zkratka
+      show: Zobrazit
+      team_name: Název týmu
+      title: Nadpis
       form:
         submit: Odeslat
         reset: Smazat změny
