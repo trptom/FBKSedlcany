@@ -90,21 +90,23 @@ ActiveRecord::Schema.define(:version => 20130623193523) do
   add_index "teams", ["club_id"], :name => "index_teams_on_club_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username",                                                :null => false
-    t.string   "email",                                                   :null => false
+    t.string   "username",                                                           :null => false
+    t.string   "email",                                                              :null => false
     t.string   "crypted_password"
     t.string   "salt"
-    t.text     "role",                            :default => "--- {}\n", :null => false
+    t.text     "role",                            :default => "---\n- :commenter\n", :null => false
     t.string   "first_name"
     t.string   "second_name"
+    t.boolean  "blocked",                         :default => false,                 :null => false
+    t.datetime "block_expires_at"
     t.string   "activation_state"
     t.string   "activation_token"
     t.datetime "activation_expires_at"
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
+    t.datetime "created_at",                                                         :null => false
+    t.datetime "updated_at",                                                         :null => false
   end
 
 end

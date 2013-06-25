@@ -5,13 +5,20 @@ cs:
 
   messages:
     base:
+      activate: Aktivovat
       age: Věk
+      block: Zablokovat
+      block_expires_at: Blokace vyprší
+      block_until: Zablokovat do
+      blocked: Zablokován
       club: Oddíl
       club_name: Název oddílu
       comment: Komentář
       date_of_birth: Datum narození
       delete: Smazat
       edit: Editovat
+      email: E-mail
+      error: Chyba!
       first_name: Křestní jméno
       logo: Logo
       logo_of_club: Logo oddílu
@@ -20,23 +27,23 @@ cs:
       nick_name: Přezdívka
       no_club: Žádný oddíl
       no_team: Žádný tým
+      not_blocked: Aktivní
+      password: Heslo
+      password_confirmation: Kontrola hesla
+      register: Registrovat
+      role: Role
       second_name: Příjmení
       short_name: Krátký název
       shortcut: Zkratka
       show: Zobrazit
       team_name: Název týmu
       title: Nadpis
+      unblock: Odblokovat
+      username: Uživatelské jméno
+      warning: Varování!
       form:
         submit: Odeslat
         reset: Smazat změny
-      role:
-        root: Superuživatel
-        admin: Administrátor
-        articles_editor: Editor článků
-        comments_editor: Editor komentářů
-        users_editor: Editor uživatel
-        players_editor: Editor hráčů
-        commenter: Komentátor
     articles:
       new:
         title: Nový článek
@@ -55,10 +62,17 @@ cs:
         add_player: Vložit odkaz na hráče
         no_player: Žádný hráč, kterého by šlo přidat
     users:
+      index:
+        title: Seznam uživatel
       show:
+        title: Detail uživatele
         login: Login
         email: E-mailová adresa
         role: Role
+      new:
+        title: Registrace uživatele
+      create:
+        success: Registrace proběhla úspěšně. Na zadaný email byla odeslána zpráva, pomocí které registraci dokončíte.
     players:
       new:
         title: Nový hráč
@@ -95,6 +109,7 @@ cs:
         logo_title: Obrázek bude převeden do formátu PNG a upraven na velikost 200x200 px.
     user_sessions:
       create:
+        banned: Přihlašování selhalo. Uživatel je deaktivován.
         succesfull: Prihlašování proběhlo úspěšně.
         failed: Přihlašování selhalo.
       destroy:
@@ -113,6 +128,8 @@ cs:
         edit_user: Editovat údaje
         change_password: Změnit heslo
         login: Přihlásit
+        login_via_facebook: Přihlásit přes Facebook účet.
+        login_via_twitter: Přihlásit přes Twitter účet.
         logout: Odhlásit
         register: Registrovat
         admin_zone: Admin zóna
@@ -120,10 +137,12 @@ cs:
         players: Hráči
         create_player: Vytvořit hráče
         teams: Týmy
+        users: Uživatelé
         create_club: Vytvořit oddíl
         create_team: Vytvořit tým
         list_of_clubs: Seznam oddílů
         list_of_teams: Seznam týmů
+        list_of_users: Seznam uživatel
         no_possible_actions: Žádné akce
       login_form:
         title: Přihlášení
@@ -136,6 +155,15 @@ cs:
         welcome: Vítejte na stránkách <%= TEAM_NAME %>
         account_activated: Účet aktivován
         password_updated: Vaše heslo bylo resetováno
+    roles:
+      root: Superuživatel
+      admin: Administrátor
+      articles_editor: Editor článků
+      comments_editor: Editor komentářů
+      users_editor: Editor uživatel
+      players_editor: Editor hráčů
+      teams_editor: Editor týmů
+      commenter: Komentátor
 
   ##############################################################################
   # FORMATTING PART

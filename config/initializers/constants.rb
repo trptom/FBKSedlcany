@@ -15,3 +15,8 @@ ARTICLES_LIST_PAGE_LIMIT = 10
 COMMENTS_ORDER = :updated_at
 # datum z timestamps, tere bude zobrazeno v hlavicce komentare
 COMMENT_PRESENTED_DATE = :updated_at
+
+#nastaveni defaultniho admin uctu
+ROOT_ACCOUNT_USERNAME = "admin"
+ROOT_ACCOUNT_PASSWORD = "root"
+ROOT_ACCOUNT_EMAIL = "admin@fbksedlcany.com"

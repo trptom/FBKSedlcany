@@ -44,6 +44,10 @@ module PermissionsHelper
     return false
   end
 
+  def premissions_filter
+    has_access({})
+  end
+
   # atts muze obsahovat:
   #   :controller - Nazev controlleru. Pokud neni uveden, je nacten z params
   #                 prohlizece.
@@ -130,6 +134,7 @@ module PermissionsHelper
         :user => atts[:user]
       }) && comment.comments.length == 0 # || (comment && atts[:user] == comment.user) # pro mazani vlastnich
     else
+      logger.info "ACCESS DENIED, atts: " + atts
       return false
     end
   end
@@ -147,6 +152,22 @@ module PermissionsHelper
       }) || atts[:user] == user
     when "new", "create"
       return !current_user
+    when "block", "unblock"
+      return has_at_least_one_of_roles({
+        :roles => [ :admin, :users_editor ],
+        :user => atts[:user]
+      }) && user && user.id != current_user.id &&
+      user.username != ROOT_ACCOUNT_USERNAME
+    when "activate"
+      return has_at_least_one_of_roles({
+        :roles => [ :admin, :users_editor ],
+        :user => atts[:user]
+      }) && user && user.id != current_user.id && !user.is_active
+    when "index"
+      return has_at_least_one_of_roles({
+        :roles => [ :admin, :users_editor ],
+        :user => atts[:user]
+      })
     else
       return false
     end

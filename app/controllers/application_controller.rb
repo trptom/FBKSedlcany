@@ -14,10 +14,12 @@ class ApplicationController < ActionController::Base
 
   before_filter :redirect_if_production
 
-#  kdyz potrebuju resetovat prihlaseneho uzivatele
+#  #kdyz potrebuju resetovat prihlaseneho uzivatele
 #  def aaa
 #    login("admin", "root")
 #  end
 #
 #  before_filter :aaa
+
+  before_filter :premissions_filter
 end

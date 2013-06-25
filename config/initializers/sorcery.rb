@@ -72,17 +72,24 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.external_providers = [:twitter, :facebook]
 
-  config.twitter.key = "<your key here>"
-  config.twitter.secret = "<your key here>"
-  config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
-  config.twitter.user_info_mapping = {:username => "screen_name"}
+  config.twitter.key = "VZv2peE7IVR6IOiVvOJt6g"
+  config.twitter.secret = "ke51gj1zT1coI6zopBeXavR9bXX2Zzh8VmVQB5ks4"
+  config.twitter.callback_url = "http://localhost:3000/oauth/callback?provider=twitter"
+  config.twitter.user_info_mapping = {
+    :username => "screen_name",
+    :email => "screen_name"
+  }
 
   config.facebook.key = "131410173606"
   config.facebook.secret = "3bbae143add139e71bd34bf4668358d1"
-  config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = {:email => "email", :name => "name", :username => "username", :hometown => "hometown/name"} #etc
-  config.facebook.scope = "email,offline_access,user_hometown,user_interests,user_likes" #etc
-  config.facebook.display = "popup"
+  config.facebook.callback_url = "http://localhost:3000/oauth/callback?provider=facebook"
+  config.facebook.user_info_mapping = {
+    :email => "email",
+    :username => "username",
+    :first_name => "first_name",
+    :second_name => "last_name"
+  }
+  config.facebook.scope = "email"
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'

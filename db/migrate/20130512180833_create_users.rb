@@ -5,9 +5,11 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email,            :null => false
       t.string :crypted_password
       t.string :salt
-      t.text :role,               :null => false, :default => Hash.new
-      t.string :first_name,       :null => true, :default => nil
-      t.string :second_name,      :null => true, :default => nil
+      t.text :role,                 :null => false, :default => DEFAULT_ROLE
+      t.string :first_name,         :null => true, :default => nil
+      t.string :second_name,        :null => true, :default => nil
+      t.boolean :blocked,           :null => false, :default => false
+      t.datetime :block_expires_at, :null => true, :default => nil
       t.string :activation_state
       t.string :activation_token
       t.datetime :activation_expires_at

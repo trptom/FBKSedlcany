@@ -12,13 +12,20 @@ class OauthsController < ApplicationController
     else
       begin
         @user = create_from(provider)
+
+        # pro twitter vytvorim vlastni email
+        if (provider == "twitter")
+          @user.email = "#{@user.username}@twitter.com"
+          @user.save
+        end
+
         # NOTE: this is the place to add '@user.activate!' if you are using user_activation submodule
 
         reset_session # protect from session fixation attack
         auto_login(@user)
         redirect_to root_path, :notice => "TODO Logged in from #{provider.titleize}!"
-      rescue
-        redirect_to root_path, :alert => "TODO Failed to login from #{provider.titleize}!"
+#      rescue
+#        redirect_to root_path, :alert => "TODO Failed to login from #{provider.titleize}!"
       end
     end
   end

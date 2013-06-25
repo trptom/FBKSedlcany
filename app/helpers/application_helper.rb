@@ -20,12 +20,14 @@ module ApplicationHelper
       :structure => {
         :articles => [],
         :players => [],
-        :teams => []
+        :teams => [],
+        :users => []
       },
       :messages => {
         :articles => I18n.t("messages.templates.menu.articles"),
         :players => I18n.t("messages.templates.menu.players"),
-        :teams => I18n.t("messages.templates.menu.teams")
+        :teams => I18n.t("messages.templates.menu.teams"),
+        :users => I18n.t("messages.templates.menu.users")
       }
     }
 
@@ -37,12 +39,20 @@ module ApplicationHelper
       menu[:structure][:players] << link_to(I18n.t("messages.templates.menu.create_player"), new_player_path)
     end
 
-    if teams_filter("create", { :user => current_user })
+    if teams_filter("index", { :user => current_user })
       menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.list_of_clubs"), clubs_path)
       menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.list_of_teams"), teams_path)
-      menu[:structure][:teams] << nil; # divider
+    end
+    if teams_filter("create", { :user => current_user })
+      if menu[:structure][:teams].length > 0
+        menu[:structure][:teams] << nil; # divider
+      end
       menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.create_club"), new_club_path)
       menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.create_team"), new_team_path)
+    end
+
+    if users_filter("index", { :user => current_user })
+      menu[:structure][:users] << link_to(I18n.t("messages.templates.menu.list_of_users"), users_path)
     end
 
     count  =0;

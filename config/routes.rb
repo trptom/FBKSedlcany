@@ -10,6 +10,11 @@ FBKSedlcany::Application.routes.draw do
       get :login
       get :logout
     end
+    member do
+      post :block
+      post :unblock
+      get :activate
+    end
   end
 
   resources :user_sessions do
@@ -57,7 +62,7 @@ FBKSedlcany::Application.routes.draw do
   match 'login' => 'user_sessions#create', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
   match 'register' => 'users#new', :as => :register
-  match 'user/current' => 'users#show', :as => :current_user
+  match 'current_user' => 'users#show', :as => :current_user
 
   root :to => 'home#index'
 

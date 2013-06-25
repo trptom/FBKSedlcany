@@ -4,10 +4,10 @@ class CreateAdminAccount < ActiveRecord::Migration
   def self.up
     # pridani admina pri migraci po vytvoreni roli a jeho ulozeni
     @user = User.new(
-      :username => "admin",
-      :email => "tpraslicak@seznam.cz",
-      :password => "root",
-      :password_confirmation => "root",
+      :username => ROOT_ACCOUNT_USERNAME,
+      :email => ROOT_ACCOUNT_EMAIL,
+      :password => ROOT_ACCOUNT_PASSWORD,
+      :password_confirmation => ROOT_ACCOUNT_PASSWORD,
       :role => [ :admin ])
     @user.save
     @user.activate!
