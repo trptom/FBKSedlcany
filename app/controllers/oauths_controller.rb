@@ -8,7 +8,7 @@ class OauthsController < ApplicationController
   def callback
     provider = params[:provider]
     if @user = login_from(provider)
-      redirect_to root_path, :notice => "TODO Logged in from #{provider.titleize}!"
+      redirect_to :back, :notice => I18n.t("messages.oauths.callback.logged_in", provider: provider.titleize)
     else
       begin
         @user = create_from(provider) do |user|
@@ -27,9 +27,7 @@ class OauthsController < ApplicationController
 
         reset_session # protect from session fixation attack
         auto_login(@user)
-        redirect_to root_path, :notice => "TODO Logged in from #{provider.titleize}!"
-#      rescue
-#        redirect_to root_path, :alert => "TODO Failed to login from #{provider.titleize}!"
+        redirect_to :back, :notice => I18n.t("messages.oauths.callback.created", provider: provider.titleize, username: @user.username)
       end
     end
   end

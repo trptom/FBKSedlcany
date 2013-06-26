@@ -14,6 +14,8 @@ FBKSedlcany::Application.routes.draw do
       post :block
       post :unblock
       get :activate
+      get :change_password
+      put :update_password
     end
   end
 

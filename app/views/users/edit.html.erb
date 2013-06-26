@@ -1,2 +1,79 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<div class="well">
+  <h1><%= I18n.t("messages.users.edit.title") %></h1>
+  <div class="row">
+    <div class="span8 offset2">
+      <%= form_for @user, :html => { :class => "form-horizontal"} do |f| %>
+        <fieldset class="control-group">
+          <%= label_tag :title, I18n.t("messages.base.username"), :class => "control-label", :disabled => true %>
+          <div class="controls">
+            <input type="text" value="<%= @user.username %>" class="span3" />
+          </div>
+        </fieldset>
+
+        <fieldset class="control-group">
+          <%= label_tag :title, I18n.t("messages.base.email"), :class => "control-label", :disabled => true %>
+          <div class="controls">
+            <input type="text" value="<%= @user.email %>" class="span3" />
+          </div>
+        </fieldset>
+
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.first_name"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.password_field :first_name, :class => "span3" %>
+          </div>
+        </fieldset>
+
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.second_name"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.password_field :second_name, :class => "span3" %>
+          </div>
+        </fieldset>
+
+        <% if users_filter("edit_role", { :entity => @user, :user => current_user }) %>
+          <fieldset class="control-group">
+            <%= f.label :title, I18n.t("messages.base.role"), :class => "control-label" %>
+            <div class="controls roles">
+              <% for role in ROLES %>
+                <div class="role">
+                  <%= f.check_box :role, {:multiple => true}, role, nil %><%= I18n.t(ROLE_MESSAGES[role]) %>
+                </div>
+              <% end %>
+            </div>
+          </fieldset>
+        <% end %>
+
+        <fieldset class="form-actions">
+          <%= f.submit I18n.t("messages.users.edit.update"), :class => "btn btn-primary" %>
+          <%= f.submit I18n.t("messages.base.form.reset"), :type => "reset", :class => "btn" %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+
+  <% if users_filter("block", { :entity => @user, :user => current_user}) ||
+        users_filter("unblock", { :entity => @user, :user => current_user}) %>
+    <h1><%= I18n.t("messages.users.edit.title_blocation") %></h1>
+    <div class="row">
+      <div class="span8 offset2">
+        <%= form_for @user, :url => { :action => "block", :id => @user.id }, :method => :post, :html => { :class => "form-horizontal"} do |f| %>
+          <fieldset class="control-group">
+            <%= f.label :title, I18n.t("messages.base.block_until"), :class => "control-label" %>
+            <div class="controls">
+              <span class="datetime">
+                <%= f.datetime_select :block_expires_at, :class => "datetime" %>
+              </span>
+            </div>
+          </fieldset>
+          <fieldset class="form-actions">
+            <%= f.submit I18n.t("messages.base.block"), :class => "btn btn-primary" %>
+            <% if @user.is_blocked %>
+              <%= link_to I18n.t("messages.base.unblock"), "/users/#{@user.id}/unblock", :class => "btn" %>
+            <% end %>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

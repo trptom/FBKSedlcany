@@ -61,11 +61,6 @@ module PermissionsHelper
     atts[:user] = atts[:user] && atts[:user].is_a?(User) ? atts[:user] : current_user
     atts[:entity_id] = params[:id] ? params[:id] : nil
 
-    # root smi vsechno
-    if atts[:user] && has_role(:role => :root, :user => atts[:user])
-      return true
-    end
-
     case atts[:controller]
     when "comments"
       @res = comments_filter(atts[:action], {
@@ -109,7 +104,7 @@ module PermissionsHelper
       return true
     when "new", "create", "edit", "update", "destroy"
       return has_at_least_one_of_roles({
-        :roles => [ :admin, :articles_editor ],
+        :roles => [ :root, :admin, :articles_editor ],
         :user => atts[:user]
       })
     else
@@ -125,12 +120,12 @@ module PermissionsHelper
       return true
     when "new", "create"
       return has_at_least_one_of_roles({
-        :roles => [ :admin, :commenter ],
+        :roles => [ :root, :admin, :commenter ],
         :user => atts[:user]
       })
     when "edit", "update", "destroy"
       return has_at_least_one_of_roles({
-        :roles => [ :admin, :comments_editor ],
+        :roles => [ :root, :admin, :comments_editor ],
         :user => atts[:user]
       }) && comment.comments.length == 0 # || (comment && atts[:user] == comment.user) # pro mazani vlastnich
     else
@@ -145,31 +140,37 @@ module PermissionsHelper
     case action
     when "show"
       return true
-    when "edit", "update"
+    when "edit", "update", "change_password", "update_password"
       return has_at_least_one_of_roles({
-        :roles => [ :admin, :users_editor ],
+        :roles => [ :root, :admin, :users_editor ],
         :user => atts[:user]
       }) || atts[:user] == user
     when "new", "create"
       return !current_user
     when "block", "unblock"
       return has_at_least_one_of_roles({
-        :roles => [ :admin, :users_editor ],
+        :roles => [ :root, :admin, :users_editor ],
         :user => atts[:user]
       }) && user && user.id != current_user.id &&
       user.username != ROOT_ACCOUNT_USERNAME
     when "activate"
       return has_at_least_one_of_roles({
-        :roles => [ :admin, :users_editor ],
+        :roles => [ :root, :admin, :users_editor ],
         :user => atts[:user]
       }) && user && user.id != current_user.id && !user.is_active
     when "index"
       return has_at_least_one_of_roles({
-        :roles => [ :admin, :users_editor ],
+        :roles => [ :root, :admin, :users_editor ],
         :user => atts[:user]
       })
     when "destroy"
       return true # TODO docasne, abych pri testech mohl mazat
+    when "edit_role" # specialni akce na editaci roli, role jsou editovany v edit akci
+      has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :users_editor ],
+        :user => atts[:user]
+      }) && user && atts[:user] && user.id != atts[:user].id &&
+      user.username != ROOT_ACCOUNT_USERNAME
     else
       return false
     end
@@ -181,7 +182,7 @@ module PermissionsHelper
       return true
     when "edit", "update", "new", "create"
       return has_at_least_one_of_roles({
-        :roles => [ :admin, :players_editor ],
+        :roles => [ :root, :admin, :players_editor ],
         :user => atts[:user]
       })
     else
@@ -195,7 +196,7 @@ module PermissionsHelper
       return true
     when "edit", "update", "new", "create"
       return has_at_least_one_of_roles({
-        :roles => [ :admin, :teams_editor ],
+        :roles => [ :root, :admin, :teams_editor ],
         :user => atts[:user]
       })
     else

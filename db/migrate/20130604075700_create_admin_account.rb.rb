@@ -8,7 +8,7 @@ class CreateAdminAccount < ActiveRecord::Migration
       :email => ROOT_ACCOUNT_EMAIL,
       :password => ROOT_ACCOUNT_PASSWORD,
       :password_confirmation => ROOT_ACCOUNT_PASSWORD,
-      :role => [ :admin ])
+      :role => [ :root ])
     @user.save
     @user.activate!
   end

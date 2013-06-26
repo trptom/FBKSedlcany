@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id]);
     @user.update_attributes(params[:user]);
+
     @res = @user.save
 
     respond_to do |format|
@@ -43,6 +44,53 @@ class UsersController < ApplicationController
         end
       }
     end
+  end
+
+  def change_password
+    @user = User.find(params[:id])
+  end
+
+  def update_password
+    @user = User.find(params[:id])
+    if (@user && User.authenticate(@user.username, params[:user][:old_password]))
+      @user.password_confirmation = params[:user][:password_confirmation]
+      # the next line clears the temporary token and updates the password
+      @res = @user.change_password!(params[:user][:password])
+      if !@res
+        @user.errors.add(:password, I18n.t("messages.users.update_password.error") )
+      end
+    else
+      @res = false
+      @user.errors.add(:old_password, I18n.t("messages.users.update_password.wrong_old") )
+    end
+
+    respond_to do |format|
+      format.html {
+        if @res
+          redirect_to @user, :notice => I18n.t("messages.users.update_password.success")
+        else
+          @errors = @user.errors
+          render action: "change_password"
+        end
+      }
+      format.json {
+        if @res
+          render :json => {
+            :state => true,
+            :user => @user
+          }
+        else
+          render :json => {
+            :state => false,
+            :errors => @user.errors
+          }
+        end
+      }
+    end
+  end
+
+  def reset_password
+    # jen renderuju formular
   end
 
   def new

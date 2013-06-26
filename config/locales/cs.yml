@@ -11,6 +11,7 @@ cs:
       block_expires_at: Blokace vyprší
       block_until: Zablokovat do
       blocked: Zablokován
+      change_password: Změnit heslo
       club: Oddíl
       club_name: Název oddílu
       comment: Komentář
@@ -74,8 +75,17 @@ cs:
       create:
         success: Registrace proběhla úspěšně. Na zadaný email byla odeslána zpráva, pomocí které registraci dokončíte.
       edit:
+        title: Editace uživatele
+        title_blocation: Blokace uživatele
+        update: Upravit údaje
       update:
         success: Uživatel byl úspěšně upraven.
+      change_password:
+        title: Změna hesla
+      update_password:
+        success: Heslo úspěšně změněno.
+        error: Heslo se nepodařilo změnit!
+        wrong_old: Staré heslo je chybné!
     players:
       new:
         title: Nový hráč
@@ -117,6 +127,10 @@ cs:
         failed: Přihlašování selhalo.
       destroy:
         succesfull: Uživatel byl úspěšne odhlášen.
+    oauths:
+      callback:
+        logged_in: Přihlašování pomocí %{provider} účtu proběhlo úspěšně.
+        created: První přihlášení pomocí %{provider} účtu proběhlo úspěšně. Byl pro Vás vytvořen nový účet s názvem %{username}.
     templates:
       menu:
         title: <%= TEAM_NAME_SHORT %>

@@ -19,7 +19,7 @@
                     <%= link_to I18n.t("messages.templates.menu.edit_user"), edit_user_path(current_user) %>
                   </li>
                   <li>
-                    <%= link_to I18n.t("messages.templates.menu.change_password"), "/" %>
+                    <%= link_to I18n.t("messages.templates.menu.change_password"), "/users/#{current_user.id}/change_password" %>
                   </li>
                   <li class="divider"></li>
                   <li>
