@@ -115,7 +115,7 @@
             <a class="btn" href="#login" role="button" data-toggle="modal">
               <%= I18n.t("messages.templates.menu.login") %>
             </a>
-            <%= link_to image_tag(asset_path("twitter_icon.jpg")), auth_at_provider_path(:provider => :twitter), :class => "btn", :title => I18n.t("messages.templates.menu.login_via_facebook") %>
+            <%#= link_to image_tag(asset_path("twitter_icon.jpg")), auth_at_provider_path(:provider => :twitter), :class => "btn", :title => I18n.t("messages.templates.menu.login_via_facebook") %>
             <%= link_to image_tag(asset_path("facebook_icon.jpg")), auth_at_provider_path(:provider => :facebook), :class => "btn", :title => I18n.t("messages.templates.menu.login_via_twitter") %>
           </div>
         <% end %>
