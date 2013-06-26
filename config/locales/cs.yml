@@ -73,6 +73,9 @@ cs:
         title: Registrace uživatele
       create:
         success: Registrace proběhla úspěšně. Na zadaný email byla odeslána zpráva, pomocí které registraci dokončíte.
+      edit:
+      update:
+        success: Uživatel byl úspěšně upraven.
     players:
       new:
         title: Nový hráč

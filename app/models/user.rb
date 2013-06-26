@@ -79,6 +79,25 @@ class User < ActiveRecord::Base
     return activation_state == "active"
   end
 
+  ##############################################################################
+  # staticke metody
+  ##############################################################################
+
+  def self.get_first_free_name(origin)
+    name = origin
+    id = 1
+    while User.where(:username => name).all.count > 0
+      logger.info "name " + name + " already in use"
+      name = origin + (++id).to_s
+      logger.info "changing name to " + name
+    end
+    return name;
+  end
+
+  ##############################################################################
+  # ruby callbacky
+  ##############################################################################
+
   validates :username,
     :format => { :with => /^[a-zA-Z0-9\-\.\_]{3,30}$/, :message => VALIDATION_ERROR_MESSAGE["user"]["username"]["format"] },
     :uniqueness => { :case_sensitive => false, :message => VALIDATION_ERROR_MESSAGE["user"]["username"]["uniqueness"] }

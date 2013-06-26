@@ -17,7 +17,32 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id]);
+    @user.update_attributes(params[:user]);
+    @res = @user.save
 
+    respond_to do |format|
+      format.html {
+        if @res
+          redirect_to @user, notice: I18n.t("messages.users.update.success")
+        else
+          @errors = @user.errors
+          render action: "new"
+        end
+      }
+      format.json {
+        if @res
+          render :json => {
+            :state => true,
+            :user => @user
+          }
+        else
+          render :json => {
+            :state => false
+          }
+        end
+      }
+    end
   end
 
   def new
