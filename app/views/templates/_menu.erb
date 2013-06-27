@@ -30,7 +30,7 @@
             <% end %>
 
             <div class="btn-group">
-              <%= link_to I18n.t("messages.templates.menu.articles"), "#", :class => "btn btn-warning" %>
+              <%= link_to I18n.t("messages.templates.menu.articles"), "/articles/newest", :class => "btn btn-warning" %>
               <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
                 <span class="caret"></span>
               </div>
@@ -42,9 +42,8 @@
                   <%= link_to I18n.t("messages.templates.menu.best"), "#" %>
                   <%#= link_to I18n.t("messages.templates.menu.best"), "/articles/best" TODO %>
                 </li>
-                <li class="disabled">
-                  <%= link_to I18n.t("messages.templates.menu.most_commented"), "#" %>
-                  <%#= link_to I18n.t("messages.templates.menu.most_commented"), "/articles/most_commented" TODO %>
+                <li>
+                  <%= link_to I18n.t("messages.templates.menu.most_commented"), "/articles/most_commented" %>
                 </li>
                 <li class="divider"></li>
                 <li>

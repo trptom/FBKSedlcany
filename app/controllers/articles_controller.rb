@@ -72,6 +72,6 @@ class ArticlesController < ApplicationController
 
   def most_commented
     # TODO
-    @articles = []
+    @articles = Article.most_commented(1)
   end
 end
