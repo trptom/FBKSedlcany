@@ -67,7 +67,7 @@ module ApplicationHelper
   def check_asset_existency(asset)
     return Rails.application.assets.find_asset asset
   rescue
-    return nil;
+    return false;
   end
 
   def get_additional_styles
