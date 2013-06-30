@@ -82,11 +82,11 @@ module ApplicationHelper
     res = Array.new
 
     if check_asset_existency ctrl_style_url
-      res << asset_path(ctrl_style_url)
+      res << "/assets/#{ctrl_style_url}"
     end
 
     if check_asset_existency page_style_url
-      res << asset_path(page_style_url)
+      res << "/assets/#{page_style_url}"
     end
 	
 	logger.info "styles res: " + res.to_s
