@@ -65,8 +65,10 @@ module ApplicationHelper
 
   # Funkce s bezpecnostni pojistkou, kdyby nahodou hledani selhalo.
   def check_asset_existency(asset)
+    logger.info "searching asset: " + asset
     return Rails.application.assets.find_asset asset
   rescue
+    logger.info "asset arror: " + asset
     return false;
   end
 
@@ -83,6 +85,8 @@ module ApplicationHelper
     if check_asset_existency page_style_url
       res << asset_path(page_style_url)
     end
+	
+	logger.info "styles res: " + res
 
     return res
   end
@@ -101,6 +105,8 @@ module ApplicationHelper
       res << asset_path(page_script_url)
     end
 
+	logger.info "scripts res: " + res
+	
     return res
   end
 end
