@@ -1,7 +1,7 @@
 class Team < ActiveRecord::Base
   mount_uploader :logo, ClubLogoUploader
 
-  belongs_to :club
+  belongs_to :club, dependent: :destroy
   has_many :players
 
   attr_accessible :level, :logo, :name, :short_name, :shortcut, :club

@@ -46,15 +46,35 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = @article.find(params[:id])
+    @article = Article.find(params[:id])
 
     #nastaveni textaci
-    @form_title = I18n.t("messages.articlesedit.title")
+    @form_title = I18n.t("messages.articles.edit.title")
     @form_submit = I18n.t("messages.articles.edit.update")
   end
 
   def update
+    @article = Article.find(params[:id])
+    @article.update_attributes(params[:article])
+    @res = @article.save
 
+    respond_to do |format|
+      format.html {
+        redirect_to @article
+      }
+      format.json {
+        if @res
+          render json: {
+            :result => true,
+            :article => @article
+          }
+        else
+          render json: {
+            :result => false
+          }
+        end
+      }
+    end
   end
 
   def destroy

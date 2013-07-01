@@ -11,6 +11,9 @@ TEAM_NAME_SHORTCUT = "SED"
 # pocet clanku na stranku
 ARTICLES_LIST_PAGE_LIMIT = 10
 
+# max. delka anotace, parsovane z contentu (ve znacich)
+ARTICLE_PARSED_ANNOTATION_LENGTH = 500
+
 # razeni komentaru - pouzito v order funkci activerecord
 COMMENTS_ORDER = :updated_at
 # datum z timestamps, tere bude zobrazeno v hlavicce komentare

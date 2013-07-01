@@ -7,6 +7,7 @@ cs:
     base:
       activate: Aktivovat
       age: Věk
+      author: Autor
       average_mark: Průměrná známka
       block: Zablokovat
       block_expires_at: Blokace vyprší
@@ -16,6 +17,7 @@ cs:
       club: Oddíl
       club_name: Název oddílu
       comment: Komentář
+      comments_count: Počet komentářů
       date_of_birth: Datum narození
       delete: Smazat
       edit: Editovat
@@ -33,12 +35,14 @@ cs:
       not_blocked: Aktivní
       password: Heslo
       password_confirmation: Kontrola hesla
+      published: Publikováno
       register: Registrovat
       role: Role
       second_name: Příjmení
       short_name: Krátký název
       shortcut: Zkratka
       show: Zobrazit
+      show_article: Zobrazit článek
       team_name: Název týmu
       title: Nadpis
       unblock: Odblokovat
@@ -64,6 +68,8 @@ cs:
       form:
         add_player: Vložit odkaz na hráče
         no_player: Žádný hráč, kterého by šlo přidat
+      list:
+        show_article: Zobrazit článek...
     users:
       index:
         title: Seznam uživatel

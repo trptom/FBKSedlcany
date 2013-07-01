@@ -42,4 +42,21 @@ class Article < ActiveRecord::Base
       return mark.round(ROUND_MARK_TO_DECIMAL).to_s
     end
   end
+
+  def get_annotation
+    if annotation != nil && annotation != ""
+      return annotation;
+    end
+
+    tmp = content.split(" ")
+    str = ""
+    a = 0
+
+    while (a < tmp.length) && (str.length + tmp[a].length < ARTICLE_PARSED_ANNOTATION_LENGTH)
+      str += (a > 0) ? (" " + tmp[a]) : tmp[a]
+      a = a + 1
+    end
+
+    return str == content ? str : str + "..."
+  end
 end

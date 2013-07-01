@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
-  belongs_to :user
-  belongs_to :article
-  belongs_to :comment
+  belongs_to :user, dependent: :destroy
+  belongs_to :article, dependent: :destroy, counter_cache: true
+  belongs_to :comment, dependent: :destroy
   has_many :comments
   
   attr_accessible :content, :title, :user, :user_id, :article, :article_id, :comment, :comment_id
