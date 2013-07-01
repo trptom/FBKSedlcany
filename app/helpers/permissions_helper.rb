@@ -107,6 +107,11 @@ module PermissionsHelper
         :roles => [ :root, :admin, :articles_editor ],
         :user => atts[:user]
       })
+    when "set_mark"
+      return has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :marker ],
+        :user => atts[:user]
+      }) && article && article.user.id != atts[:user].id # nesmi znamkovat vlastni
     else
       return false
     end
@@ -147,12 +152,17 @@ module PermissionsHelper
       }) || atts[:user] == user
     when "new", "create"
       return !current_user
-    when "block", "unblock"
+    when "block"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :users_editor ],
         :user => atts[:user]
       }) && user && user.id != current_user.id &&
       user.username != ROOT_ACCOUNT_USERNAME
+    when "unblock"
+      return has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :users_editor ],
+        :user => atts[:user]
+      }) && user && user.id != current_user.id && user.is_blocked
     when "activate"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :users_editor ],

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :articles
   has_many :comments
+  has_many :marks
 
   attr_accessible :activation_expires_at, :activation_state, :activation_token,
     :password, :password_confirmation, :salt, :authentications_attributes,

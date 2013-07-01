@@ -3,6 +3,8 @@
   <%= @article.content.html_safe %>
   <div class="footer">
     <%= link_to @article.user.username, @article.user %>
+    |
+    <%= I18n.t("messages.base.average_mark") %>: <%= @article.get_average_mark_str %>
   </div>
 </div>
 

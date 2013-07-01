@@ -2,8 +2,9 @@ class Article < ActiveRecord::Base
   belongs_to :user
   has_and_belongs_to_many :atricle_categories
   has_many :comments
+  has_many :marks
   
-  attr_accessible :annotation, :content, :title, :comments, :user, :atricle_categories
+  attr_accessible :annotation, :content, :title, :comments, :user, :atricle_categories, :markings
 
   scope :most_commented, ->(limit = ARTICLES_LIST_PAGE_LIMIT) {
     select("articles.*, COUNT(comments.id) AS comments")
@@ -13,7 +14,32 @@ class Article < ActiveRecord::Base
         .limit(limit)
   }
 
-  def comments_count
-    return comments.count
+  scope :top_marked, ->(limit = ARTICLES_LIST_PAGE_LIMIT) {
+    select("articles.*, AVG(marks.value) AS avg_marks")
+        .joins("LEFT OUTER JOIN marks ON articles.id = marks.article_id")
+        .group("articles.id")
+        .order("avg_marks DESC")
+        .limit(limit)
+  }
+
+  def get_mark_points
+    sum = 0
+    for mark in marks
+      sum += mark.value
+    end
+    return sum
+  end
+
+  def get_average_mark
+    return marks.count > 0 ? get_mark_points / marks.count : nil
+  end
+
+  def get_average_mark_str
+    mark = get_average_mark
+    if mark == nil
+      return I18n.t("messages.base.no_marks")
+    else
+      return mark.round(ROUND_MARK_TO_DECIMAL).to_s
+    end
   end
 end

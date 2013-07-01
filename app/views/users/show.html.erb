@@ -17,18 +17,21 @@
     <%= @user.get_block_state_str(nil) %>
   </div>
 
-  <div class="container row-fluid">
-    <%= form_for @user, :url => { :action => "block", :id => @user.id }, :method => :post do |f| %>
-      <%= I18n.t("messages.base.block_until") %>
-      <span class="datetime">
-        <%= f.datetime_select :block_expires_at, :class => "datetime" %>
-      </span>
-      <div class="btn-group">
+  <% if users_filter("block", { :user => current_user, :entity => @user } ) %>
+    <div class="container row-fluid">
+      <%= form_for @user, :url => { :action => "block", :id => @user.id }, :method => :post do |f| %>
+        <%= I18n.t("messages.base.block_until") %>
+        <span class="datetime">
+          <%= f.datetime_select :block_expires_at, :class => "datetime" %>
+        </span>
         <%= f.submit I18n.t("messages.base.block"), :class => "btn btn-primary" %>
-        <% if @user.is_blocked %>
-          <%= link_to I18n.t("messages.base.unblock"), "/users/#{@user.id}/unblock", :class => "btn" %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if users_filter("unblock", { :user => current_user, :entity => @user } ) %>
+    <div class="container row-fluid">
+      <%= link_to I18n.t("messages.base.unblock"), "/users/#{@user.id}/unblock", :method => :post, :class => "btn" %>
+    </div>
+  <% end %>
 </div>

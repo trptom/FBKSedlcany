@@ -33,6 +33,10 @@ FBKSedlcany::Application.routes.draw do
       get :best
       get :most_commented
     end
+
+    member do
+      post :add_mark
+    end
   end
 
   resources :article_categories do # kategorie clanku

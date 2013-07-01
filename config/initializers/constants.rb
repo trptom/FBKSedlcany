@@ -20,3 +20,10 @@ COMMENT_PRESENTED_DATE = :updated_at
 ROOT_ACCOUNT_USERNAME = "admin"
 ROOT_ACCOUNT_PASSWORD = "root"
 ROOT_ACCOUNT_EMAIL = "admin@fbksedlcany.com"
+
+# zaokrouhlovani
+ROUND_MARK_TO_DECIMAL = 2 # vypis znamky - pocet desetinnych mist
+
+#znamkovani
+MARK_MIN = 1; # minimalni znamka (vcetne)
+MARK_MAX = 5; # maximalni znamka (vcetne)

@@ -12,7 +12,8 @@ ROLES = [
   :players_editor,
   :teams_editor, # vztahuje se na oddily i tymy
 
-  :commenter # muze komentovat
+  :commenter, # muze komentovat
+  :marker # muze znamkovat
 ]
 
 ROLE_MESSAGES = Hash.new
@@ -21,5 +22,6 @@ for key in ROLES
 end
 
 DEFAULT_ROLE = [
-  :commenter
+  :commenter,
+  :marker
 ]

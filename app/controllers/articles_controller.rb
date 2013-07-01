@@ -74,4 +74,29 @@ class ArticlesController < ApplicationController
     # TODO
     @articles = Article.most_commented(1)
   end
+
+  # nastaveni, uprava nebo smazani
+  def set_mark
+    @article = @article.find(params[:id])
+    @mark = Mark.where(:user_id => current_user.id, :article_id => params[:id]).first
+
+    if (!params[:value] || !(params[:value].to_i) ||
+          params[:value].to_i < MARK_MIN || params[:value].to_i > MARK_MAX)
+      if (@mark)
+        @res = @mark.destroy
+      else
+        @res = true
+      end
+    else
+      if (@mark)
+        @mark = Mark.new(
+          :user_id => current_user.id,
+          :article_id => @article.id,
+          :value => params[:value]
+        )
+      else
+
+      end
+    end
+  end
 end

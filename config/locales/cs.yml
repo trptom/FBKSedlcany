@@ -7,6 +7,7 @@ cs:
     base:
       activate: Aktivovat
       age: Věk
+      average_mark: Průměrná známka
       block: Zablokovat
       block_expires_at: Blokace vyprší
       block_until: Zablokovat do
@@ -27,6 +28,7 @@ cs:
       name: Jméno
       nick_name: Přezdívka
       no_club: Žádný oddíl
+      no_marks: Žádné známky
       no_team: Žádný tým
       not_blocked: Aktivní
       password: Heslo
