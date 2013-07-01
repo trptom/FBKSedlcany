@@ -65,9 +65,14 @@ module ApplicationHelper
 
   # Funkce s bezpecnostni pojistkou, kdyby nahodou hledani selhalo.
   def check_asset_existency(asset)
+    logger.info "searching asset: " + asset
+	#ret = File.exists?(File.join(Rails.public_path, 'assets', asset))
+	#logger.info "asset result: " + ret.to_s
+	#return ret;
     return Rails.application.assets.find_asset asset
   rescue
-    return nil;
+    logger.info "asset error: " + asset
+    return false;
   end
 
   def get_additional_styles
@@ -77,12 +82,14 @@ module ApplicationHelper
     res = Array.new
 
     if check_asset_existency ctrl_style_url
-      res << asset_path(ctrl_style_url)
+      res << "/assets/#{ctrl_style_url}"
     end
 
     if check_asset_existency page_style_url
-      res << asset_path(page_style_url)
+      res << "/assets/#{page_style_url}"
     end
+	
+	logger.info "styles res: " + res.to_s
 
     return res
   end
@@ -94,13 +101,15 @@ module ApplicationHelper
     res = Array.new
 
     if check_asset_existency ctrl_script_url
-      res << asset_path(ctrl_script_url)
+      res << "/assets/#{ctrl_script_url}"
     end
 
     if check_asset_existency page_script_url
-      res << asset_path(page_script_url)
+      res << "/assets/#{page_script_url}"
     end
 
+	logger.info "scripts res: " + res.to_s
+	
     return res
   end
 end
