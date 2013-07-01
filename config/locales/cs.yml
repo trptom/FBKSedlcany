@@ -65,6 +65,7 @@ cs:
         edit_comment: Upravit komentář
         delete_comment: Smazat komentář
         answer_comment: Reagovat na komentář
+        delete_confirmation: Opravdu si přejete smazat tento článek?
       form:
         add_player: Vložit odkaz na hráče
         no_player: Žádný hráč, kterého by šlo přidat

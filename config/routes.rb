@@ -58,7 +58,12 @@ FBKSedlcany::Application.routes.draw do
   end
 
   resources :teams do
-
+    member do
+      get :squad
+    end
+    collection do
+      get :squad
+    end
   end
 
   namespace :home do

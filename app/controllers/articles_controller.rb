@@ -78,7 +78,19 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    @article = Article.find(params[:id])
+    @res = @comment.destroy
 
+    respond_to do |format|
+      format.html {
+        redirect_to :back
+      }
+      format.json {
+        render json: {
+          :result => @res
+        }
+      }
+    end
   end
 
   def newest

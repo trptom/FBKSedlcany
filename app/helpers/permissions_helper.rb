@@ -209,6 +209,8 @@ module PermissionsHelper
         :roles => [ :root, :admin, :teams_editor ],
         :user => atts[:user]
       })
+    when "squad"
+      return true
     else
       return false
     end

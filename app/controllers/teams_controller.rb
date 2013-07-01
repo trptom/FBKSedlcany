@@ -70,4 +70,23 @@ class TeamsController < ApplicationController
       }
     end
   end
+
+  def squad
+    @team = params[:id] ? Team.find(params[:id]) : Team.order(:id).first
+
+    respond_to do |format|
+      format.html {}
+      format.json {
+        players = []
+        for player in @team.players.all
+          players << player
+        end
+
+        render json: {
+          :team => @team,
+          :players => players
+        }
+      }
+    end
+  end
 end
