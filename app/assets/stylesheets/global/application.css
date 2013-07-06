@@ -21,3 +21,13 @@ body {
     border-top: solid #e5e5e5 2px;
     text-align: center;
 }
+
+.centralized {
+    text-align: center;
+}
+
+div.top-separator:not(:first-child) {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: solid #e5e5e5 2px;
+}

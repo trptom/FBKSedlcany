@@ -5,6 +5,7 @@ cs:
 
   messages:
     base:
+      actions: Akce
       activate: Aktivovat
       age: Věk
       author: Autor
@@ -18,18 +19,30 @@ cs:
       club_name: Název oddílu
       comment: Komentář
       comments_count: Počet komentářů
+      date: Datum
       date_of_birth: Datum narození
       delete: Smazat
+      description: Popis
+      detail: Detail
       edit: Editovat
       email: E-mail
       error: Chyba!
       first_name: Křestní jméno
+      image: Obrázek
+      image_full: Obrázek v plné velikosti
+      image_medium: Středně velký obrázek
+      image_name: Název obrázku
+      image_small: Malý obrázek
+      image_tiny: Ikona
+      insert_image: Vložit obrázek
+      logical_folder: Logická složka
       logo: Logo
       logo_of_club: Logo oddílu
       logo_of_team: Logo týmu
       name: Jméno
       nick_name: Přezdívka
       no_club: Žádný oddíl
+      no_images: Žádné obrázky
       no_marks: Žádné známky
       no_team: Žádný tým
       not_blocked: Aktivní
@@ -43,9 +56,12 @@ cs:
       shortcut: Zkratka
       show: Zobrazit
       show_article: Zobrazit článek
+      source_file: Zdrojový soubor
       team_name: Název týmu
       title: Nadpis
       unblock: Odblokovat
+      update_image: Upravit obrázek
+      upload_image: Nahrát obrázek
       username: Uživatelské jméno
       warning: Varování!
       form:
@@ -69,6 +85,7 @@ cs:
       form:
         add_player: Vložit odkaz na hráče
         no_player: Žádný hráč, kterého by šlo přidat
+        no_images: Neexistuje žádný obrázek, který by šlo přidat
       list:
         show_article: Zobrazit článek...
     users:
@@ -166,9 +183,11 @@ cs:
         users: Uživatelé
         create_club: Vytvořit oddíl
         create_team: Vytvořit tým
+        images: Obrázky
         list_of_clubs: Seznam oddílů
         list_of_teams: Seznam týmů
         list_of_users: Seznam uživatel
+        list_images: Procházet obrázky
         no_possible_actions: Žádné akce
       login_form:
         title: Přihlášení

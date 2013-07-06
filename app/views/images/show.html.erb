@@ -1,0 +1,9 @@
+<div class="well">
+  <h1><%= @image.name %></h1>
+  <div class="row centralized">
+    <%= image_tag @image.image_url(:medium), :title => @image.name %>
+  </div>
+  <div class="footer">
+    <%= @image.description %>
+  </div>
+</div>

@@ -21,13 +21,15 @@ module ApplicationHelper
         :articles => [],
         :players => [],
         :teams => [],
-        :users => []
+        :users => [],
+        :images => [],
       },
       :messages => {
         :articles => I18n.t("messages.templates.menu.articles"),
         :players => I18n.t("messages.templates.menu.players"),
         :teams => I18n.t("messages.templates.menu.teams"),
-        :users => I18n.t("messages.templates.menu.users")
+        :users => I18n.t("messages.templates.menu.users"),
+        :images => I18n.t("messages.templates.menu.images"),
       }
     }
 
@@ -53,6 +55,10 @@ module ApplicationHelper
 
     if users_filter("index", { :user => current_user })
       menu[:structure][:users] << link_to(I18n.t("messages.templates.menu.list_of_users"), users_path)
+    end
+
+    if images_filter("index", { :user => current_user })
+      menu[:structure][:images] << link_to(I18n.t("messages.templates.menu.list_images"), images_path)
     end
 
     count  =0;

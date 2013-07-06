@@ -75,12 +75,22 @@ module PermissionsHelper
     when "players"
       @res = players_filter(atts[:action], {
         :user => atts[:user],
-        :entity_id => atts[:entity_id]
+        :player_id => atts[:entity_id]
+      })
+    when "clubs"
+      @res = clubs_filter(atts[:action], {
+        :user => atts[:user],
+        :club_id => atts[:entity_id]
       })
     when "teams"
       @res = teams_filter(atts[:action], {
         :user => atts[:user],
-        :entity_id => atts[:entity_id]
+        :team_id => atts[:entity_id]
+      })
+    when "images"
+      @res = images_filter(atts[:action], {
+        :user => atts[:user],
+        :image_id => atts[:entity_id]
       })
     else
       @res = true
@@ -190,7 +200,7 @@ module PermissionsHelper
     case action
     when "show"
       return true
-    when "edit", "update", "new", "create"
+    when "edit", "update", "new", "create", "index"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :players_editor ],
         :user => atts[:user]
@@ -200,13 +210,45 @@ module PermissionsHelper
     end
   end
 
+  def clubs_filter(action, atts)
+    case action
+    when "show"
+      return true
+    when "edit", "update", "new", "create", "index"
+      return has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :teams_editor ],
+        :user => atts[:user]
+      })
+    when "squad"
+      return true
+    else
+      return false
+    end
+  end
+
   def teams_filter(action, atts)
     case action
     when "show"
       return true
-    when "edit", "update", "new", "create"
+    when "edit", "update", "new", "create", "index"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :teams_editor ],
+        :user => atts[:user]
+      })
+    when "squad"
+      return true
+    else
+      return false
+    end
+  end
+
+  def images_filter(action, atts)
+    case action
+    when "show"
+      return true
+    when "edit", "update", "new", "create", "index"
+      return has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :images_editor ],
         :user => atts[:user]
       })
     when "squad"

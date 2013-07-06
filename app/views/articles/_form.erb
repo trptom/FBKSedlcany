@@ -20,28 +20,13 @@
         <fieldset class="control-group">
           <%= f.label :content, "TODO", :class => "control-label" %>
           <div class="controls">
-            <%= f.text_area :content, :rows => 10, :class => "input-xlarge" %>
-            <div class="btn-group">
-              <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
-                <%= I18n.t("messages.articles.form.add_player") %>
-                <span class="caret"></span>
-              </div>
-              <ul class="dropdown-menu">
-                <% if Player.count > 0 %>
-                  <% for player in Player.all %>
-                    <li onclick="add_into_active_area('<a href=\'<%= player_path player %>\'><%= player.get_name_including_nick %></a>', 'article_content')">
-                      <span class="disabled"><%= player.get_name_including_nick %></span>
-                    </li>
-                  <% end %>
-                <% else %>
-                  <li>
-                    <a href="#"><%= I18n.t("messages.articles.form.no_player") %></a>
-                  </li>
-                <% end %>
-              </ul>
-            </div>
+            <%= render "form_content_actions" %>
           </div>
         </fieldset>
+
+          <div>
+            <%= f.cktext_area :content, :toolbar => 'MyToolbar', :rows => 10, :class => "input-xlarge" %>
+          </div>
 
         <fieldset class="form-actions">
           <%= f.submit @form_submit, :class => "btn btn-primary" %>

@@ -66,6 +66,10 @@ FBKSedlcany::Application.routes.draw do
     end
   end
 
+  resources :images do
+    
+  end
+
   namespace :home do
     get :error
   end

@@ -5,7 +5,7 @@
     <%= I18n.t("messages.base.author") %>: <%= link_to @article.user.username, @article.user %>
     | <%= I18n.t("messages.base.published") %>: <%= I18n.l @article.created_at %>
     <% if articles_filter("edit", { :user => current_user, :article => @article }) %>
-      | <%= link_to I18n.t("messages.base.edit"), @article %>
+      | <%= link_to I18n.t("messages.base.edit"), edit_article_path(@article) %>
     <% end %>
     <% if articles_filter("destroy", { :user => current_user, :article => @article }) %>
       | <%= link_to I18n.t("messages.base.delete"), @article, :method => :delete, :confirm => I18n.t("messages.articles.show.delete_confirmation") %>

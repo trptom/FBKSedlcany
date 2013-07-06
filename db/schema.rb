@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130627103710) do
+ActiveRecord::Schema.define(:version => 20130704172533) do
 
   create_table "article_categories", :force => true do |t|
     t.string   "name",        :null => false
@@ -61,6 +61,18 @@ ActiveRecord::Schema.define(:version => 20130627103710) do
   add_index "comments", ["article_id"], :name => "index_comments_on_article_id"
   add_index "comments", ["comment_id"], :name => "index_comments_on_comment_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "images", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "logical_folder"
+    t.string   "image"
+    t.integer  "user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "images", ["user_id"], :name => "index_images_on_user_id"
 
   create_table "marks", :force => true do |t|
     t.integer  "article_id", :null => false

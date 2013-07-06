@@ -1,0 +1,34 @@
+<div class="well">
+  <h1><%= @image.name %></h1>
+  <div class="row centralized">
+    <%= image_tag @image.image_url(:medium) %>
+  </div>
+  <div class="row top-separator">
+    <div class="span8 offset2">
+      <%= form_for @image, :html => { :class => "form-horizontal"} do |f| %>
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.name"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :name, :rows => "3" %>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.logical_folder"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :logical_folder, :value => params[:folder], :rows => "3" %>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.description"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_area :description, :rows => "3" %>
+          </div>
+        </fieldset>
+        <fieldset class="form-actions">
+          <%= f.submit I18n.t("messages.base.update_image"), :class => "btn btn-primary" %>
+          <%= f.submit I18n.t("messages.base.form.reset"), :type => "reset", :class => "btn" %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>

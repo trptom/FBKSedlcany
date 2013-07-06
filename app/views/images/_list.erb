@@ -1,0 +1,22 @@
+<div class="well">
+  <table>
+    <thead>
+      <tr>
+        <td>TODO</td>
+        <td>TODO</td>
+        <td>TODO</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% for item in @list %>
+        <tr>
+          <td><%= item[:image] %></td>
+          <td><%= item[:name] %></td>
+          <td>
+            <%= item[:actions] %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

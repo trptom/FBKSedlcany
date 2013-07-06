@@ -34,7 +34,7 @@ function add_into_text_area(text, area) {
         area = document.getElementById(area);
     }
     if (area && area.tagName && area.tagName.toLowerCase() == "textarea") {
-        area.innerHTML += text;
+        area.innerHTML = area.innerHTML + text;
         return area;
     }
     return false;

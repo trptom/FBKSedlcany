@@ -11,6 +11,7 @@ ROLES = [
   :users_editor,
   :players_editor,
   :teams_editor, # vztahuje se na oddily i tymy
+  :images_uploader,
 
   :commenter, # muze komentovat
   :marker # muze znamkovat

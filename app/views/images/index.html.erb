@@ -1,0 +1,76 @@
+<div class="well">
+  <h1><%= params[:folder] %></h1>
+  <table>
+    <thead>
+      <tr>
+        <td></td>
+        <td><%= I18n.t "messages.base.image_name" %></td>
+        <td><%= I18n.t "messages.base.date" %></td>
+        <td><%= I18n.t "messages.base.author" %></td>
+        <td><%= I18n.t "messages.base.actions" %></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% for item in @folders %>
+        <tr>
+          <td></td>
+          <td><%= link_to item[:name], images_path(:folder => item[:folder]) %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% end %>
+      <% for item in @list %>
+        <tr>
+          <td><%= image_tag item.image_url(:tiny) %></td>
+          <td><%= link_to item.name, item.image_url(:full) %></td>
+          <td><%= I18n.l item.created_at %></td>
+          <td><%= item.user.username %></td>
+          <td class="btn-group">
+            <%= link_to I18n.t("messages.base.detail"), item, :class => "btn" %>
+            <%= link_to I18n.t("messages.base.edit"), edit_image_path(item), :class => "btn" %>
+            <%= link_to I18n.t("messages.base.delete"), item, :method => :delete, :class => "btn" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="well">
+  <div class="row">
+    <div class="span8 offset2">
+      <%= form_for @new_image, :html => { :class => "form-horizontal"} do |f| %>
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.source_file"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.hidden_field :image_cache %>
+            <%= f.file_field :image %>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.name"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :name, :rows => "3" %>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.logical_folder"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_field :logical_folder, :value => params[:folder], :rows => "3" %>
+          </div>
+        </fieldset>
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.description"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.text_area :description, :rows => "3" %>
+          </div>
+        </fieldset>
+        <fieldset class="form-actions">
+          <%= f.submit I18n.t("messages.base.upload_image"), :class => "btn btn-primary" %>
+          <%= f.submit I18n.t("messages.base.form.reset"), :type => "reset", :class => "btn" %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+</div>
