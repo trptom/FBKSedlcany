@@ -15,9 +15,12 @@ class ClubsController < ApplicationController
   end
 
   def create
-    @club = Club.new(params[:club])
-
-    @res = @club.save
+    @res = ActiveRecord::Base.transaction do
+      @club = Club.new(params[:club])
+      @club.save
+      @team = @club.create_default_team
+      @team.save
+    end
 
     respond_to do |format|
       format.html {

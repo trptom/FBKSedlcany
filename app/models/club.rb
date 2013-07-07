@@ -5,12 +5,27 @@ class Club < ActiveRecord::Base
 
   attr_accessible :logo, :logo_cache, :name, :short_name, :shortcut
 
+  def get_club
+    return teams.where(:level => 0).first
+  end
+
+  def get_teams
+    return teams.where("level > 0").all
+  end
+
   def get_logo_image
     return ActionController::Base.helpers.image_tag(logo_url(:full))
   end
 
   def get_small_logo_image
     return ActionController::Base.helpers.image_tag(logo_url(:small))
+  end
+
+  def create_default_team
+    return Team.new(
+      :club_id => id,
+      :level => 0
+    )
   end
 
   def self.get_options(atts)

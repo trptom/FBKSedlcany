@@ -227,7 +227,7 @@ module PermissionsHelper
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :teams_editor ],
         :user => atts[:user]
-      }) && club && club.teams == 0
+      }) && club && club.get_teams.count > 0
     when "squad"
       return true
     else
@@ -236,7 +236,7 @@ module PermissionsHelper
   end
 
   def teams_filter(action, atts)
-    team = atts[:team] ? atts[:team] : (atts[:team_id] ? Team.find_by_id(atts[:team_id]) : nil)
+    team = atts[:team] && atts[:team].is_team ? atts[:team] : (atts[:team_id] ? Team.teams.find_by_id(atts[:team_id]) : nil)
 
     case action
     when "show"

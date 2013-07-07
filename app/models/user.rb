@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :marks
 
+  has_many :created_games, :class_name => 'Game', :foreign_key => 'creator_id'
+  has_many :edited_games, :class_name => 'Game', :foreign_key => 'editor_id'
+
   attr_accessible :activation_expires_at, :activation_state, :activation_token,
     :password, :password_confirmation, :salt, :authentications_attributes,
     :username, :email, :first_name, :second_name, :role,

@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start: 2013-07-07 12:54:58
+  home_team_id: 1
+  away_team_id: 1
+  score: MyString
+  place: MyString
+  organizer_id: 1
+  competition: MyString
+  season: 1
+  round: 1
+  creator_id: 1
+  editor_id: 1
+
+two:
+  start: 2013-07-07 12:54:58
+  home_team_id: 1
+  away_team_id: 1
+  score: MyString
+  place: MyString
+  organizer_id: 1
+  competition: MyString
+  season: 1
+  round: 1
+  creator_id: 1
+  editor_id: 1

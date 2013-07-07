@@ -1,10 +1,10 @@
 class TeamsController < ApplicationController
   def index
-    @teams = Team.all
+    @teams = Team.teams.all
   end
 
   def show
-    @team = Team.find(params[:id])
+    @team = Team.teams.find(params[:id])
   end
 
   def new
@@ -44,14 +44,14 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    @team = Team.find(params[:id])
+    @team = Team.teams.find(params[:id])
 
     @form_title = I18n.t("messages.teams.edit.title");
     @form_submit = I18n.t("messages.teams.edit.create");
   end
 
   def update
-    @team = Team.find(params[:id])
+    @team = Team.teams.find(params[:id])
     @team.update_attributes(params[:team]);
 
     @res = @team.save
@@ -82,7 +82,7 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    @team = Team.find(params[:id])
+    @team = Team.teams.find(params[:id])
 
     @res = @team.destroy
 
@@ -99,7 +99,7 @@ class TeamsController < ApplicationController
   end
 
   def squad
-    @team = params[:id] ? Team.find(params[:id]) : Team.order(:id).first
+    @team = params[:id] ? Team.teams.find(params[:id]) : Team.teams.order(:id).first
 
     respond_to do |format|
       format.html {}

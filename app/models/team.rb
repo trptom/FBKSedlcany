@@ -3,8 +3,35 @@ class Team < ActiveRecord::Base
 
   belongs_to :club
   has_many :players
+  has_many :league_teams, dependent: :destroy
+
+  has_many :home_games, :class_name => 'Game', :foreign_key => 'home_team_id'
+  has_many :away_games, :class_name => 'Game', :foreign_key => 'away_team_id'
+  def games
+    home_games + away_games
+  end
+
+  has_many :organized_games, :class_name => 'Game', :foreign_key => 'organizer_id'
 
   attr_accessible :level, :logo, :logo_cache, :name, :short_name, :shortcut, :club, :club_id
+
+  def is_club
+    return level == 0
+  end
+
+  def is_team
+    return level > 0
+  end
+
+  ##############################################################################
+
+  scope :clubs, -> {
+    where(:level => 0)
+  }
+
+  scope :teams, -> {
+    where("level > 0")
+  }
 
   before_validation do |record|
     record.logo = record.logo == nil || record.logo = "" ?

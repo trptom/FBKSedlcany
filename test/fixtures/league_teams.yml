@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  league: 
+  team: 
+  season: 1
+  position: 1
+  position_string: MyString
+  comment: MyText
+
+two:
+  league: 
+  team: 
+  season: 1
+  position: 1
+  position_string: MyString
+  comment: MyText
