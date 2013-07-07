@@ -6,7 +6,7 @@
         <fieldset class="control-group">
           <%= f.label :title, I18n.t("messages.base.club"), :class => "control-label" %>
           <div class="controls">
-            <%= f.select :club_id, options_for_select(Club.get_options({ :order_by => :name })), :class => "span3" %>
+            <%= f.select :club_id, options_for_select(Team.get_club_options({ :order_by => :name })), :class => "span3" %>
           </div>
         </fieldset>
 

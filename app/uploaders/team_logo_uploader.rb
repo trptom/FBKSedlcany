@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ClubLogoUploader < CarrierWave::Uploader::Base
+class TeamLogoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   process :convert => 'png'

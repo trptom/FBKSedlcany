@@ -77,11 +77,6 @@ module PermissionsHelper
         :user => atts[:user],
         :player_id => atts[:entity_id]
       })
-    when "clubs"
-      @res = clubs_filter(atts[:action], {
-        :user => atts[:user],
-        :club_id => atts[:entity_id]
-      })
     when "teams"
       @res = teams_filter(atts[:action], {
         :user => atts[:user],
@@ -207,29 +202,6 @@ module PermissionsHelper
         :roles => [ :root, :admin, :players_editor ],
         :user => atts[:user]
       })
-    else
-      return false
-    end
-  end
-
-  def clubs_filter(action, atts)
-    club = atts[:club] ? atts[:club] : (atts[:club_id] ? Club.find_by_id(atts[:club_id]) : nil)
-
-    case action
-    when "show"
-      return true
-    when "edit", "update", "new", "create", "index"
-      return has_at_least_one_of_roles({
-        :roles => [ :root, :admin, :teams_editor ],
-        :user => atts[:user]
-      })
-    when "destroy"
-      return has_at_least_one_of_roles({
-        :roles => [ :root, :admin, :teams_editor ],
-        :user => atts[:user]
-      }) && club && club.get_teams.count > 0
-    when "squad"
-      return true
     else
       return false
     end

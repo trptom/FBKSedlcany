@@ -120,19 +120,6 @@ cs:
         title: Editace hráče
         update: Upravit hráče
       form:
-    clubs:
-      index:
-        new_club: Nový oddíl
-        delete_confirmation: Opravdu si přejete smazat tento oddíl?
-      new:
-        title: Nový oddíl
-        create: Vytvořit oddíl
-      edit:
-        title: Editace oddílu
-        create: Upravit oddíl
-      form:
-        logo: Logo oddílu
-        logo_title: Obrázek bude převeden do formátu PNG a upraven na velikost 200x200 px.
     teams:
       index:
         new_team: Nový tým

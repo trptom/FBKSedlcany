@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130704172533) do
+ActiveRecord::Schema.define(:version => 20130707140000) do
 
   create_table "article_categories", :force => true do |t|
     t.string   "name",        :null => false
@@ -39,15 +39,6 @@ ActiveRecord::Schema.define(:version => 20130704172533) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "clubs", :force => true do |t|
-    t.string   "name",       :null => false
-    t.string   "short_name", :null => false
-    t.string   "shortcut",   :null => false
-    t.string   "logo"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "comments", :force => true do |t|
     t.string   "title"
     t.text     "content",    :null => false
@@ -62,17 +53,73 @@ ActiveRecord::Schema.define(:version => 20130704172533) do
   add_index "comments", ["comment_id"], :name => "index_comments_on_comment_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
-  create_table "images", :force => true do |t|
-    t.string   "name"
+  create_table "games", :force => true do |t|
+    t.datetime "start",        :null => false
+    t.integer  "home_team_id", :null => false
+    t.integer  "away_team_id", :null => false
+    t.text     "score"
+    t.integer  "hall_id"
+    t.integer  "organizer_id", :null => false
+    t.integer  "league_id",    :null => false
+    t.integer  "season",       :null => false
+    t.integer  "round"
+    t.integer  "creator_id",   :null => false
+    t.integer  "editor_id",    :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "games", ["away_team_id"], :name => "index_games_on_away_team_id"
+  add_index "games", ["creator_id"], :name => "index_games_on_creator_id"
+  add_index "games", ["editor_id"], :name => "index_games_on_editor_id"
+  add_index "games", ["hall_id"], :name => "index_games_on_hall_id"
+  add_index "games", ["home_team_id"], :name => "index_games_on_home_team_id"
+  add_index "games", ["league_id"], :name => "index_games_on_league_id"
+  add_index "games", ["organizer_id"], :name => "index_games_on_organizer_id"
+  add_index "games", ["season"], :name => "index_games_on_season"
+
+  create_table "halls", :force => true do |t|
+    t.string   "name",        :null => false
     t.text     "description"
-    t.string   "logical_folder"
-    t.string   "image"
-    t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "images", :force => true do |t|
+    t.string   "name",                           :null => false
+    t.text     "description"
+    t.string   "logical_folder", :default => "", :null => false
+    t.string   "image",                          :null => false
+    t.integer  "user_id",                        :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   add_index "images", ["user_id"], :name => "index_images_on_user_id"
+
+  create_table "league_teams", :force => true do |t|
+    t.integer  "league_id",       :null => false
+    t.integer  "team_id",         :null => false
+    t.integer  "season",          :null => false
+    t.integer  "position"
+    t.string   "position_string"
+    t.text     "comment"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "league_teams", ["league_id"], :name => "index_league_teams_on_league_id"
+  add_index "league_teams", ["team_id"], :name => "index_league_teams_on_team_id"
+
+  create_table "leagues", :force => true do |t|
+    t.string   "name",                      :null => false
+    t.string   "short_name",                :null => false
+    t.string   "shortcut",                  :null => false
+    t.integer  "level",      :default => 1, :null => false
+    t.integer  "group",      :default => 1, :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
   create_table "marks", :force => true do |t|
     t.integer  "article_id", :null => false
@@ -105,7 +152,7 @@ ActiveRecord::Schema.define(:version => 20130704172533) do
     t.string   "shortcut"
     t.integer  "level",      :default => 0, :null => false
     t.string   "logo"
-    t.integer  "club_id",                   :null => false
+    t.integer  "club_id"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
@@ -113,14 +160,14 @@ ActiveRecord::Schema.define(:version => 20130704172533) do
   add_index "teams", ["club_id"], :name => "index_teams_on_club_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username",                                                           :null => false
-    t.string   "email",                                                              :null => false
+    t.string   "username",                                                                      :null => false
+    t.string   "email",                                                                         :null => false
     t.string   "crypted_password"
     t.string   "salt"
-    t.text     "role",                            :default => "---\n- :commenter\n", :null => false
+    t.text     "role",                            :default => "---\n- :commenter\n- :marker\n", :null => false
     t.string   "first_name"
     t.string   "second_name"
-    t.boolean  "blocked",                         :default => false,                 :null => false
+    t.boolean  "blocked",                         :default => false,                            :null => false
     t.datetime "block_expires_at"
     t.string   "activation_state"
     t.string   "activation_token"
@@ -128,8 +175,8 @@ ActiveRecord::Schema.define(:version => 20130704172533) do
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
-    t.datetime "created_at",                                                         :null => false
-    t.datetime "updated_at",                                                         :null => false
+    t.datetime "created_at",                                                                    :null => false
+    t.datetime "updated_at",                                                                    :null => false
   end
 
 end

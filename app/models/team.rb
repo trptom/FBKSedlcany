@@ -1,7 +1,9 @@
 class Team < ActiveRecord::Base
-  mount_uploader :logo, ClubLogoUploader
+  mount_uploader :logo, TeamLogoUploader
 
-  belongs_to :club
+  belongs_to :club, :class_name => 'Team'
+  has_many :teams, :class_name => 'Team', :foreign_key => 'club_id'
+  
   has_many :players
   has_many :league_teams, dependent: :destroy
 
@@ -16,44 +18,33 @@ class Team < ActiveRecord::Base
   attr_accessible :level, :logo, :logo_cache, :name, :short_name, :shortcut, :club, :club_id
 
   def is_club
-    return level == 0
+    return level == 0 && id == club_id
   end
 
   def is_team
-    return level > 0
+    return level > 0 || id != club_id
   end
 
   ##############################################################################
 
   scope :clubs, -> {
-    where(:level => 0)
+    where(:level => 0, :id => :club_id)
   }
 
   scope :teams, -> {
-    where("level > 0")
+    where("(level > 0) OR (id != club_id)")
   }
-
-  before_validation do |record|
-    record.logo = record.logo == nil || record.logo = "" ?
-      record.club.logo : record.logo
-    record.name = record.name == nil || record.name = "" ?
-      record.club.name : record.name
-    record.short_name = record.short_name == nil || record.short_name = "" ?
-      record.club.short_name : record.short_name
-    record.shortcut = record.shortcut == nil || record.shortcut = "" ?
-      record.club.shortcut : record.shortcut
-  end
 
   def logo_image(type = :full)
     url = logo_url(type)
     return url != nil && url != "" ? ActionController::Base.helpers.image_tag(url) : nil
   end
 
-  def self.get_options(atts)
+  def self.get_club_options(atts)
     if (atts[:where])
-      res = Team.where(atts[:where])
+      res = Team.clubs.where(atts[:where])
     else
-      res = Team;
+      res = Team.clubs;
     end
 
     if (atts[:order_by])

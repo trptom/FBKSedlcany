@@ -53,10 +53,6 @@ FBKSedlcany::Application.routes.draw do
 
   end
 
-  resources :clubs do
-    
-  end
-
   resources :teams do
     member do
       get :squad

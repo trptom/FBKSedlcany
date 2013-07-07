@@ -42,14 +42,14 @@ module ApplicationHelper
     end
 
     if teams_filter("index", { :user => current_user })
-      menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.list_of_clubs"), clubs_path)
+      menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.list_of_clubs"), teams_path)
       menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.list_of_teams"), teams_path)
     end
     if teams_filter("create", { :user => current_user })
       if menu[:structure][:teams].length > 0
         menu[:structure][:teams] << nil; # divider
       end
-      menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.create_club"), new_club_path)
+      menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.create_club"), new_team_path)
       menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.create_team"), new_team_path)
     end
 
