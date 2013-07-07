@@ -74,6 +74,11 @@ FBKSedlcany::Application.routes.draw do
     get :error
   end
 
+  namespace :lists do
+    get :plugin_addplayer
+    get :plugin_addteam
+  end
+
   match 'login' => 'user_sessions#create', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout
   match 'register' => 'users#new', :as => :register

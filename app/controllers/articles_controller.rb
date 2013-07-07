@@ -70,7 +70,8 @@ class ArticlesController < ApplicationController
           }
         else
           render json: {
-            :result => false
+            :result => false,
+            :errors => @article.errors
           }
         end
       }

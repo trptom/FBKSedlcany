@@ -1,7 +1,7 @@
 class Club < ActiveRecord::Base
   mount_uploader :logo, ClubLogoUploader
 
-  has_many :teams
+  has_many :teams, dependent: :destroy
 
   attr_accessible :logo, :logo_cache, :name, :short_name, :shortcut
 

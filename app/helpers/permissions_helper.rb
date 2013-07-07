@@ -197,6 +197,8 @@ module PermissionsHelper
   end
 
   def players_filter(action, atts)
+    player = atts[:player] ? atts[:player] : (atts[:player_id] ? Player.find_by_id(atts[:player_id]) : nil)
+
     case action
     when "show"
       return true
@@ -211,6 +213,8 @@ module PermissionsHelper
   end
 
   def clubs_filter(action, atts)
+    club = atts[:club] ? atts[:club] : (atts[:club_id] ? Club.find_by_id(atts[:club_id]) : nil)
+
     case action
     when "show"
       return true
@@ -219,6 +223,11 @@ module PermissionsHelper
         :roles => [ :root, :admin, :teams_editor ],
         :user => atts[:user]
       })
+    when "destroy"
+      return has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :teams_editor ],
+        :user => atts[:user]
+      }) && club && club.teams == 0
     when "squad"
       return true
     else
@@ -227,6 +236,8 @@ module PermissionsHelper
   end
 
   def teams_filter(action, atts)
+    team = atts[:team] ? atts[:team] : (atts[:team_id] ? Team.find_by_id(atts[:team_id]) : nil)
+
     case action
     when "show"
       return true
@@ -235,6 +246,11 @@ module PermissionsHelper
         :roles => [ :root, :admin, :teams_editor ],
         :user => atts[:user]
       })
+    when "destroy"
+      return has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :teams_editor ],
+        :user => atts[:user]
+      }) && team && team.players.count == 0
     when "squad"
       return true
     else

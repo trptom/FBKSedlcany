@@ -28,7 +28,7 @@ class UsersController < ApplicationController
           redirect_to @user, notice: I18n.t("messages.users.update.success")
         else
           @errors = @user.errors
-          render action: "new"
+          render action: "edit"
         end
       }
       format.json {
@@ -39,7 +39,8 @@ class UsersController < ApplicationController
           }
         else
           render :json => {
-            :state => false
+            :state => false,
+            :errors => @user.errors
           }
         end
       }

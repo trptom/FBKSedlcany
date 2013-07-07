@@ -51,7 +51,34 @@ class TeamsController < ApplicationController
   end
 
   def update
+    @team = Team.find(params[:id])
+    @team.update_attributes(params[:team]);
 
+    @res = @team.save
+
+    respond_to do |format|
+      format.html {
+        if @res
+          redirect_to @team
+        else
+          @errors = @team.errors
+          render action: "edit"
+        end
+      }
+      format.json {
+        if @res
+          render json: {
+            :result => true,
+            :team => @team
+          }
+        else
+          render json: {
+            :result => false,
+            :errors => @team.errors
+          }
+        end
+      }
+    end
   end
 
   def destroy

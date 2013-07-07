@@ -1,12 +1,17 @@
 CKEDITOR.editorConfig = function( config )
 {
     config.toolbar = "article";
+
+    config.extraPlugins = 'addplayer,addteam';
     
     config.toolbar_article =
     [
         { name: 'clipboard', items : [
                 'Undo',
-                'Redo' ] },
+                'Redo'] },
+        { name: 'linking', items : [
+                'addplayer',
+                'addteam'] },
         { name: 'styles', items : [
                 'Format',
                 'Font',
@@ -48,7 +53,7 @@ CKEDITOR.editorConfig = function( config )
                 'About' ] },
     ];
 };
-
-CKEDITOR.replace( 'article_content', {
-	toolbar: "article"
-});
+//
+//CKEDITOR.replace( 'article_content', {
+//	toolbar: "article"
+//});
