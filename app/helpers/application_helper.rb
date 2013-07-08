@@ -25,17 +25,17 @@ module ApplicationHelper
         :images => [],
       },
       :messages => {
-        :articles => I18n.t("messages.templates.menu.articles"),
-        :players => I18n.t("messages.templates.menu.players"),
-        :teams => I18n.t("messages.templates.menu.teams"),
-        :users => I18n.t("messages.templates.menu.users"),
-        :images => I18n.t("messages.templates.menu.images"),
+        :articles => I18n.t("messages.base.articles"),
+        :players => I18n.t("messages.base.players"),
+        :teams => I18n.t("messages.base.teams"),
+        :users => I18n.t("messages.base.users"),
+        :images => I18n.t("messages.base.images"),
       }
     }
 
     # CLANKY
     if articles_filter("create", { :user => current_user })
-      menu[:structure][:articles] << link_to(I18n.t("messages.templates.menu.create_article"), new_article_path)
+      menu[:structure][:articles] << link_to(I18n.t("messages.base.create_article"), new_article_path)
     end
 
     # HRACI
@@ -43,7 +43,7 @@ module ApplicationHelper
       menu[:structure][:players] << link_to(I18n.t("messages.base.list_of_players"), players_path)
     end
     if players_filter("create", { :user => current_user })
-      menu[:structure][:players] << link_to(I18n.t("messages.templates.menu.create_player"), new_player_path)
+      menu[:structure][:players] << link_to(I18n.t("messages.base.create_player"), new_player_path)
     end
 
     # TYMY
@@ -57,8 +57,8 @@ module ApplicationHelper
       if menu[:structure][:teams].length > 0
         menu[:structure][:teams] << nil; # divider
       end
-      menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.create_club"), new_team_path)
-      menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.create_team"), new_team_path)
+      menu[:structure][:teams] << link_to(I18n.t("messages.base.create_club"), new_team_path)
+      menu[:structure][:teams] << link_to(I18n.t("messages.base.create_team"), new_team_path)
     end
 
     # UZIVATELE

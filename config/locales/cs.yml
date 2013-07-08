@@ -8,6 +8,7 @@ cs:
       actions: Akce
       activate: Aktivovat
       age: Věk
+      articles: Články
       author: Autor
       average_mark: Průměrná známka
       block: Zablokovat
@@ -19,6 +20,10 @@ cs:
       club_name: Název oddílu
       comment: Komentář
       comments_count: Počet komentářů
+      create_article: Vytvořit článek
+      create_club: Vytvořit oddíl
+      create_player: Vytvořit hráče
+      create_team: Vytvořit tým
       date: Datum
       date_of_birth: Datum narození
       delete: Smazat
@@ -34,6 +39,7 @@ cs:
       image_name: Název obrázku
       image_small: Malý obrázek
       image_tiny: Ikona
+      images: Obrázky
       info: Informace
       insert_image: Vložit obrázek
       list_images: Procházet obrázky
@@ -42,34 +48,47 @@ cs:
       list_of_teams: Seznam týmů
       list_of_users: Seznam uživatel
       logical_folder: Logická složka
+      login: Přihlásit
+      login_via_facebook: Přihlásit přes Facebook účet.
+      login_via_twitter: Přihlásit přes Twitter účet.
       logo: Logo
       logo_of_club: Logo oddílu
       logo_of_team: Logo týmu
+      logout: Odhlásit
+      match: Zápas
+      matches: Zápasy
       name: Jméno
       new_club: Nový oddíl
       nick_name: Přezdívka
       no_club: Žádný oddíl
       no_images: Žádné obrázky
       no_marks: Žádné známky
+      no_possible_actions: Žádné akce
       no_team: Žádný tým
       not_blocked: Aktivní
       password: Heslo
       password_confirmation: Kontrola hesla
+      players: Hráči
       published: Publikováno
       register: Registrovat
       role: Role
+      search: Hledat
       second_name: Příjmení
       short_name: Krátký název
       shortcut: Zkratka
       show: Zobrazit
       show_article: Zobrazit článek
       source_file: Zdrojový soubor
+      squad: Soupiska
+      team: Tým
       team_name: Název týmu
+      teams: Týmy
       title: Nadpis
       unblock: Odblokovat
       update_image: Upravit obrázek
       upload_image: Nahrát obrázek
       username: Uživatelské jméno
+      users: Uživatelé
       warning: Varování!
       form:
         submit: Odeslat
@@ -158,31 +177,11 @@ cs:
       menu:
         title: <%= TEAM_NAME_SHORT %>
         about: O týmu
-        articles: Články
         newest: Nejnovější
         best: Nejlépe hodnocené
         most_commented: Nejvíce komentované
-        search_article: Hledat
-        team: Tým
-        squad: Soupiska
-        matches: Zápasy
         edit_user: Editovat údaje
-        change_password: Změnit heslo
-        login: Přihlásit
-        login_via_facebook: Přihlásit přes Facebook účet.
-        login_via_twitter: Přihlásit přes Twitter účet.
-        logout: Odhlásit
-        register: Registrovat
         admin_zone: Admin zóna
-        create_article: Vytvořit článek
-        players: Hráči
-        create_player: Vytvořit hráče
-        teams: Týmy
-        users: Uživatelé
-        create_club: Vytvořit oddíl
-        create_team: Vytvořit tým
-        images: Obrázky
-        no_possible_actions: Žádné akce
       login_form:
         title: Přihlášení
         username: Uživatelské jméno

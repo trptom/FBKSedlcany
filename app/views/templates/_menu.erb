@@ -19,18 +19,18 @@
                     <%= link_to I18n.t("messages.templates.menu.edit_user"), edit_user_path(current_user) %>
                   </li>
                   <li>
-                    <%= link_to I18n.t("messages.templates.menu.change_password"), "/users/#{current_user.id}/change_password" %>
+                    <%= link_to I18n.t("messages.base.change_password"), "/users/#{current_user.id}/change_password" %>
                   </li>
                   <li class="divider"></li>
                   <li>
-                    <%= link_to I18n.t("messages.templates.menu.logout"), "/" %>
+                    <%= link_to I18n.t("messages.base.logout"), "/" %>
                   </li>
                 </ul>
               </div>
             <% end %>
 
             <div class="btn-group">
-              <%= link_to I18n.t("messages.templates.menu.articles"), "/articles/newest", :class => "btn btn-warning" %>
+              <%= link_to I18n.t("messages.base.articles"), "/articles/newest", :class => "btn btn-warning" %>
               <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
                 <span class="caret"></span>
               </div>
@@ -47,13 +47,13 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <%= link_to I18n.t("messages.templates.menu.search_article"), "/" %>
+                  <%= link_to I18n.t("messages.base.search"), "/" %>
                 </li>
               </ul>
             </div>
 
             <div class="btn-group">
-              <%= link_to I18n.t("messages.templates.menu.team"), "/teams/squad", :class => "btn btn-warning" %>
+              <%= link_to I18n.t("messages.base.team"), "/teams/squad", :class => "btn btn-warning" %>
               <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
                 <span class="caret"></span>
               </div>
@@ -62,10 +62,10 @@
                   <%= link_to I18n.t("messages.templates.menu.about"), about_url %>
                 </li>
                 <li>
-                  <%= link_to I18n.t("messages.templates.menu.squad"), squad_url %>
+                  <%= link_to I18n.t("messages.base.squad"), squad_url %>
                 </li>
                 <li>
-                  <%= link_to I18n.t("messages.templates.menu.matches"), "/teams/matches" %>
+                  <%= link_to I18n.t("messages.base.matches"), "/teams/matches" %>
                 </li>
               </ul>
             </div>
@@ -96,7 +96,7 @@
                           <% end %>
                         <% else %>
                           <li class="disabled">
-                            <a href="#"><%= I18n.t("messages.templates.menu.no_possible_actions") %></a>
+                            <a href="#"><%= I18n.t("messages.base.no_possible_actions") %></a>
                           </li>
                         <% end %>
                       </ul>
@@ -110,15 +110,15 @@
       </ul>
       <div class="pull-right">
         <% if current_user %>
-          <%= link_to I18n.t("messages.templates.menu.logout"), logout_url, :class => "btn" %>
+          <%= link_to I18n.t("messages.base.logout"), logout_url, :class => "btn" %>
         <% else %>
-          <%= link_to I18n.t("messages.templates.menu.register"), register_url, :class => "btn" %>
+          <%= link_to I18n.t("messages.base.register"), register_url, :class => "btn" %>
           <div class="btn-group">
             <a class="btn" href="#login" role="button" data-toggle="modal">
-              <%= I18n.t("messages.templates.menu.login") %>
+              <%= I18n.t("messages.base.login") %>
             </a>
-            <%#= link_to image_tag(asset_path("twitter_icon.jpg")), auth_at_provider_path(:provider => :twitter), :class => "btn", :title => I18n.t("messages.templates.menu.login_via_twitter") %>
-            <%= link_to image_tag(asset_path("facebook_icon.jpg")), auth_at_provider_path(:provider => :facebook), :class => "btn", :title => I18n.t("messages.templates.menu.login_via_facebook") %>
+            <%#= link_to image_tag(asset_path("twitter_icon.jpg")), auth_at_provider_path(:provider => :twitter), :class => "btn", :title => I18n.t("messages.base.login_via_twitter") %>
+            <%= link_to image_tag(asset_path("facebook_icon.jpg")), auth_at_provider_path(:provider => :facebook), :class => "btn", :title => I18n.t("messages.base.login_via_facebook") %>
           </div>
         <% end %>
       </div>
