@@ -1,10 +1,24 @@
 class TeamsController < ApplicationController
-  def index
+  def about
+    # jen template s textem
+  end
+
+  def index_of_teams
     @teams = Team.teams.all
   end
 
+  def index_of_clubs
+    @teams = Team.clubs.all
+  end
+
   def show
-    @team = Team.teams.find(params[:id])
+    @team = Team.find(params[:id])
+
+    if @team.is_club
+      render "show_club"
+    else
+      render "show_team"
+    end
   end
 
   def new
@@ -44,14 +58,21 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    @team = Team.teams.find(params[:id])
+    @team = Team.find(params[:id])
 
-    @form_title = I18n.t("messages.teams.edit.title");
-    @form_submit = I18n.t("messages.teams.edit.create");
+    if @team.is_club
+      @form_title = I18n.t("messages.teams.edit.title_club");
+      @form_submit = I18n.t("messages.teams.edit.create_club");
+      render "edit_club"
+    else
+      @form_title = I18n.t("messages.teams.edit.title_team");
+      @form_submit = I18n.t("messages.teams.edit.create_team");
+      render "edit_team"
+    end
   end
 
   def update
-    @team = Team.teams.find(params[:id])
+    @team = Team.find(params[:id])
     @team.update_attributes(params[:team]);
 
     @res = @team.save
@@ -82,13 +103,13 @@ class TeamsController < ApplicationController
   end
 
   def destroy
-    @team = Team.teams.find(params[:id])
+    @team = Team.find(params[:id])
 
     @res = @team.destroy
 
     respond_to do |format|
       format.html {
-        redirect_to teams_path
+        redirect_to :back
       }
       format.json {
         render json: {
@@ -99,7 +120,7 @@ class TeamsController < ApplicationController
   end
 
   def squad
-    @team = params[:id] ? Team.teams.find(params[:id]) : Team.teams.order(:id).first
+    @team = params[:id] ? Team.find(params[:id]) : Team.order(:id).first
 
     respond_to do |format|
       format.html {}

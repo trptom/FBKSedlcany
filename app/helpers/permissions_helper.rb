@@ -211,9 +211,9 @@ module PermissionsHelper
     team = atts[:team] && atts[:team].is_team ? atts[:team] : (atts[:team_id] ? Team.teams.find_by_id(atts[:team_id]) : nil)
 
     case action
-    when "show"
+    when "about"
       return true
-    when "edit", "update", "new", "create", "index"
+    when "show", "edit", "update", "new", "create", "index_of_clubs", "index_of_teams"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :teams_editor ],
         :user => atts[:user]

@@ -33,17 +33,25 @@ module ApplicationHelper
       }
     }
 
+    # CLANKY
     if articles_filter("create", { :user => current_user })
       menu[:structure][:articles] << link_to(I18n.t("messages.templates.menu.create_article"), new_article_path)
     end
 
+    # HRACI
+    if players_filter("index", { :user => current_user })
+      menu[:structure][:players] << link_to(I18n.t("messages.base.list_of_players"), players_path)
+    end
     if players_filter("create", { :user => current_user })
       menu[:structure][:players] << link_to(I18n.t("messages.templates.menu.create_player"), new_player_path)
     end
 
-    if teams_filter("index", { :user => current_user })
-      menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.list_of_clubs"), teams_path)
-      menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.list_of_teams"), teams_path)
+    # TYMY
+    if teams_filter("index_of_clubs", { :user => current_user })
+      menu[:structure][:teams] << link_to(I18n.t("messages.base.list_of_clubs"), "/teams/index_of_clubs")
+    end
+    if teams_filter("index_of_teams", { :user => current_user })
+      menu[:structure][:teams] << link_to(I18n.t("messages.base.list_of_teams"), "/teams/index_of_teams")
     end
     if teams_filter("create", { :user => current_user })
       if menu[:structure][:teams].length > 0
@@ -53,14 +61,17 @@ module ApplicationHelper
       menu[:structure][:teams] << link_to(I18n.t("messages.templates.menu.create_team"), new_team_path)
     end
 
+    # UZIVATELE
     if users_filter("index", { :user => current_user })
-      menu[:structure][:users] << link_to(I18n.t("messages.templates.menu.list_of_users"), users_path)
+      menu[:structure][:users] << link_to(I18n.t("messages.base.list_of_users"), users_path)
     end
 
+    # OBRAZKY
     if images_filter("index", { :user => current_user })
-      menu[:structure][:images] << link_to(I18n.t("messages.templates.menu.list_images"), images_path)
+      menu[:structure][:images] << link_to(I18n.t("messages.base.list_images"), images_path)
     end
 
+    # ... a tady to vsechno spocitam, jestli mam co vratit ...
     count  =0;
     menu[:structure].keys.sort.each do |key|
       count += menu[:structure][key].length

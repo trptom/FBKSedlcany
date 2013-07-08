@@ -59,6 +59,8 @@ FBKSedlcany::Application.routes.draw do
     end
     collection do
       get :squad
+      get :index_of_teams
+      get :index_of_clubs
     end
   end
 
@@ -74,6 +76,9 @@ FBKSedlcany::Application.routes.draw do
     get :plugin_addplayer
     get :plugin_addteam
   end
+
+  match 'about' => 'teams#about', :as => :about
+  match 'squad' => 'teams#squad', :as => :squad
 
   match 'login' => 'user_sessions#create', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout

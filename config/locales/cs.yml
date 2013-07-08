@@ -34,12 +34,19 @@ cs:
       image_name: Název obrázku
       image_small: Malý obrázek
       image_tiny: Ikona
+      info: Informace
       insert_image: Vložit obrázek
+      list_images: Procházet obrázky
+      list_of_clubs: Seznam oddílů
+      list_of_players: Seznam hráčů
+      list_of_teams: Seznam týmů
+      list_of_users: Seznam uživatel
       logical_folder: Logická složka
       logo: Logo
       logo_of_club: Logo oddílu
       logo_of_team: Logo týmu
       name: Jméno
+      new_club: Nový oddíl
       nick_name: Přezdívka
       no_club: Žádný oddíl
       no_images: Žádné obrázky
@@ -125,13 +132,16 @@ cs:
         new_team: Nový tým
         delete_confirmation: Opravdu si přejete smazat tento tým?
       new:
-        title: Nový tým
-        create: Vytvořit tým
+        title: Nový tým/oddíl
+        create_team: Vytvořit tým
+        create_club: Vytvořit oddíl
       edit:
-        title: Editace týmu
-        create: Upravit tým
+        title_club: Editace oddílu
+        create_club: Upravit oddíl
+        title_team: Editace týmu
+        create_team: Upravit tým
       form:
-        logo: Logo týmu
+        logo: Logo týmu/oddílu
         logo_title: Obrázek bude převeden do formátu PNG a upraven na velikost 200x200 px.
     user_sessions:
       create:
@@ -147,6 +157,7 @@ cs:
     templates:
       menu:
         title: <%= TEAM_NAME_SHORT %>
+        about: O týmu
         articles: Články
         newest: Nejnovější
         best: Nejlépe hodnocené
@@ -171,10 +182,6 @@ cs:
         create_club: Vytvořit oddíl
         create_team: Vytvořit tým
         images: Obrázky
-        list_of_clubs: Seznam oddílů
-        list_of_teams: Seznam týmů
-        list_of_users: Seznam uživatel
-        list_images: Procházet obrázky
         no_possible_actions: Žádné akce
       login_form:
         title: Přihlášení
