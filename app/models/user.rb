@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def block(to_date)
+  def block(to_date = nil)
     update_attributes(
       :block_expires_at => to_date,
       :blocked => true

@@ -22,6 +22,8 @@ cs:
       comments_count: Počet komentářů
       create_article: Vytvořit článek
       create_club: Vytvořit oddíl
+      create_competition: Vytvořit soutěž
+      create_hall: Vytvořit halu
       create_player: Vytvořit hráče
       create_team: Vytvořit tým
       date: Datum
@@ -44,6 +46,8 @@ cs:
       insert_image: Vložit obrázek
       list_images: Procházet obrázky
       list_of_clubs: Seznam oddílů
+      list_of_competitions: Seznam soutěži
+      list_of_halls: Seznam hal
       list_of_players: Seznam hráčů
       list_of_teams: Seznam týmů
       list_of_users: Seznam uživatel
@@ -156,12 +160,42 @@ cs:
         create_club: Vytvořit oddíl
       edit:
         title_club: Editace oddílu
-        create_club: Upravit oddíl
+        update_club: Upravit oddíl
         title_team: Editace týmu
-        create_team: Upravit tým
+        update_team: Upravit tým
       form:
         logo: Logo týmu/oddílu
         logo_title: Obrázek bude převeden do formátu PNG a upraven na velikost 200x200 px.
+    leagues:
+      index:
+        new_competition: Nová soutěž
+        delete_confirmation: Opravdu si přejete smazat tuto soutěž?
+      new:
+        title: Nová soutěž
+        create: Vytvořit soutěž
+      edit:
+        title: Editace soutěže
+        update: Upravit soutěž
+    games:
+      index:
+        new_competition: Nová soutěž
+        delete_confirmation: Opravdu si přejete smazat tuto soutěž?
+      new:
+        title: Nová soutěž
+        create: Vytvořit soutěž
+      edit:
+        title: Editace soutěže
+        update: Upravit soutěž
+    halls:
+      index:
+        new_competition: Nová soutěž
+        delete_confirmation: Opravdu si přejete smazat tuto soutěž?
+      new:
+        title: Nová soutěž
+        create: Vytvořit soutěž
+      edit:
+        title: Editace soutěže
+        update: Upravit soutěž
     user_sessions:
       create:
         banned: Přihlašování selhalo. Uživatel je deaktivován.

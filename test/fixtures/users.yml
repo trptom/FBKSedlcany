@@ -10,17 +10,19 @@ admin:
   activation_state: active
 
 one:
-  username: MyString
-  email: MyString
+  id: 2
+  username: one
+  email: user-one@nonexistingmail.com
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
-  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("root", salt) %>
-  first_name: MyString
-  second_name: MyString
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("one", salt) %>
+  first_name: User
+  second_name: One
 
 two:
-  username: MyString
-  email: MyString
+  id: 3
+  username: two
+  email: user-two@nonexistingmail.com
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
-  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("root", salt) %>
-  first_name: MyString
-  second_name: MyString
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("two", salt) %>
+  first_name: User
+  second_name: Two

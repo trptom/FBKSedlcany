@@ -1,17 +1,40 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  short_name: MyString
-  shortcut: MyString
+  id: 1
+  name: TJ Tatran Sedlčany florbal
+  short_name: Sedlčany
+  shortcut: SED
+  level: 0
+  logo: 
+
+one_1:
+  id: 2
+  name: TJ Tatran Sedlčany florbal "A"
+  short_name: Sedlčany "A"
+  shortcut: SED
   level: 1
-  logo: MyString
-  club: 
+  club_id: 1
+
+one_2:
+  id: 3
+  name: TJ Tatran Sedlčany florbal "B"
+  short_name: Sedlčany "B"
+  shortcut: SED-B
+  level: 2
+  club_id: 1
 
 two:
-  name: MyString
-  short_name: MyString
-  shortcut: MyString
+  id: 4
+  name: FbK Neveklov
+  short_name: Neveklov
+  shortcut: NEV
+  level: 0
+
+two_1:
+  id: 5
+  name: FbK Neveklov
+  short_name: Neveklov
+  shortcut: NEV
   level: 1
-  logo: MyString
-  club: 
+  club_id: 4

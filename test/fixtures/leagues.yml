@@ -1,15 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  short_name: MyString
-  shortcut: MyString
+  id: 1
+  name: Fortuna Extraliga
+  short_name: Extraliga
+  shortcut: MEX
   level: 1
   group: 1
 
 two:
-  name: MyString
-  short_name: MyString
-  shortcut: MyString
-  level: 1
+  id: 2
+  name: 1. Liga mužů
+  short_name: 1. liga
+  shortcut: ML1
+  level: 2
   group: 1
+
+three:
+  id: 3
+  name: 2. Liga mužů, divize A
+  short_name: 2. liga, div. A
+  shortcut: ML2A
+  level: 3
+  group: 1
+
+four:
+  id: 4
+  name: 2. Liga mužů, divize B
+  short_name: 2. liga, div. B
+  shortcut: ML2B
+  level: 3
+  group: 2

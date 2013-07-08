@@ -1,13 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
-  annotation: MyText
-  content: MyText
-  user:
+  title: Article one
+  content:
+    ghfjkl ghgjl hdfsjlghs lghfsdjlgh fsdjlgh fsjlghfsdjlghsfjkl hfjsh
+    <b>ghfjkl ghgjl hdfsjlghs lghfsdjlgh fsdjlgh fsjlghfsdjlghsfjkl hfjsh<i>
+    gfsgsdf</i></b>
+  user_id: 1
 
 two:
-  title: MyString
-  annotation: MyText
-  content: MyText
-  user:
+  title: Article two
+  annotation:
+    <p>ghfjkl ghgjl hdfsjlghs lghfsdjlgh fsdjlgh fsjlghfsdjlghsfjkl hfjsh
+    <b>ghfjkl ghgjl hdfsjlghs lghfsdjlgh fsdjlgh fsjlghfsdjlghsfjkl hfjsh<i>
+    gfsgsdf</i></b></p>
+  content:
+    <p>ghfjkl ghgjl hdfsjlghs lghfsdjlgh fsdjlgh fsjlghfsdjlghsfjkl hfjsh
+    <b>ghfjkl ghgjl hdfsjlghs lghfsdjlgh fsdjlgh fsjlghfsdjlghsfjkl hfjsh<i>
+    gfsgsdf</i></b></p>
+    <p>ghfjkl ghgjl hdfsjlghs lghfsdjlgh fsdjlgh fsjlghfsdjlghsfjkl hfjsh
+    <b>ghfjkl ghgjl hdfsjlghs lghfsdjlgh fsdjlgh fsjlghfsdjlghsfjkl hfjsh<i>
+    gfsgsdf</i></b></p>
+    <p>ghfjkl ghgjl hdfsjlghs lghfsdjlgh fsdjlgh fsjlghfsdjlghsfjkl hfjsh
+    <b>ghfjkl ghgjl hdfsjlghs lghfsdjlgh fsdjlgh fsjlghfsdjlghsfjkl hfjsh<i>
+    gfsgsdf</i></b></p>
+  user_id: 1

@@ -9,7 +9,10 @@ ROLES = [
   :articles_editor,
   :comments_editor, # muze pridavat a mazat komentare (ne komentovat)
   :users_editor,
+  :leagues_editor,
   :players_editor,
+  :halls_editor,
+  :games_editor,
   :teams_editor, # vztahuje se na oddily i tymy
   :images_uploader,
 

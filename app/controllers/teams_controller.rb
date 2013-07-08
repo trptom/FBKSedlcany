@@ -50,7 +50,8 @@ class TeamsController < ApplicationController
           }
         else
           render :json => {
-            :state => false
+            :state => false,
+            :errors => @team.errors
           }
         end
       }
@@ -62,11 +63,11 @@ class TeamsController < ApplicationController
 
     if @team.is_club
       @form_title = I18n.t("messages.teams.edit.title_club");
-      @form_submit = I18n.t("messages.teams.edit.create_club");
+      @form_submit = I18n.t("messages.teams.edit.update_club");
       render "edit_club"
     else
       @form_title = I18n.t("messages.teams.edit.title_team");
-      @form_submit = I18n.t("messages.teams.edit.create_team");
+      @form_submit = I18n.t("messages.teams.edit.update_team");
       render "edit_team"
     end
   end

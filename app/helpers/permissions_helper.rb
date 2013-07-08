@@ -77,10 +77,25 @@ module PermissionsHelper
         :user => atts[:user],
         :player_id => atts[:entity_id]
       })
+    when "leagues"
+      @res = leagues_filter(atts[:action], {
+        :user => atts[:user],
+        :league_id => atts[:entity_id]
+      })
     when "teams"
       @res = teams_filter(atts[:action], {
         :user => atts[:user],
         :team_id => atts[:entity_id]
+      })
+    when "games"
+      @res = games_filter(atts[:action], {
+        :user => atts[:user],
+        :game_id => atts[:entity_id]
+      })
+    when "halls"
+      @res = halls_filter(atts[:action], {
+        :user => atts[:user],
+        :hall_id => atts[:entity_id]
       })
     when "images"
       @res = images_filter(atts[:action], {
@@ -191,6 +206,22 @@ module PermissionsHelper
     end
   end
 
+  def leagues_filter(action, atts)
+    league = atts[:league] ? atts[:league] : (atts[:league_id] ? League.find_by_id(atts[:league_id]) : nil)
+
+    case action
+    when "show"
+      return true
+    when "edit", "update", "new", "create", "index"
+      return has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :leagues_editor ],
+        :user => atts[:user]
+      })
+    else
+      return false
+    end
+  end
+
   def players_filter(action, atts)
     player = atts[:player] ? atts[:player] : (atts[:player_id] ? Player.find_by_id(atts[:player_id]) : nil)
 
@@ -200,6 +231,38 @@ module PermissionsHelper
     when "edit", "update", "new", "create", "index"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :players_editor ],
+        :user => atts[:user]
+      })
+    else
+      return false
+    end
+  end
+
+  def halls_filter(action, atts)
+    hall = atts[:hall] ? atts[:hall] : (atts[:hall_id] ? League.find_by_id(atts[:hall_id]) : nil)
+
+    case action
+    when "show"
+      return true
+    when "edit", "update", "new", "create", "index"
+      return has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :halls_editor ],
+        :user => atts[:user]
+      })
+    else
+      return false
+    end
+  end
+
+  def games_filter(action, atts)
+    game = atts[:game] ? atts[:game] : (atts[:game_id] ? League.find_by_id(atts[:game_id]) : nil)
+
+    case action
+    when "show"
+      return true
+    when "edit", "update", "new", "create", "index"
+      return has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :games_editor ],
         :user => atts[:user]
       })
     else
