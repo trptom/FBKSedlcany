@@ -57,7 +57,7 @@ module ApplicationHelper
       menu[:structure][:leagues] << link_to(I18n.t("messages.base.list_of_competitions"), leagues_path)
     end
     if leagues_filter("new", { :user => current_user })
-      menu[:structure][:leagues] << link_to(I18n.t("messages.base.create_competition"), new_leage_path)
+      menu[:structure][:leagues] << link_to(I18n.t("messages.base.create_competition"), new_league_path)
     end
 
     # TYMY
@@ -85,10 +85,10 @@ module ApplicationHelper
 
     # HALY
     if halls_filter("index", { :user => current_user })
-      menu[:structure][:games] << link_to(I18n.t("messages.base.list_of_halls"), halls_path)
+      menu[:structure][:halls] << link_to(I18n.t("messages.base.list_of_halls"), halls_path)
     end
     if halls_filter("new", { :user => current_user })
-      menu[:structure][:games] << link_to(I18n.t("messages.base.create_hall"), new_hall_path)
+      menu[:structure][:halls] << link_to(I18n.t("messages.base.create_hall"), new_hall_path)
     end
 
     # UZIVATELE

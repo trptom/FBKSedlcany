@@ -1,6 +1,22 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
-
-<%= "_form" %>
+<div class="well">
+  <h1><%= @form_title %></h1>
+  <div class="row-fluid">
+    <%= form_for @hall do |f| %>
+      <fieldset class="control-group">
+        <%= f.label :name, I18n.t("messages.base.name"), :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :name, :class => "span12" %>
+        </div>
+      </fieldset>
+      <fieldset class="control-group">
+        <%= f.label :description, I18n.t("messages.base.description"), :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_area :description, :class => "span12", :rows => 3 %>
+        </div>
+      </fieldset>
+      <fieldset class="form-actions">
+        <%= f.submit @form_submit, :class => "btn btn-primary" %>
+      </fieldset>
+    <% end %>
+  </div>
+</div>

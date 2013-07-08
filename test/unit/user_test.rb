@@ -30,4 +30,13 @@ class UserTest < ActiveSupport::TestCase
     @user.block(DateTime.new(2012, 1, 1, 0, 0))
     assert !@user.is_blocked
   end
+
+  test "get_first_free_name" do
+    assert_equal "admin1", User.get_first_free_name(users(:admin).name)
+    assert_equal "somenamethatdoesntexist", User.get_first_free_name("somenamethatdoesntexist")
+  end
+
+  test "validations" do
+    # TODO
+  end
 end

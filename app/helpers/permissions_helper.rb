@@ -212,7 +212,7 @@ module PermissionsHelper
     case action
     when "show"
       return true
-    when "edit", "update", "new", "create", "index"
+    when "edit", "update", "new", "create", "index", "destroy"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :leagues_editor ],
         :user => atts[:user]
@@ -228,7 +228,7 @@ module PermissionsHelper
     case action
     when "show"
       return true
-    when "edit", "update", "new", "create", "index"
+    when "edit", "update", "new", "create", "index", "destroy"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :players_editor ],
         :user => atts[:user]
@@ -244,7 +244,7 @@ module PermissionsHelper
     case action
     when "show"
       return true
-    when "edit", "update", "new", "create", "index"
+    when "edit", "update", "new", "create", "index", "destroy"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :halls_editor ],
         :user => atts[:user]
@@ -260,7 +260,7 @@ module PermissionsHelper
     case action
     when "show"
       return true
-    when "edit", "update", "new", "create", "index"
+    when "edit", "update", "new", "create", "index", "destroy"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :games_editor ],
         :user => atts[:user]

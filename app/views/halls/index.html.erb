@@ -21,12 +21,10 @@
           <% end %>
 
           <% if halls_filter("destroy", { :hall => hall, :user => current_user }) %>
-            <% if team.players.count == 0 %>
-              <%= link_to I18n.t("messages.base.delete"), hall,
-                    :confirm => I18n.t("messages.halls.index.delete_confirmation"),
-                    :method => :delete,
-                    :class => "btn" %>
-            <% end %>
+            <%= link_to I18n.t("messages.base.delete"), hall,
+                  :confirm => I18n.t("messages.halls.index.delete_confirmation"),
+                  :method => :delete,
+                  :class => "btn" %>
           <% end %>
         </td>
       </tr>

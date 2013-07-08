@@ -53,6 +53,10 @@ FBKSedlcany::Application.routes.draw do
 
   end
 
+  resources :leagues do
+
+  end
+
   resources :teams do
     member do
       get :squad
@@ -62,6 +66,14 @@ FBKSedlcany::Application.routes.draw do
       get :index_of_teams
       get :index_of_clubs
     end
+  end
+
+  resources :games do
+    
+  end
+
+  resources :halls do
+
   end
 
   resources :images do
