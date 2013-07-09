@@ -96,7 +96,7 @@ CKEDITOR_ADDPLAYER_PLUGIN = createAdderPlugin({
     label: "Přidat hráče",
     title: "Přidat hráče",
     voiceLabel: "Přidat hráče",
-    dataURL: "/lists/plugin_addplayer",
+    dataURL: "/plugins/ckeditor_addplayer",
     linkURL: "/players/[#v#]"
 });
 
@@ -105,7 +105,7 @@ CKEDITOR_ADDTEAM_PLUGIN = createAdderPlugin({
     label: "Přidat tým",
     title: "Přidat tým",
     voiceLabel: "Přidat tým",
-    dataURL: "/lists/plugin_addteam",
+    dataURL: "/plugins/ckeditor_addteam",
     linkURL: "/teams/[#v#]"
 });
 

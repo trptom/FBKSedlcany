@@ -47,6 +47,21 @@ class Team < ActiveRecord::Base
     end
   end
 
+  def squad_viewable
+    for item in TEAMS_WITH_VIEWABLE_SQUAD
+      if (item.kind_of? Regexp)
+        if item.match(name) || item.match(short_name) || item.match(shortcut)
+          return true
+        end
+      else
+        if item == name || item == short_name || item == shortcut
+          return true
+        end
+      end
+    end
+    return false
+  end
+
   ##############################################################################
 
   def self.get_club_options(atts)

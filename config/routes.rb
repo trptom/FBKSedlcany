@@ -84,9 +84,9 @@ FBKSedlcany::Application.routes.draw do
     get :error
   end
 
-  namespace :lists do
-    get :plugin_addplayer
-    get :plugin_addteam
+  namespace :plugins do
+    get :ckeditor_addplayer
+    get :ckeditor_addteam
   end
 
   match 'about' => 'teams#about', :as => :about

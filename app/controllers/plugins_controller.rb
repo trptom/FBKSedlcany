@@ -1,5 +1,5 @@
-class ListsController < ApplicationController
-  def plugin_addplayer
+class PluginsController < ApplicationController
+  def ckeditor_addplayer
     @list = Player.order(:team_id, :second_name, :first_name).all
 
     @items = []
@@ -37,7 +37,7 @@ class ListsController < ApplicationController
     end
   end
 
-  def plugin_addteam
+  def ckeditor_addteam
     @list = Team.order(:short_name).all
 
     @items = []

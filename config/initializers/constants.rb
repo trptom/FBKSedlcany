@@ -8,6 +8,12 @@ TEAM_NAME = "TJ Tatran Sedlčany florbal"
 TEAM_NAME_SHORT = "Florbal Sedlčany"
 TEAM_NAME_SHORTCUT = "SED"
 
+# pole tymu, u kterych muze byt zobrazena soupiska beznym uzivatelem; porovnava
+# se s nazvem, kratkym nazvem i zkratkou
+TEAMS_WITH_VIEWABLE_SQUAD = [
+  /^.*Sedlčany.*$/
+]
+
 # pocet clanku na stranku
 ARTICLES_LIST_PAGE_LIMIT = 10
 

@@ -102,6 +102,10 @@ module PermissionsHelper
         :user => atts[:user],
         :image_id => atts[:entity_id]
       })
+    when "plugins"
+      @res = plugins_filter(atts[:action], {
+        :user => atts[:user],
+      })
     else
       @res = true
     end
@@ -287,7 +291,10 @@ module PermissionsHelper
         :user => atts[:user]
       }) && team && team.players.count == 0
     when "squad"
-      return true
+      return team && team.squad_viewable ? true : has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :teams_editor ],
+        :user => atts[:user]
+      })
     else
       return false
     end
@@ -307,5 +314,10 @@ module PermissionsHelper
     else
       return false
     end
+  end
+
+  def plugins_filter(action, atts)
+    # TODO
+    return true
   end
 end
