@@ -17,16 +17,9 @@
           </div>
         </fieldset>
 
-        <fieldset class="control-group">
-          <%= f.label :content, "TODO", :class => "control-label" %>
-          <div class="controls">
-            <%= render "form_content_actions" %>
-          </div>
-        </fieldset>
-
-          <div>
-            <%= f.cktext_area :content, :rows => 10, :class => "input-xlarge" %>
-          </div>
+        <div>
+          <%= f.cktext_area :content, :rows => 10, :class => "input-xlarge" %>
+        </div>
 
         <fieldset class="form-actions">
           <%= f.submit @form_submit, :class => "btn btn-primary" %>
