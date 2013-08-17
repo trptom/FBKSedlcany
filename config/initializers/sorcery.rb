@@ -74,7 +74,7 @@ Rails.application.config.sorcery.configure do |config|
 
   config.twitter.key = "VZv2peE7IVR6IOiVvOJt6g"
   config.twitter.secret = "ke51gj1zT1coI6zopBeXavR9bXX2Zzh8VmVQB5ks4"
-  config.twitter.callback_url = "http://localhost:3000/oauth/callback?provider=twitter"
+  config.twitter.callback_url = "http://fbksedlcany.herokuapp.com/oauth/callback?provider=twitter"
   config.twitter.user_info_mapping = {
     :username => "screen_name",
     :email => "screen_name"
@@ -82,7 +82,7 @@ Rails.application.config.sorcery.configure do |config|
 
   config.facebook.key = "131410173606"
   config.facebook.secret = "3bbae143add139e71bd34bf4668358d1"
-  config.facebook.callback_url = "http://localhost:3000/oauth/callback?provider=facebook"
+  config.facebook.callback_url = "http://fbksedlcany.herokuapp.com/oauth/callback?provider=facebook"
   config.facebook.user_info_mapping = {
     :email => "email",
     :username => "username",
