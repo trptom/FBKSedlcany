@@ -241,9 +241,14 @@ cs:
       articles_editor: Editor článků
       comments_editor: Editor komentářů
       users_editor: Editor uživatel
+      leagues_editor: Editor lig
       players_editor: Editor hráčů
+      halls_editor: Editor hal
+      games_editor: Editor zápasů
       teams_editor: Editor týmů
+      images_uploader: Správce obrázků
       commenter: Komentátor
+      marker: Může hodnotit
 
   ##############################################################################
   # FORMATTING PART
