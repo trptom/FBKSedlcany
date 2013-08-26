@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def redirect_if_production
-    if (Rails.env.production? || true) && (
+    if (Rails.env.production?) && (
         (params[:controller] == "articles" && params[:action] == "search") ||
         (params[:controller] == "teams" && params[:action] == "about") ||
         (params[:controller] == "teams" && params[:action] == "squad") ||

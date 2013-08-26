@@ -37,7 +37,7 @@
             <div class="controls roles">
               <% for role in ROLES %>
                 <div class="role">
-                  <%= f.check_box :role, {:multiple => true}, role, nil %><%= I18n.t(ROLE_MESSAGES[role]) %>
+                  <%= f.check_box :role, {:multiple => true, :checked => @user.role.include?(role.to_s)}, role, nil %>&nbsp;<%= I18n.t(ROLE_MESSAGES[role]) %>
                 </div>
               <% end %>
             </div>

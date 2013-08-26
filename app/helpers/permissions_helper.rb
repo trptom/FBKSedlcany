@@ -17,7 +17,7 @@ module PermissionsHelper
     end
 
     for role in atts[:user].role
-      if role == atts[:role]
+      if role.to_s == atts[:role].to_s
         return true
       end
     end
