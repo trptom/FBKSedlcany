@@ -30,5 +30,8 @@ class OauthsController < ApplicationController
         redirect_to :back, :notice => I18n.t("messages.oauths.callback.created", provider: provider.titleize, username: @user.username)
       end
     end
+
+  rescue ActionController::RedirectBackError
+    redirect_to root_path
   end
 end
