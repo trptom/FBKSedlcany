@@ -27,7 +27,7 @@
         <fieldset class="control-group">
           <%= f.label :title, I18n.t("messages.base.date_of_birth"), :class => "control-label" %>
           <div class="controls">
-            <%= f.date_select :birthday %>
+            <%= f.date_select :birthday, :start_year => Time.now.year-100, :end_year => Time.now.year %>
           </div>
         </fieldset>
 
