@@ -95,17 +95,17 @@ class ArticlesController < ApplicationController
   end
 
   def newest
-    @articles = Article.order(:updated_at).limit(ARTICLES_LIST_PAGE_LIMIT).all
+    @articles = Article.newest
   end
 
   def best
-    # TODO
-    @articles = []
+    # TODO - otestovat
+    @articles = Article.top_marked
   end
 
   def most_commented
-    # TODO
-    @articles = Article.most_commented(1)
+    # TODO - otestovat
+    @articles = Article.most_commented
   end
 
   # nastaveni, uprava nebo smazani

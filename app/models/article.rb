@@ -6,6 +6,11 @@ class Article < ActiveRecord::Base
   
   attr_accessible :annotation, :content, :title, :comments, :user, :atricle_categories, :markings
 
+  scope :newest, ->(limit = ARTICLES_LIST_PAGE_LIMIT) {
+    order("created_at DESC")
+        .limit(limit)
+  }
+
   scope :most_commented, ->(limit = ARTICLES_LIST_PAGE_LIMIT) {
     select("articles.*, COUNT(comments.id) AS comments")
         .joins("LEFT OUTER JOIN comments ON articles.id = comments.article_id")
