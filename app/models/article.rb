@@ -15,7 +15,7 @@ class Article < ActiveRecord::Base
     select("articles.*, COUNT(comments.id) AS comments")
         .joins("LEFT OUTER JOIN comments ON articles.id = comments.article_id")
         .group("articles.id")
-        .order("comments DESC")
+        .order("comments DESC, created_at DESC")
         .limit(limit)
   }
 
@@ -23,7 +23,7 @@ class Article < ActiveRecord::Base
     select("articles.*, AVG(marks.value) AS avg_marks")
         .joins("LEFT OUTER JOIN marks ON articles.id = marks.article_id")
         .group("articles.id")
-        .order("avg_marks DESC")
+        .order("avg_marks DESC, created_at DESC")
         .limit(limit)
   }
 
