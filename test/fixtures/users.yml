@@ -6,7 +6,7 @@ admin:
   email: fbksedlcany-root@email.cz
   salt: <%= salt = "asdasdastr4325234324sdfds" %>
   crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("root", salt) %>
-#  role: <%= [ :admin ] %>
+  role: <%= [:root].to_yaml.inspect %>
   activation_state: active
 
 one:
