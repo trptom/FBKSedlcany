@@ -1,15 +1,21 @@
 # coding:utf-8
 
-require 'test_helper'
+require 'selenium_test_helper'
 
 class ArticlesFlowTest < ActionDispatch::IntegrationTest
-  def simple_test
-    login nil
+  test "simple" do
+    login
+
+    click_on "Admin zóna"
+    click_on "Články"
+    click_on "Vytvořit článek"
+
+    assert_equal new_article_path, current_path
 
     logout
   end
 
-  def advanced_test
+  test "advanced" do
     login :username => "one", :password => "password"
 
     logout

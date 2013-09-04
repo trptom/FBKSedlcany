@@ -32,7 +32,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "get_first_free_name" do
-    assert_equal "admin1", User.get_first_free_name(users(:admin).name)
+    assert_equal "admin1", User.get_first_free_name(users(:admin).username)
     assert_equal "somenamethatdoesntexist", User.get_first_free_name("somenamethatdoesntexist")
   end
 

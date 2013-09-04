@@ -1,29 +1,29 @@
-require 'test_helper'
+require 'functional_test_helper'
 
-class UsersControllerTest < ActionController::TestCase
-  test "should get login" do
-    get :login
+class UsersControllerTest < FunctionalTestHelper
+  test "get index" do
+    get :index
     assert_response :success
   end
 
-  test "should get logout" do
-    get :logout
+  test "get show" do
+    get :show, id: users(:one).id
     assert_response :success
   end
 
-  test "should get show" do
-    get :show
+  test "get edit" do
+    get :edit, id: users(:one).id
     assert_response :success
   end
 
-  test "should get edit" do
-    get :edit
+  test "get change_password" do
+    get :change_password, id: users(:one).id
     assert_response :success
   end
 
-  test "should get register" do
-    get :register
+  test "get new" do
+    logout
+    get :new
     assert_response :success
   end
-
 end
