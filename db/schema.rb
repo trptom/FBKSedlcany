@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130707140000) do
+ActiveRecord::Schema.define(:version => 20130904101057) do
 
   create_table "article_categories", :force => true do |t|
     t.string   "name",        :null => false
@@ -133,15 +133,16 @@ ActiveRecord::Schema.define(:version => 20130707140000) do
   add_index "marks", ["user_id"], :name => "index_marks_on_user_id"
 
   create_table "players", :force => true do |t|
-    t.string   "first_name",  :null => false
-    t.string   "second_name", :null => false
+    t.string   "first_name",        :null => false
+    t.string   "second_name",       :null => false
     t.string   "nick_name"
     t.datetime "birthday"
     t.text     "note"
     t.string   "icon"
     t.integer  "team_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "cfbu_profile_data"
   end
 
   add_index "players", ["team_id"], :name => "index_players_on_team_id"
