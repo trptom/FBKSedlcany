@@ -1,18 +1,16 @@
 <div class="well">
   <h1><%= I18n.t("messages.users.index.title") %></h1>
   <div class="row-fluid">
-    <table>
+    <table class="index">
       <thead>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%= I18n.t("messages.base.id") %></td>
+          <td><%= I18n.t("messages.base.username") %></td>
+          <td><%= I18n.t("messages.base.email") %></td>
+          <td><%= I18n.t("messages.base.status") %></td>
+          <td><%= I18n.t("messages.base.first_name") %></td>
+          <td><%= I18n.t("messages.base.second_name") %></td>
+          <td class="btn-group">&nbsp;</td>
         </tr>
       </thead>
       <tbody>
@@ -21,18 +19,21 @@
             <td><%= user.id %></td>
             <td><%= user.username %></td>
             <td><%= user.email %></td>
-            <td><%= user.activation_state %></td>
-            <td><%#= user.crypted_password %></td>
-            <td><%#= user.salt %></td>
+            <td>
+              <%= I18n.t("messages.activation_states."+user.activation_state) %>
+              <% if user.is_blocked %>
+                , <%= I18n.t("messages.base.blocked") %>
+              <% end %>
+            </td>
             <td><%= user.first_name %></td>
             <td><%= user.second_name %></td>
             <td class="btn-group">
-              <div class="btn" data-toggle="dropdown">
+              <span class="btn" data-toggle="dropdown">
                 <%= I18n.t("messages.base.actions") %>
-              </div>
-              <div class="btn dropdown-toggle" data-toggle="dropdown">
+              </span>
+              <span class="btn dropdown-toggle" data-toggle="dropdown">
                 <span class="caret"></span>
-              </div>
+              </span>
               <ul class="dropdown-menu">
                 <li>
                   <%= link_to I18n.t("messages.base.show"), user %>
@@ -40,12 +41,15 @@
                 <li>
                   <%= link_to I18n.t("messages.base.edit"), edit_user_path(user) %>
                 </li>
-                <li>
-                  <%= link_to I18n.t("messages.base.activate"), "/users/#{user.id}/activate" %>
-                </li>
-                <li>
-                  <%= link_to I18n.t("messages.base.block"), "/users/#{user.id}/block" %>
-                </li>
+                <% if user.is_blocked %>
+                  <li>
+                    <%= link_to I18n.t("messages.base.activate"), "/users/#{user.id}/activate" %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to I18n.t("messages.base.block"), "/users/#{user.id}/block" %>
+                  </li>
+                <% end %>
                 <li>
                   <%= link_to I18n.t("messages.base.delete"), user, :method => :delete %>
                 </li>

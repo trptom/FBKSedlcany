@@ -1,0 +1,27 @@
+table.index {
+    width: 100%;
+    cursor: default;
+}
+
+table.index td {
+    text-align: center;
+}
+
+table.index td.btn-group {
+    float: right;
+}
+
+table.index thead td {
+    font-weight: bold;
+    padding: 5px;
+}
+
+table.index tbody tr:nth-child(2n),
+table.lines tbody tr:nth-child(2n) {
+    /* nothing modified */
+}
+
+table.index tbody tr:nth-child(2n+1),
+table.lines tbody tr:nth-child(2n+1) {
+    background-color: rgba(255, 255, 255, 150);
+}

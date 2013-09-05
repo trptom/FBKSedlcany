@@ -7,6 +7,7 @@ cs:
     base:
       actions: Akce
       activate: Aktivovat
+      activation_state: Aktivační status
       age: Věk
       articles: Články
       author: Autor
@@ -40,6 +41,7 @@ cs:
       games: Zápasy
       hall: Hala
       halls: Haly
+      id: ID
       image: Obrázek
       image_full: Obrázek v plné velikosti
       image_medium: Středně velký obrázek
@@ -92,6 +94,7 @@ cs:
       show_article: Zobrazit článek
       source_file: Zdrojový soubor
       squad: Soupiska
+      status: Stav
       team: Tým
       team_name: Název týmu
       teams: Týmy
@@ -249,6 +252,9 @@ cs:
       images_uploader: Správce obrázků
       commenter: Komentátor
       marker: Může hodnotit
+    activation_states:
+      active: Aktivní
+      pending: Neaktivován
 
   ##############################################################################
   # FORMATTING PART
