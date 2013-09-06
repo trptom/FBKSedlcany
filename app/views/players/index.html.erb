@@ -16,7 +16,7 @@
           <tr>
             <td><%= player.id %></td>
             <td>
-              <%= player.get_name_for_list %>
+              <%= link_to player.get_name_for_list, player %>
               <%= link_to player.cfbu_profile_link do %>
                 <span class="icon-list-alt"></span>
               <% end %>

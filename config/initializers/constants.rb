@@ -33,6 +33,18 @@ ROOT_ACCOUNT_EMAIL = "admin@fbksedlcany.com"
 # zaokrouhlovani
 ROUND_MARK_TO_DECIMAL = 2 # vypis znamky - pocet desetinnych mist
 
-#znamkovani
+# znamkovani
 MARK_MIN = 1; # minimalni znamka (vcetne)
 MARK_MAX = 5; # maximalni znamka (vcetne)
+
+# drzeni hokejky
+STICK_HOLDING_LEFT = 0
+STICK_HOLDING_RIGHT = 1
+
+# vyska
+MIN_HEIGHT = 150
+MAX_HEIGHT = 220
+
+# vaha
+MIN_WEIGHT = 40
+MAX_WEIGHT = 150

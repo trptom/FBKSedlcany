@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905200400) do
+ActiveRecord::Schema.define(:version => 20130906162410) do
 
   create_table "article_categories", :force => true do |t|
     t.string   "name",        :null => false
@@ -143,6 +143,9 @@ ActiveRecord::Schema.define(:version => 20130905200400) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "cfbu_profile_data"
+    t.integer  "weight"
+    t.integer  "height"
+    t.integer  "stick_holding"
   end
 
   add_index "players", ["team_id"], :name => "index_players_on_team_id"

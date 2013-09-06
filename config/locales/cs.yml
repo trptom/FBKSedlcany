@@ -46,6 +46,7 @@ cs:
       go_to_list: Jít na seznam
       hall: Hala
       halls: Haly
+      height: Výška
       id: ID
       image: Obrázek
       image_full: Obrázek v plné velikosti
@@ -58,6 +59,7 @@ cs:
       insert_image: Vložit obrázek
       league: Liga
       leagues: Ligy
+      left: Levá
       list_images: Procházet obrázky
       list_of_clubs: Seznam oddílů
       list_of_competitions: Seznam soutěži
@@ -85,14 +87,17 @@ cs:
       no_possible_actions: Žádné akce
       no_team: Žádný tým
       not_blocked: Aktivní
+      not_presented: Neuvedeno
       other_actions: Další akce
       password: Heslo
       password_confirmation: Kontrola hesla
       players: Hráči
       players_without_team: Hráči bez týmu
+      portrait: Portrét
       published: Publikováno
       record_created: Záynam vytvořen
       register: Registrovat
+      right: Pravá
       role: Role
       saved: Uloženo
       search: Hledat
@@ -104,6 +109,7 @@ cs:
       source_file: Zdrojový soubor
       squad: Soupiska
       status: Stav
+      stick_holding: Držení hokejky
       team: Tým
       team_name: Název týmu
       teams: Týmy
@@ -114,6 +120,7 @@ cs:
       username: Uživatelské jméno
       users: Uživatelé
       warning: Varování!
+      weight: Váha
       form:
         submit: Odeslat
         reset: Smazat změny
@@ -172,6 +179,7 @@ cs:
         title: Editace hráče
         update: Upravit hráče
       form:
+        icon_title: Obrázek bude převeden do formátu PNG a upraven na velikost 200x200 px.
     teams:
       index:
         new_team: Nový tým

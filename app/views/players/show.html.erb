@@ -1,0 +1,53 @@
+<div class="well">
+  <h1><%= @player.get_name %></h1>
+  <div class="row-fluid">
+    <div class="pull-left">
+      <%= @player.profile_image %>
+    </div>
+
+    <div class="line">
+      <div class="title"><%= I18n.t("messages.base.team") %>:</div>
+      <div class="value"><%= @player.team ? @player.team.name : I18n.t("messages.base.no_team") %></div>
+    </div>
+
+    <% if @player.nick_name %>
+      <div class="line">
+        <div class="title"><%= I18n.t("messages.base.nick_name") %>:</div>
+        <div class="value"><%= @player.nick_name %></div>
+      </div>
+    <% end %>
+
+    <div class="line">
+      <div class="title"><%= I18n.t("messages.base.birthday") %>:</div>
+      <div class="value"><%= I18n.l(@player.birthday) %></div>
+    </div>
+
+    <div class="line">
+      <div class="title"><%= I18n.t("messages.base.height") %>:</div>
+      <div class="value"><%= @player.height ? @player.height : I18n.t("messages.base.not_presented") %></div>
+    </div>
+
+    <div class="line">
+      <div class="title"><%= I18n.t("messages.base.weight") %>:</div>
+      <div class="value"><%= @player.weight ? @player.weight : I18n.t("messages.base.not_presented") %></div>
+    </div>
+
+    <div class="line">
+      <div class="title"><%= I18n.t("messages.base.stick_holding") %>:</div>
+      <div class="value"><%=
+        case @player.stick_holding
+        when STICK_HOLDING_LEFT
+          I18n.t("messages.base.left")
+        when STICK_HOLDING_RIGHT
+          I18n.t("messages.base.right")
+        else
+          I18n.t("messages.base.not_presented")
+        end
+      %></div>
+    </div>
+  </div>
+
+  <div class="row-fluid">
+    <%= @player.note %>
+  </div>
+</div>

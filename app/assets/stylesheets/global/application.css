@@ -31,3 +31,7 @@ div.top-separator:not(:first-child) {
     padding-top: 20px;
     border-top: solid #e5e5e5 2px;
 }
+
+.line > div {
+    display: inline-block;
+}

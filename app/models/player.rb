@@ -2,8 +2,9 @@
 # and open the template in the editor.
 
 class Player < ActiveRecord::Base
-  attr_accessible :first_name, :second_name, :nick_name, :birthday, :note, :icon,
-    :team, :team_id, :cfbu_profile_data
+  attr_accessible :first_name, :second_name, :nick_name, :birthday, :note,
+    :icon, :icon_cache,
+    :team, :team_id, :cfbu_profile_data, :weight, :height, :stick_holding
 
   belongs_to :team
 
@@ -50,6 +51,13 @@ class Player < ActiveRecord::Base
   def parse_data_from_cfbu_profile_link(link)
     tmp = link.split("&personal_id=")
     update_attribute(:cfbu_profile_data, tmp.size >= 1 ? tmp[1].split("&")[0] : link)
+  end
+
+  def profile_image
+    url = icon_url(:full)
+    return url != nil && url != "" ?
+      ActionController::Base.helpers.image_tag(url) :
+      ActionController::Base.helpers.image_tag(ActionController::Base.helpers.asset_path("no_photo.jpg"))
   end
 
   before_validation do |record|

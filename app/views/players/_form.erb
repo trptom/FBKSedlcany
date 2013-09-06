@@ -44,6 +44,40 @@
           </div>
         </fieldset>
 
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.weight"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.select :weight, MIN_WEIGHT..MAX_WEIGHT, { :class => "span3", :include_blank => true } %>
+          </div>
+        </fieldset>
+
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.height"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.select :height, MIN_HEIGHT..MAX_HEIGHT, { :class => "span3", :include_blank => true } %>
+          </div>
+        </fieldset>
+
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.stick_holding"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.select :stick_holding, options_for_select([
+              [I18n.t("messages.base.left"), STICK_HOLDING_LEFT],
+              [I18n.t("messages.base.right"), STICK_HOLDING_RIGHT]
+            ], @player.stick_holding), { :class => "span3", :include_blank => true } %>
+          </div>
+        </fieldset>
+
+        <fieldset class="control-group">
+          <span title="<%= I18n.t("messages.players.form.icon_title") %>">
+            <%= f.label :title, I18n.t("messages.base.portrait"), :class => "control-label" %>
+          </span>
+          <div class="controls">
+            <%= f.hidden_field :icon_cache %>
+            <%= f.file_field :icon %>
+          </div>
+        </fieldset>
+
         <fieldset class="form-actions">
           <%= f.submit @form_submit, :class => "btn btn-primary" %>
           <%= f.submit I18n.t("messages.base.form.reset"), :type => "reset", :class => "btn" %>
