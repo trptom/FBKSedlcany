@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130904101057) do
+ActiveRecord::Schema.define(:version => 20130905200400) do
 
   create_table "article_categories", :force => true do |t|
     t.string   "name",        :null => false
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(:version => 20130904101057) do
     t.string   "first_name",        :null => false
     t.string   "second_name",       :null => false
     t.string   "nick_name"
-    t.datetime "birthday"
+    t.date     "birthday"
     t.text     "note"
     t.string   "icon"
     t.integer  "team_id"

@@ -5,6 +5,12 @@ include PermissionsHelper
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  def redirect_back(notice = nil, rescue_folder = root_path)
+    redirect_to :back, :notice => notice
+  rescue ActionController::RedirectBackError
+    redirect_to rescue_folder
+  end
+
   def redirect_if_production
     if (Rails.env.production?) && (
         (params[:controller] == "articles" && params[:action] == "search") ||

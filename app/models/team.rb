@@ -77,6 +77,28 @@ class Team < ActiveRecord::Base
 
     ary = Array.new
     if (atts[:empty])
+      ary << [ I18n.t("messages.base.no_club"), "" ]
+    end
+    res.all.each do |item|
+      ary << [item.name, item.id];
+    end
+
+    return ary;
+  end
+
+  def self.get_team_options(atts)
+    if (atts[:where])
+      res = Team.teams.where(atts[:where])
+    else
+      res = Team.teams;
+    end
+
+    if (atts[:order_by])
+      res = res.order(atts[:order_by])
+    end
+
+    ary = Array.new
+    if (atts[:empty])
       ary << [ I18n.t("messages.base.no_team"), "" ]
     end
     res.all.each do |item|

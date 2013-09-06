@@ -26,14 +26,47 @@
 
         <fieldset class="control-group">
           <%= f.label :title, I18n.t("messages.base.date_of_birth"), :class => "control-label" %>
+          <div class="controls datetime">
+            <%=
+              f.date_select :birthday,
+                  :start_year => Time.now.year-100,
+                  :end_year => Time.now.year
+            %>
+          </div>
+        </fieldset>
+
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.team"), :class => "control-label" %>
           <div class="controls">
-            <%= f.date_select :birthday, :start_year => Time.now.year-100, :end_year => Time.now.year %>
+            <%= f.select :team_id,
+                    options_for_select(Team.get_team_options({ :order_by => :name, :empty => true }), @player.team_id),
+                    :class => "span3" %>
           </div>
         </fieldset>
 
         <fieldset class="form-actions">
           <%= f.submit @form_submit, :class => "btn btn-primary" %>
           <%= f.submit I18n.t("messages.base.form.reset"), :type => "reset", :class => "btn" %>
+
+          <span class="btn-group">
+            <span class="btn" data-toggle="dropdown">
+              <%= I18n.t("messages.base.other_actions") %>
+            </span>
+            <span class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </span>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to I18n.t("messages.base.go_to_list"), players_path %>
+              </li>
+              <li>
+                <%= link_to I18n.t("messages.base.go_to_detail"), @player %>
+              </li>
+              <li>
+                <%= link_to I18n.t("messages.base.delete_player"), @player, :method => :delete %>
+              </li>
+            </ul>
+          </span>
         </fieldset>
       <% end %>
     </div>

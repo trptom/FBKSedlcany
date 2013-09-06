@@ -12,6 +12,7 @@ cs:
       articles: Články
       author: Autor
       average_mark: Průměrná známka
+      birthday: Datum narození
       block: Zablokovat
       block_expires_at: Blokace vyprší
       block_until: Zablokovat do
@@ -31,6 +32,8 @@ cs:
       date: Datum
       date_of_birth: Datum narození
       delete: Smazat
+      delete_changes: Smazat změny
+      delete_player: Smazat hráče
       description: Popis
       detail: Detail
       edit: Editovat
@@ -39,6 +42,8 @@ cs:
       first_name: Křestní jméno
       game: Zápas
       games: Zápasy
+      go_to_detail: Jít na detail
+      go_to_list: Jít na seznam
       hall: Hala
       halls: Haly
       id: ID
@@ -80,12 +85,16 @@ cs:
       no_possible_actions: Žádné akce
       no_team: Žádný tým
       not_blocked: Aktivní
+      other_actions: Další akce
       password: Heslo
       password_confirmation: Kontrola hesla
       players: Hráči
+      players_without_team: Hráči bez týmu
       published: Publikováno
+      record_created: Záynam vytvořen
       register: Registrovat
       role: Role
+      saved: Uloženo
       search: Hledat
       second_name: Příjmení
       short_name: Krátký název
@@ -154,6 +163,8 @@ cs:
         error: Heslo se nepodařilo změnit!
         wrong_old: Staré heslo je chybné!
     players:
+      index:
+        title: Seznam hráčů
       new:
         title: Nový hráč
         create: Vytvořit hráče

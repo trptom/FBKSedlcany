@@ -20,9 +20,9 @@ class PluginsController < ApplicationController
       end
 
       @items << {
-        :value => player.id.to_s + "|" + player.username,
-        :label => player.username,
-        :title => player.username
+        :value => player.id.to_s + "|" + player.get_name,
+        :label => player.get_name,
+        :title => player.get_name
       }
       
       @last = player
