@@ -33,6 +33,7 @@ cs:
       date_of_birth: Datum narození
       delete: Smazat
       delete_changes: Smazat změny
+      delete_competition: Smazat soutěž
       delete_player: Smazat hráče
       description: Popis
       detail: Detail
@@ -44,6 +45,7 @@ cs:
       games: Zápasy
       go_to_detail: Jít na detail
       go_to_list: Jít na seznam
+      group: Skupina
       hall: Hala
       halls: Haly
       height: Výška
@@ -60,6 +62,7 @@ cs:
       league: Liga
       leagues: Ligy
       left: Levá
+      level: Úroveň
       list_images: Procházet obrázky
       list_of_clubs: Seznam oddílů
       list_of_competitions: Seznam soutěži
@@ -95,7 +98,7 @@ cs:
       players_without_team: Hráči bez týmu
       portrait: Portrét
       published: Publikováno
-      record_created: Záynam vytvořen
+      record_created: Záznam vytvořen
       register: Registrovat
       right: Pravá
       role: Role

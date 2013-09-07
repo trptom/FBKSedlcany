@@ -1,6 +1,6 @@
 class LeaguesController < ApplicationController
   def index
-    @leagues = League.all
+    @leagues = League.order(:name).all
   end
 
   def show
@@ -10,8 +10,8 @@ class LeaguesController < ApplicationController
   def new
     @league = League.new
 
-    @form_title = I18n.t("messages.halls.new.title");
-    @form_submit = I18n.t("messages.halls.new.create");
+    @form_title = I18n.t("messages.leagues.new.title");
+    @form_submit = I18n.t("messages.leagues.new.create");
   end
 
   def create
@@ -21,7 +21,7 @@ class LeaguesController < ApplicationController
     respond_to do |format|
       format.html {
         if @res
-          redirect_to @league
+          redirect_to edit_league_path(@league), :notice => I18n.t("messages.base.record_created")
         else
           @errors = @league.errors
           render action: "new"
@@ -46,8 +46,8 @@ class LeaguesController < ApplicationController
   def edit
     @league = League.find(params[:id])
 
-    @form_title = I18n.t("messages.halls.edit.title");
-    @form_submit = I18n.t("messages.halls.edit.update");
+    @form_title = I18n.t("messages.leagues.edit.title");
+    @form_submit = I18n.t("messages.leagues.edit.update");
   end
 
   def update
@@ -58,7 +58,7 @@ class LeaguesController < ApplicationController
     respond_to do |format|
       format.html {
         if @res
-          redirect_to @league
+          redirect_back(I18n.t("messages.base.saved"), leagues_path)
         else
           @errors = @league.errors
           render action: "edit"
