@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130906162410) do
+ActiveRecord::Schema.define(:version => 20130909182346) do
 
   create_table "article_categories", :force => true do |t|
     t.string   "name",        :null => false
@@ -54,19 +54,20 @@ ActiveRecord::Schema.define(:version => 20130906162410) do
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "games", :force => true do |t|
-    t.datetime "start",        :null => false
-    t.integer  "home_team_id", :null => false
-    t.integer  "away_team_id", :null => false
+    t.datetime "start",             :null => false
+    t.integer  "home_team_id",      :null => false
+    t.integer  "away_team_id",      :null => false
     t.text     "score"
     t.integer  "hall_id"
-    t.integer  "organizer_id", :null => false
-    t.integer  "league_id",    :null => false
-    t.integer  "season",       :null => false
+    t.integer  "organizer_id",      :null => false
+    t.integer  "league_id",         :null => false
+    t.integer  "season",            :null => false
     t.integer  "round"
-    t.integer  "creator_id",   :null => false
-    t.integer  "editor_id",    :null => false
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "creator_id",        :null => false
+    t.integer  "editor_id",         :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "cfbu_profile_data"
   end
 
   add_index "games", ["away_team_id"], :name => "index_games_on_away_team_id"
@@ -112,13 +113,14 @@ ActiveRecord::Schema.define(:version => 20130906162410) do
   add_index "league_teams", ["team_id"], :name => "index_league_teams_on_team_id"
 
   create_table "leagues", :force => true do |t|
-    t.string   "name",                      :null => false
-    t.string   "short_name",                :null => false
-    t.string   "shortcut",                  :null => false
-    t.integer  "level",      :default => 1, :null => false
-    t.integer  "group",      :default => 1, :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.string   "name",                             :null => false
+    t.string   "short_name",                       :null => false
+    t.string   "shortcut",                         :null => false
+    t.integer  "level",             :default => 1, :null => false
+    t.integer  "group",             :default => 1, :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.string   "cfbu_profile_data"
   end
 
   create_table "marks", :force => true do |t|
@@ -154,11 +156,12 @@ ActiveRecord::Schema.define(:version => 20130906162410) do
     t.string   "name"
     t.string   "short_name"
     t.string   "shortcut"
-    t.integer  "level",      :default => 0, :null => false
+    t.integer  "level",             :default => 0, :null => false
     t.string   "logo"
     t.integer  "club_id"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.string   "cfbu_profile_data"
   end
 
   add_index "teams", ["club_id"], :name => "index_teams_on_club_id"

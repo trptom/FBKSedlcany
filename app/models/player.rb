@@ -48,16 +48,16 @@ class Player < ActiveRecord::Base
       nil;
   end
 
-  def parse_data_from_cfbu_profile_link(link)
-    tmp = link.split("&personal_id=")
-    update_attribute(:cfbu_profile_data, tmp.size >= 1 ? tmp[1].split("&")[0] : link)
-  end
-
   def profile_image
     url = icon_url(:full)
     return url != nil && url != "" ?
       ActionController::Base.helpers.image_tag(url) :
       ActionController::Base.helpers.image_tag(ActionController::Base.helpers.asset_path("no_photo.jpg"))
+  end
+
+  def self.get_data_from_cfbu_profile_link(link)
+    tmp = link.split("&personal_id=")
+    return tmp.size >= 1 ? tmp[1].split("&")[0] : link
   end
 
   before_validation do |record|
@@ -66,5 +66,8 @@ class Player < ActiveRecord::Base
     record.second_name = record.second_name != "" ? record.second_name : nil
     record.nick_name = record.nick_name != "" ? record.nick_name : nil
     record.note = record.note != "" ? record.note : nil
+
+    # zparsuju profile data, kdybych nahodou tam flaknul celej link
+    record.cfbu_profile_data = Player.get_data_from_cfbu_profile_link(record.cfbu_profile_data)
   end
 end

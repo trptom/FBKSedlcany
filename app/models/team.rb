@@ -62,6 +62,12 @@ class Team < ActiveRecord::Base
     return false
   end
 
+  def cfbu_profile_link
+    return cfbu_profile_data ?
+      "http://fis.cfbu.cz/index.php?pageid=2521&onlycontent=1&team_id=" + cfbu_profile_data :
+      nil;
+  end
+
   ##############################################################################
 
   def self.get_club_options(atts)
@@ -108,6 +114,11 @@ class Team < ActiveRecord::Base
     return ary;
   end
 
+  def self.get_data_from_cfbu_profile_link(link)
+    tmp = link.split("&team_id=")
+    return tmp.size >= 1 ? tmp[1].split("&")[0] : link
+  end
+
   ##############################################################################
 
   scope :clubs, -> {
@@ -118,14 +129,20 @@ class Team < ActiveRecord::Base
     where("(level > 0) OR (id != club_id)")
   }
 
+  before_validation do |record|
+    # prazdne retezce nastavim na null
+    record.name = record.name != "" ? record.name : nil
+    record.short_name = record.short_name != "" ? record.short_name : nil
+    record.shortcut = record.shortcut != "" ? record.shortcut : nil
+
+    # zparsuju profile data, kdybych nahodou tam flaknul celej link
+    record.cfbu_profile_data = Team.get_data_from_cfbu_profile_link(record.cfbu_profile_data)
+  end
+
   # po ulozeni kontroluju, zda jde o tym nebo klub; pokud klub, upravim ho tak,
   # aby odpovidal podminkam. Musim to delat az after_save, protoze u nove
   # vytvarenych klubu potrebuju znat id
   after_save do
-    logger.info "AFTER SAVE CALLED"
-    logger.info "self.club_id: " + self.club_id.to_s
-    logger.info "self.level " + self.level.to_s
-
     changed = false
 
     # pokud nemam nastaven klub, jedna se o oddil
