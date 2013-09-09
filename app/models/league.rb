@@ -11,8 +11,8 @@ class League < ActiveRecord::Base
   end
 
   def self.get_data_from_cfbu_profile_link(link)
-    tmp = link.split("&soutez=")
-    return tmp.size >= 1 ? tmp[1].split("&")[0] : link
+    tmp = link.split("soutez=")
+    return tmp.size > 1 ? tmp[1].split("&")[0] : link
   end
 
   before_validation do |record|

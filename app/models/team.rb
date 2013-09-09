@@ -115,8 +115,8 @@ class Team < ActiveRecord::Base
   end
 
   def self.get_data_from_cfbu_profile_link(link)
-    tmp = link.split("&team_id=")
-    return tmp.size >= 1 ? tmp[1].split("&")[0] : link
+    tmp = link.split("team_id=")
+    return tmp.size > 1 ? tmp[1].split("&")[0] : link
   end
 
   ##############################################################################
