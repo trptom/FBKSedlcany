@@ -83,6 +83,7 @@ cs:
       matches: Zápasy
       name: Jméno
       new_club: Nový oddíl
+      new_hall: Nová hala
       nick_name: Přezdívka
       no_club: Žádný oddíl
       no_images: Žádné obrázky
@@ -149,8 +150,6 @@ cs:
       list:
         show_article: Zobrazit článek...
     users:
-      index:
-        title: Seznam uživatel
       show:
         title: Detail uživatele
         login: Login
@@ -173,8 +172,6 @@ cs:
         error: Heslo se nepodařilo změnit!
         wrong_old: Staré heslo je chybné!
     players:
-      index:
-        title: Seznam hráčů
       new:
         title: Nový hráč
         create: Vytvořit hráče

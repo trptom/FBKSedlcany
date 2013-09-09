@@ -1,35 +1,50 @@
 <div class="well">
-  <h3><%= I18n.t("messages.base.list_of_halls") %></h3>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th><%= I18n.t("messages.base.name") %></th>
-        <th><%= I18n.t("messages.base.actions") %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% for hall in @halls %>
-      <tr>
-        <td><%= hall.name %></td>
-        <td class="btn-group">
-          <% if halls_filter("show", { :hall => hall, :user => current_user }) %>
-            <%= link_to I18n.t("messages.base.show"), hall, :class => "btn" %>
-          <% end %>
+  <h1><%= I18n.t("messages.base.list_of_halls") %></h1>
+  <div class="row-fluid">
+    <table class="index">
+      <thead>
+        <tr>
+          <td><%= I18n.t("messages.base.name") %></td>
+          <td class="btn-group">&nbsp;</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% for hall in @halls %>
+          <tr>
+            <td><%= hall.name %></td>
+            <td class="btn-group">
+              <span class="btn" data-toggle="dropdown">
+                <%= I18n.t("messages.base.actions") %>
+              </span>
+              <span class="btn dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </span>
+              <ul class="dropdown-menu">
+                <% if halls_filter("show", { :hall => hall, :user => current_user }) %>
+                  <li><%= link_to I18n.t("messages.base.show"), hall %></li>
+                <% end %>
 
-          <% if halls_filter("edit", { :hall => hall, :user => current_user }) %>
-            <%= link_to I18n.t("messages.base.edit"), edit_hall_path(hall), :class => "btn" %>
-          <% end %>
+                <% if halls_filter("edit", { :hall => hall, :user => current_user }) %>
+                  <li><%= link_to I18n.t("messages.base.edit"), edit_hall_path(hall) %></li>
+                <% end %>
 
-          <% if halls_filter("destroy", { :hall => hall, :user => current_user }) %>
-            <%= link_to I18n.t("messages.base.delete"), hall,
-                  :confirm => I18n.t("messages.halls.index.delete_confirmation"),
-                  :method => :delete,
-                  :class => "btn" %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= link_to I18n.t("messages.halls.index.new_hall"), new_hall_path, :class => "btn" %>
+                <% if halls_filter("destroy", { :hall => hall, :user => current_user }) %>
+                  <li><%= link_to I18n.t("messages.base.delete"), hall,
+                    :confirm => I18n.t("messages.halls.index.delete_confirmation"),
+                    :method => :delete %></li>
+                <% end %>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">
+            <%= link_to I18n.t("messages.base.new_hall"), new_hall_path, :class => "btn" %>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 </div>
