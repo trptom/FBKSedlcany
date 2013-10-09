@@ -35,3 +35,7 @@ div.top-separator:not(:first-child) {
 .line > div {
     display: inline-block;
 }
+
+.controls.score input {
+    width: 50px;
+}

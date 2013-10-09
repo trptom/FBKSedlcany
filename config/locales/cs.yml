@@ -108,6 +108,7 @@ cs:
       no_team: Žádný tým
       not_blocked: Aktivní
       not_presented: Neuvedeno
+      note: Poznámka
       organizer: Pořadatel
       other_actions: Další akce
       password: Heslo
@@ -127,6 +128,7 @@ cs:
       role: Role
       round: Kolo
       saved: Uloženo
+      score: Skóre
       search: Hledat
       season: Sezóna
       second_name: Příjmení

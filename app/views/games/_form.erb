@@ -51,6 +51,27 @@
             <%= f.select :organizer_id, options_for_select(Team.get_options({:order_by => :name}), @game.organizer_id), :class => "span3" %>
           </div>
         </fieldset>
+        <fieldset class="control-group">
+          <%= f.label "score[total][home]", I18n.t("messages.base.score"), :class => "control-label" %>
+          <div class="controls score">
+            <div>
+              <%= text_field_tag "game[score][total][home]", @game.score && @game.score[:total] ? @game.score[:total][:home] : nil %> (
+              <%= text_field_tag "game[score][periods][home][]", @game.score && @game.score[:periods] && @game.score[:periods][:home] ? @game.score[:periods][:home][0] : nil %>,
+              <%= text_field_tag "game[score][periods][home][]", @game.score && @game.score[:periods] && @game.score[:periods][:home] ? @game.score[:periods][:home][1] : nil %>,
+              <%= text_field_tag "game[score][periods][home][]", @game.score && @game.score[:periods] && @game.score[:periods][:home] ? @game.score[:periods][:home][2] : nil %>)
+            </div>
+            <div>
+              <%= text_field_tag "game[score][total][away]", @game.score && @game.score[:total] ? @game.score[:total][:away] : nil %> (
+              <%= text_field_tag "game[score][periods][away][]", @game.score && @game.score[:periods] && @game.score[:periods][:away] ? @game.score[:periods][:away][0] : nil %>,
+              <%= text_field_tag "game[score][periods][away][]", @game.score && @game.score[:periods] && @game.score[:periods][:away] ? @game.score[:periods][:away][1] : nil %>,
+              <%= text_field_tag "game[score][periods][away][]", @game.score && @game.score[:periods] && @game.score[:periods][:away] ? @game.score[:periods][:away][2] : nil %>)
+            </div>
+            <div>
+              <%= I18n.t("messages.base.note") %>
+              <%= text_field_tag "game[score][note]", @game.score && @game.score[:note] ? @game.score[:note] : nil %>
+            </div>
+          </div>
+        </fieldset>
 
         <fieldset class="form-actions">
           <%= f.submit @messages[:submit], :class => "btn btn-primary" %>

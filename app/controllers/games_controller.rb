@@ -58,7 +58,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
 
     @messages = {
-      :title => I18n.t("messages.base.edit_game"),
+      :title => I18n.t("messages.base.edit_of_game"),
       :submit => I18n.t("messages.base.update_game"),
       :detail => I18n.t("messages.base.go_to_detail"),
       :delete => I18n.t("messages.base.delete_game")
