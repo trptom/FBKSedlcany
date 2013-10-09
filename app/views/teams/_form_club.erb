@@ -1,10 +1,10 @@
 <div class="well">
-  <h1><%= @form_title %></h1>
+  <h1><%= I18n.t("messages.base.new_club") %></h1>
   <div class="row">
     <div class="span8 offset2">
-      <%= form_for @league, :html => { :class => "form-horizontal"} do |f| %>
+      <%= form_for @team, :html => { :class => "form-horizontal"} do |f| %>
         <fieldset class="control-group">
-          <%= f.label :title, I18n.t("messages.base.name"), :class => "control-label" %>
+          <%= f.label :title, I18n.t("messages.base.club_name"), :class => "control-label" %>
           <div class="controls">
             <%= f.text_field :name, :class => "span3" %>
           </div>
@@ -25,28 +25,24 @@
         </fieldset>
 
         <fieldset class="control-group">
-          <%= f.label :title, I18n.t("messages.base.level"), :class => "control-label" %>
-          <div class="controls">
-            <%= f.select :level, MIN_COMPETITION_LEVEL..MAX_COMPETITION_LEVEL, { :class => "span3", :include_blank => true } %>
-          </div>
-        </fieldset>
-
-        <fieldset class="control-group">
-          <%= f.label :title, I18n.t("messages.base.group"), :class => "control-label" %>
-          <div class="controls">
-            <%= f.select :group, MIN_COMPETITION_GROUP..MAX_COMPETITION_GROUP, { :class => "span3", :include_blank => true } %>
-          </div>
-        </fieldset>
-
-        <fieldset class="control-group">
           <%= f.label :title, I18n.t("messages.base.cfbu_url_data"), :title => I18n.t("messages.base.cfbu_url_data_hint"), :class => "control-label" %>
           <div class="controls">
             <%= f.text_field :cfbu_profile_data, :class => "span3" %>
           </div>
         </fieldset>
 
+        <fieldset class="control-group">
+          <span title="<%= I18n.t("messages.teams.form.logo_title") %>">
+            <%= f.label :title, @messages[:logo], :class => "control-label" %>
+          </span>
+          <div class="controls">
+            <%= f.hidden_field :logo_cache %>
+            <%= f.file_field :logo %>
+          </div>
+        </fieldset>
+
         <fieldset class="form-actions">
-          <%= f.submit @form_submit, :class => "btn btn-primary" %>
+          <%= f.submit @messages[:submit], :class => "btn btn-primary" %>
           <%= f.submit I18n.t("messages.base.form.reset"), :type => "reset", :class => "btn" %>
 
           <span class="btn-group">
@@ -58,14 +54,18 @@
             </span>
             <ul class="dropdown-menu">
               <li>
-                <%= link_to I18n.t("messages.base.go_to_list"), leagues_path %>
+                <%= link_to I18n.t("messages.base.go_to_list"), "/teams/index_of_clubs" %>
               </li>
-              <li>
-                <%= link_to I18n.t("messages.base.go_to_detail"), @league %>
-              </li>
-              <li>
-                <%= link_to I18n.t("messages.base.delete_competition"), @league, :method => :delete %>
-              </li>
+              <% if @messages[:detail] %>
+                <li>
+                  <%= link_to @messages[:detail], @team %>
+                </li>
+              <% end %>
+              <% if @messages[:delete] %>
+                <li>
+                  <%= link_to @messages[:delete], @team, :method => :delete %>
+                </li>
+              <% end %>
             </ul>
           </span>
         </fieldset>

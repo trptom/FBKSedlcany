@@ -60,6 +60,8 @@ FBKSedlcany::Application.routes.draw do
   resources :teams do
     member do
       get :squad
+      get :new_team
+      get :new_club
     end
     collection do
       get :squad

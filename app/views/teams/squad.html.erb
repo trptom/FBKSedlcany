@@ -1,3 +1,28 @@
 <div class="well">
-  
+  <h1><%= I18n.t("messages.base.squad_of_club") + " " + @team.name %></h1>
+  <div class="row-fluid">
+    <table class="index">
+      <thead>
+        <tr>
+          <td><%= I18n.t("messages.base.player") %></td>
+          <td><%= I18n.t("messages.base.team") %></td>
+        </tr>
+      </thead>
+      <tbody>
+        <% for player in @team.squad %>
+          <tr>
+            <td><%= player.get_name_for_list %></td>
+            <td><%= player.team_name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">
+            <%= link_to I18n.t("messages.base.new_hall"), new_hall_path, :class => "btn" %>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 </div>

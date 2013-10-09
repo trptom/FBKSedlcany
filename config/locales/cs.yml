@@ -17,8 +17,11 @@ cs:
       block_expires_at: Blokace vyprší
       block_until: Zablokovat do
       blocked: Zablokován
+      cfbu_url_data: Data pro vytvoření odkazu na ČFbU
+      cfbu_url_data_hint: Může být i kompletní url propojené stránky, potrebná data z ní už se zpracují automaticky
       change_password: Změnit heslo
       club: Oddíl
+      club_deleted: Oddíl smazán!
       club_name: Název oddílu
       comment: Komentář
       comments_count: Počet komentářů
@@ -29,15 +32,20 @@ cs:
       create_hall: Vytvořit halu
       create_player: Vytvořit hráče
       create_team: Vytvořit tým
+      create_team_or_club: Vytvořit tým/oddíl
       date: Datum
       date_of_birth: Datum narození
       delete: Smazat
       delete_changes: Smazat změny
+      delete_club: Smazat oddíl
       delete_competition: Smazat soutěž
       delete_player: Smazat hráče
+      delete_team: Smazat tým
       description: Popis
       detail: Detail
       edit: Editovat
+      edit_of_club: Editace oddílu
+      edit_of_team: Editace týmu
       email: E-mail
       error: Chyba!
       first_name: Křestní jméno
@@ -84,6 +92,8 @@ cs:
       name: Jméno
       new_club: Nový oddíl
       new_hall: Nová hala
+      new_team: Nový tým
+      new_team_or_club: Nový tým/oddíl
       nick_name: Přezdívka
       no_club: Žádný oddíl
       no_images: Žádné obrázky
@@ -95,7 +105,10 @@ cs:
       other_actions: Další akce
       password: Heslo
       password_confirmation: Kontrola hesla
+      player: Hráč
+      player_deleted: Hráč smazán!
       players: Hráči
+      players_count: Počet hráčů
       players_without_team: Hráči bez týmu
       portrait: Portrét
       published: Publikováno
@@ -112,14 +125,19 @@ cs:
       show_article: Zobrazit článek
       source_file: Zdrojový soubor
       squad: Soupiska
+      squad_of_club: Soupiska oddílu
       status: Stav
       stick_holding: Držení hokejky
       team: Tým
+      team_deleted: Tým smazán!
       team_name: Název týmu
       teams: Týmy
+      teams_count: Počet týmů
       title: Nadpis
       unblock: Odblokovat
+      update_club: Upravit oddíl
       update_image: Upravit obrázek
+      update_team: Upravit tým
       upload_image: Nahrát obrázek
       username: Uživatelské jméno
       users: Uživatelé
@@ -182,12 +200,8 @@ cs:
         icon_title: Obrázek bude převeden do formátu PNG a upraven na velikost 200x200 px.
     teams:
       index:
-        new_team: Nový tým
-        delete_confirmation: Opravdu si přejete smazat tento tým?
-      new:
-        title: Nový tým/oddíl
-        create_team: Vytvořit tým
-        create_club: Vytvořit oddíl
+        delete_team_confirmation: Opravdu si přejete smazat tento tým?
+        delete_club_confirmation: Opravdu si přejete smazat tento oddíl?
       edit:
         title_club: Editace oddílu
         update_club: Upravit oddíl

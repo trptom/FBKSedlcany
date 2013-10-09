@@ -86,7 +86,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       format.html {
-        redirect_to players_path
+        redirect_back I18n.t("messages.base.player_deleted"), players_path
       }
       format.json {
         render json: {

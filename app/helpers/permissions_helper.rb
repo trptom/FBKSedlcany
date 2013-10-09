@@ -61,6 +61,11 @@ module PermissionsHelper
     atts[:user] = atts[:user] && atts[:user].is_a?(User) ? atts[:user] : current_user
     atts[:entity_id] = params[:id] ? params[:id] : nil
 
+    logger.debug "atts[:controller]: " + atts[:controller]
+    logger.debug "atts[:action]: " + atts[:action]
+    logger.debug "atts[:user]: " + (atts[:user] ? atts[:user].username : "")
+    logger.debug "atts[:entity_id]: " + (atts[:entity_id] ? atts[:entity_id].to_s : "")
+
     case atts[:controller]
     when "comments"
       @res = comments_filter(atts[:action], {
@@ -275,23 +280,27 @@ module PermissionsHelper
   end
 
   def teams_filter(action, atts)
-    team = atts[:team] && atts[:team].is_team ? atts[:team] : (atts[:team_id] ? Team.teams.find_by_id(atts[:team_id]) : nil)
+    team = atts[:team] ? atts[:team] : (atts[:team_id] ? Team.find_by_id(atts[:team_id]) : nil)
+
+    logger.debug "team: " + (team ? team.id.to_s : "")
 
     case action
     when "about"
       return true
-    when "show", "edit", "update", "new", "create", "index_of_clubs", "index_of_teams"
+    when "show", "edit", "update", "new_team", "new_club", "create", "index_of_clubs", "index_of_teams"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :teams_editor ],
         :user => atts[:user]
       })
     when "destroy"
+      logger.debug "players count: " + team.players.count.to_s
+
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :teams_editor ],
         :user => atts[:user]
       }) && team && team.players.count == 0
     when "squad"
-      return team && team.squad_viewable ? true : has_at_least_one_of_roles({
+      return (!team || (team && team.squad_viewable)) ? true : has_at_least_one_of_roles({
         :roles => [ :root, :admin, :teams_editor ],
         :user => atts[:user]
       })

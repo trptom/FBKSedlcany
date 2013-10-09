@@ -3,8 +3,8 @@
 
 class Player < ActiveRecord::Base
   attr_accessible :first_name, :second_name, :nick_name, :birthday, :note,
-    :icon, :icon_cache,
-    :team, :team_id, :cfbu_profile_data, :weight, :height, :stick_holding
+    :icon, :icon_cache, :cfbu_profile_data,
+    :team, :team_id, :weight, :height, :stick_holding
 
   belongs_to :team
 
@@ -42,6 +42,10 @@ class Player < ActiveRecord::Base
     return get_name
   end
 
+  def team_name
+    return team != nil ? team.name : nil
+  end
+
   def cfbu_profile_link
     return cfbu_profile_data ?
       "http://fis.cfbu.cz/index.php?pageid=2501&onlycontent=1&personal_id=" + cfbu_profile_data :
@@ -56,8 +60,12 @@ class Player < ActiveRecord::Base
   end
 
   def self.get_data_from_cfbu_profile_link(link)
-    tmp = link.split("personal_id=")
-    return tmp.size > 1 ? tmp[1].split("&")[0] : link
+    if link == nil
+      return nil
+    else
+      tmp = link.split("personal_id=")
+      return tmp.size > 1 ? tmp[1].split("&")[0] : link
+    end
   end
 
   before_validation do |record|
@@ -66,6 +74,7 @@ class Player < ActiveRecord::Base
     record.second_name = record.second_name != "" ? record.second_name : nil
     record.nick_name = record.nick_name != "" ? record.nick_name : nil
     record.note = record.note != "" ? record.note : nil
+    record.cfbu_profile_data = record.cfbu_profile_data != "" ? record.cfbu_profile_data : nil
 
     # zparsuju profile data, kdybych nahodou tam flaknul celej link
     record.cfbu_profile_data = Player.get_data_from_cfbu_profile_link(record.cfbu_profile_data)

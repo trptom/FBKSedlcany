@@ -12,13 +12,11 @@ class Team < ActiveRecord::Base
 
   has_many :organized_games, :class_name => 'Game', :foreign_key => 'organizer_id'
 
-  attr_accessible :level, :logo, :logo_cache, :name, :short_name, :shortcut, :club, :club_id
+  attr_accessible :level, :logo, :logo_cache, :name, :short_name, :shortcut, :club, :club_id,
+    :cfbu_profile_data
 
   def is_club
-    logger.info "xxxxxxxxxxxxxxxx"
-    logger.info "level: " + level.to_s
-    logger.info "id: " + id.to_s
-    logger.info "club_id: " + club_id.to_s
+#    return true
     return level == 0 && id == club_id
   end
 
@@ -26,9 +24,13 @@ class Team < ActiveRecord::Base
     return level > 0 || id != club_id
   end
 
-  def logo_image(type = :full)
+  def logo_image(type = :full, atts = nil)
+    atts = atts ? atts : {}
+    atts[:alt] = atts[:alt] ? atts[:alt] : I18n.t("messages.base.logo");
+    atts[:title] = atts[:title] ? atts[:title] : name;
+
     url = logo_url(type)
-    return url != nil && url != "" ? ActionController::Base.helpers.image_tag(url) : nil
+    return url != nil && url != "" ? ActionController::Base.helpers.image_tag(url, atts) : nil
   end
 
   def games
@@ -115,8 +117,12 @@ class Team < ActiveRecord::Base
   end
 
   def self.get_data_from_cfbu_profile_link(link)
-    tmp = link.split("team_id=")
-    return tmp.size > 1 ? tmp[1].split("&")[0] : link
+    if link == nil
+      return nil
+    else
+      tmp = link.split("team_id=")
+      return tmp.size > 1 ? tmp[1].split("&")[0] : link
+    end
   end
 
   ##############################################################################
@@ -134,6 +140,7 @@ class Team < ActiveRecord::Base
     record.name = record.name != "" ? record.name : nil
     record.short_name = record.short_name != "" ? record.short_name : nil
     record.shortcut = record.shortcut != "" ? record.shortcut : nil
+    record.cfbu_profile_data = record.cfbu_profile_data != "" ? record.cfbu_profile_data : nil
 
     # zparsuju profile data, kdybych nahodou tam flaknul celej link
     record.cfbu_profile_data = Team.get_data_from_cfbu_profile_link(record.cfbu_profile_data)
