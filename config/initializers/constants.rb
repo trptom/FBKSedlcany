@@ -54,3 +54,6 @@ MIN_COMPETITION_LEVEL = 1
 MAX_COMPETITION_LEVEL = 10
 MIN_COMPETITION_GROUP = 1
 MAX_COMPETITION_GROUP = 20
+
+# informace o zapase
+GAME_SEASON_MAX_BACK = 10 # o kolik let muzu jit pri vytvareni/editaci zapasu max. nazpatek

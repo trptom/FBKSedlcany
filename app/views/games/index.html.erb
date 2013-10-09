@@ -1,0 +1,58 @@
+<div class="well">
+  <h1><%= I18n.t("messages.base.list_of_games") %></h1>
+  <div class="row-fluid">
+    <table class="index">
+      <thead>
+        <tr>
+          <td><%= I18n.t("messages.base.date") %></td>
+          <td><%= I18n.t("messages.base.competition") %></td>
+          <td><%= I18n.t("messages.base.home_team") %></td>
+          <td><%= I18n.t("messages.base.away_team") %></td>
+          <td><%= I18n.t("messages.base.result") %></td>
+          <td class="btn-group">&nbsp;</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% for game in @games %>
+          <tr>
+            <td><%= I18n.l game.start %></td>
+            <td><%= game.league.name %></td>
+            <td><%= game.home_team.name %></td>
+            <td><%= game.away_team.name %></td>
+            <td><%= game.result_str({:periods => true}) %></td>
+            <td class="btn-group">
+              <span class="btn" data-toggle="dropdown">
+                <%= I18n.t("messages.base.actions") %>
+              </span>
+              <span class="btn dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </span>
+              <ul class="dropdown-menu">
+                <% if games_filter("show", { :game => game, :user => current_user }) %>
+                  <li><%= link_to I18n.t("messages.base.show"), game %></li>
+                <% end %>
+
+                <% if games_filter("edit", { :game => game, :user => current_user }) %>
+                  <li><%= link_to I18n.t("messages.base.edit"), edit_game_path(game) %></li>
+                <% end %>
+
+                <% if games_filter("destroy", { :game => game, :user => current_user }) %>
+                  <li><%= link_to I18n.t("messages.base.delete"), game,
+                    :confirm => I18n.t("messages.games.index.delete_confirmation"),
+                    :method => :delete %></li>
+                <% end %>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="6">
+            <%= link_to I18n.t("messages.base.new_game"), new_game_path, :class => "btn" %>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

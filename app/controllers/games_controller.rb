@@ -9,19 +9,30 @@ class GamesController < ApplicationController
 
   def new
     @game = Game.new
+    
+    @game.home_team = nil
+    @game.away_team = nil
+    @game.league = nil
+    @game.hall = nil
+    @game.organizer = nil
 
-    @form_title = I18n.t("messages.games.new.title");
-    @form_submit = I18n.t("messages.games.new.create");
+    @messages = {
+      :title => I18n.t("messages.base.new_game"),
+      :submit => I18n.t("messages.base.create_game")
+    }
   end
 
   def create
     @game = Game.new(params[:game])
+    @game.creator = current_user
+    @game.editor = current_user
+    
     @res = @game.save
 
     respond_to do |format|
       format.html {
         if @res
-          redirect_to @game
+          redirect_to edit_game_path(@game), :notice => I18n.t("messages.base.record_created")
         else
           @errors = @game.errors
           render action: "new"
@@ -46,19 +57,25 @@ class GamesController < ApplicationController
   def edit
     @game = Game.find(params[:id])
 
-    @form_title = I18n.t("messages.games.edit.title");
-    @form_submit = I18n.t("messages.games.edit.update");
+    @messages = {
+      :title => I18n.t("messages.base.edit_game"),
+      :submit => I18n.t("messages.base.update_game"),
+      :detail => I18n.t("messages.base.go_to_detail"),
+      :delete => I18n.t("messages.base.delete_game")
+    }
   end
 
   def update
     @game = Game.find(params[:id])
     @game.update_attributes(params[:game]);
+    @game.editor = current_user
+    
     @res = @game.save
 
     respond_to do |format|
       format.html {
         if @res
-          redirect_to @game
+          redirect_back(I18n.t("messages.base.saved"), games_url)
         else
           @errors = @game.errors
           render action: "edit"

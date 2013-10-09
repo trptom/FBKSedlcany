@@ -12,6 +12,7 @@ cs:
       articles: Články
       author: Autor
       average_mark: Průměrná známka
+      away_team: Hosté
       birthday: Datum narození
       block: Zablokovat
       block_expires_at: Blokace vyprší
@@ -25,6 +26,7 @@ cs:
       club_name: Název oddílu
       comment: Komentář
       comments_count: Počet komentářů
+      competition: Soutěž
       create_article: Vytvořit článek
       create_club: Vytvořit oddíl
       create_competition: Vytvořit soutěž
@@ -39,12 +41,14 @@ cs:
       delete_changes: Smazat změny
       delete_club: Smazat oddíl
       delete_competition: Smazat soutěž
+      delete_game: Smazat zápas
       delete_player: Smazat hráče
       delete_team: Smazat tým
       description: Popis
       detail: Detail
       edit: Editovat
       edit_of_club: Editace oddílu
+      edit_of_game: Editace zápasu
       edit_of_team: Editace týmu
       email: E-mail
       error: Chyba!
@@ -57,6 +61,7 @@ cs:
       hall: Hala
       halls: Haly
       height: Výška
+      home_team: Domácí
       id: ID
       image: Obrázek
       image_full: Obrázek v plné velikosti
@@ -91,6 +96,7 @@ cs:
       matches: Zápasy
       name: Jméno
       new_club: Nový oddíl
+      new_game: Nový zápas
       new_hall: Nová hala
       new_team: Nový tým
       new_team_or_club: Nový tým/oddíl
@@ -102,9 +108,11 @@ cs:
       no_team: Žádný tým
       not_blocked: Aktivní
       not_presented: Neuvedeno
+      organizer: Pořadatel
       other_actions: Další akce
       password: Heslo
       password_confirmation: Kontrola hesla
+      place: Místo
       player: Hráč
       player_deleted: Hráč smazán!
       players: Hráči
@@ -114,10 +122,13 @@ cs:
       published: Publikováno
       record_created: Záznam vytvořen
       register: Registrovat
+      result: Výsledek
       right: Pravá
       role: Role
+      round: Kolo
       saved: Uloženo
       search: Hledat
+      season: Sezóna
       second_name: Příjmení
       short_name: Krátký název
       shortcut: Zkratka
@@ -136,6 +147,7 @@ cs:
       title: Nadpis
       unblock: Odblokovat
       update_club: Upravit oddíl
+      update_game: Upravit zápas
       update_image: Upravit obrázek
       update_team: Upravit tým
       upload_image: Nahrát obrázek
@@ -222,14 +234,7 @@ cs:
         update: Upravit soutěž
     games:
       index:
-        new_competition: Nový zápas
         delete_confirmation: Opravdu si přejete smazat ento zápas?
-      new:
-        title: Nový zápas
-        create: Vytvořit zápas
-      edit:
-        title: Editace zápasu
-        update: Upravit zápas
     halls:
       index:
         new_competition: Nová hala

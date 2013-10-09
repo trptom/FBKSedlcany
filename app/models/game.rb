@@ -1,20 +1,51 @@
 class Game < ActiveRecord::Base
-  belongs_to :team_home, :class_name => "Team"
-  belongs_to :team_away, :class_name => "Team"
+  belongs_to :home_team, :class_name => "Team"
+  belongs_to :away_team, :class_name => "Team"
   belongs_to :organizer, :class_name => "Team"
 
-  belongs_to :createor, :class_name => "User"
+  belongs_to :creator, :class_name => "User"
   belongs_to :editor, :class_name => "User"
 
   belongs_to :league
-  belongs_to :place
+  belongs_to :hall
 
   serialize :score
 
-  attr_accessible :away_team_id, :home_team_id, :organizer_id, :away_team_, :home_team, :organizer,
-      #:creator_id, :editor_id, :creator, :editor, - nepristupuju, nastavujou se automaticky
-      :league_id, :place_id, :league, :place,
+  attr_accessible :home_team_id, :away_team_id, :organizer_id, :home_team, :away_team, :organizer,
+      :creator_id, :editor_id, :creator, :editor,
+      :league_id, :hall_id, :league, :hall,
       :start, :season, :round, :score, :cfbu_profile_data
+
+  def result_str(atts = nil)
+    atts = atts ? atts : {}
+    atts[:periods] = atts[:periods] ? atts[:periods] : false
+
+    if score && score[:total]
+      ret = score[:total][:home].to_s + ":" + score[:total][:away].to_s
+      if (score[:note])
+        ret += score[:note]
+      end
+    else
+      ret = "-:-"
+    end
+
+    if (atts[:periods])
+      ret += " ("
+      for a in 0..2
+        if score && score[:periods] && score[:periods][a]
+          ret += score[:periods][a][:home].to_s + ":" + score[:periods][a][:away].to_s
+        else
+          ret += "-:-"
+        end
+        if a < 2
+          ret += ","
+        end
+      end
+      ret += ")"
+    end
+
+    return ret
+  end
 
   def cfbu_profile_link
     return cfbu_profile_data ?

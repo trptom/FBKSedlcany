@@ -19,6 +19,30 @@ class League < ActiveRecord::Base
     end
   end
 
+  def self.get_options(atts = nil)
+    atts = atts ? atts : {}
+
+    if (atts[:where])
+      res = League.where(atts[:where])
+    else
+      res = League;
+    end
+
+    if (atts[:order_by])
+      res = res.order(atts[:order_by])
+    end
+
+    ary = Array.new
+    if (atts[:empty])
+      ary << [ I18n.t("messages.base.no_league"), "" ]
+    end
+    res.all.each do |item|
+      ary << [item.name, item.id];
+    end
+
+    return ary;
+  end
+
   before_validation do |record|
     # prazdne retezce nastavim na null
     record.name = record.name != "" ? record.name : nil
