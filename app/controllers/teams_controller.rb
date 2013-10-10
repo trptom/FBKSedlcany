@@ -5,7 +5,7 @@ class TeamsController < ApplicationController
 
   def index_of_teams
     @teams = Team.teams.all
-    @new_url = "teams/new_team"
+    @new_url = "/teams/new_team"
 
     @messages = {
       :title => I18n.t("messages.base.list_of_teams"),
@@ -16,7 +16,7 @@ class TeamsController < ApplicationController
 
   def index_of_clubs
     @teams = Team.clubs.all
-    @new_url = "teams/new_club"
+    @new_url = "/teams/new_club"
 
     @messages = {
       :title => I18n.t("messages.base.list_of_clubs"),
