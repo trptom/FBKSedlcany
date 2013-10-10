@@ -61,10 +61,10 @@ FBKSedlcany::Application.routes.draw do
     member do
       get :squad
       get :games
-      get :new_team
-      get :new_club
     end
     collection do
+      get :new_team
+      get :new_club
       get :squad
       get :games
       get :index_of_teams
