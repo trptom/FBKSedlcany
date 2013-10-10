@@ -39,3 +39,9 @@ div.top-separator:not(:first-child) {
 .controls.score input {
     width: 50px;
 }
+
+#counter {
+    position: fixed;
+    right: 5px;
+    top: 5px;
+}
