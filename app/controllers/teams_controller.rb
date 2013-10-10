@@ -182,4 +182,24 @@ class TeamsController < ApplicationController
       }
     end
   end
+  
+  def games
+    @team = params[:id] ? Team.find(params[:id]) : Team.where(:name => TEAM_NAME).first
+    
+    respond_to do |format|
+      format.html {
+      }
+      format.json {
+        games = []
+        for game in @team.games.all
+          games << game
+        end
+
+        render json: {
+          :team => @team,
+          :players => players
+        }
+      }
+    end
+  end
 end

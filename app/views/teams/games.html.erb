@@ -1,0 +1,34 @@
+<div class="well">
+  <h1><%= I18n.t("messages.base.games_of_club") + " " + @team.name %></h1>
+  <div class="row-fluid">
+    <table class="index">
+      <thead>
+        <tr>
+          <td><%= I18n.t("messages.base.date") %></td>
+          <td><%= I18n.t("messages.base.competition") %></td>
+          <td><%= I18n.t("messages.base.home_team") %></td>
+          <td><%= I18n.t("messages.base.away_team") %></td>
+          <td><%= I18n.t("messages.base.result") %></td>
+        </tr>
+      </thead>
+      <tbody>
+        <% for game in @team.games.all %>
+          <tr>
+            <td><%= I18n.l game.start %></td>
+            <td><%= game.league.name %></td>
+            <td><%= game.home_team.name %></td>
+            <td><%= game.away_team.name %></td>
+            <td><%= game.result_str({:periods => true}) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">
+            <%= link_to I18n.t("messages.base.new_hall"), new_hall_path, :class => "btn" %>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

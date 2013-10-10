@@ -60,11 +60,13 @@ FBKSedlcany::Application.routes.draw do
   resources :teams do
     member do
       get :squad
+      get :games
       get :new_team
       get :new_club
     end
     collection do
       get :squad
+      get :games
       get :index_of_teams
       get :index_of_clubs
     end
@@ -93,6 +95,7 @@ FBKSedlcany::Application.routes.draw do
 
   match 'about' => 'teams#about', :as => :about
   match 'squad' => 'teams#squad', :as => :squad
+  match 'game_list' => 'teams#games', :as => :game_list
 
   match 'login' => 'user_sessions#create', :as => :login
   match 'logout' => 'user_sessions#destroy', :as => :logout

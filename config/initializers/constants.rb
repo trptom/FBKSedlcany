@@ -13,6 +13,9 @@ TEAM_NAME_SHORTCUT = "SED"
 TEAMS_WITH_VIEWABLE_SQUAD = [
   /^.*Sedlčany.*$/
 ]
+TEAMS_WITH_VIEWABLE_GAMES = [
+  /^.*Sedlčany.*$/
+]
 
 # pocet clanku na stranku
 ARTICLES_LIST_PAGE_LIMIT = 10

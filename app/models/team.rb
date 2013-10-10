@@ -34,7 +34,8 @@ class Team < ActiveRecord::Base
   end
 
   def games
-    home_games + away_games
+    return Game.where("(home_team_id = #{id})OR(away_team_id = #{id})")
+#    (home_games + away_games).order("start DESC")
   end
 
   def squad
@@ -51,6 +52,21 @@ class Team < ActiveRecord::Base
 
   def squad_viewable
     for item in TEAMS_WITH_VIEWABLE_SQUAD
+      if (item.kind_of? Regexp)
+        if item.match(name) || item.match(short_name) || item.match(shortcut)
+          return true
+        end
+      else
+        if item == name || item == short_name || item == shortcut
+          return true
+        end
+      end
+    end
+    return false
+  end
+  
+  def games_viewable
+    for item in TEAMS_WITH_VIEWABLE_GAMES
       if (item.kind_of? Regexp)
         if item.match(name) || item.match(short_name) || item.match(shortcut)
           return true

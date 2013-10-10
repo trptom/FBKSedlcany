@@ -304,6 +304,11 @@ module PermissionsHelper
         :roles => [ :root, :admin, :teams_editor ],
         :user => atts[:user]
       })
+    when "games"
+      return (!team || (team && team.games_viewable)) ? true : has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :teams_editor ],
+        :user => atts[:user]
+      })
     else
       return false
     end
