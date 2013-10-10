@@ -55,6 +55,8 @@ cs:
       first_name: Křestní jméno
       game: Zápas
       games: Zápasy
+      games_of_club: Zápasy oddílu
+      games_of_team: Zápasy týmu
       go_to_detail: Jít na detail
       go_to_list: Jít na seznam
       group: Skupina
@@ -139,6 +141,7 @@ cs:
       source_file: Zdrojový soubor
       squad: Soupiska
       squad_of_club: Soupiska oddílu
+      squad_of_team: Soupiska týmu
       status: Stav
       stick_holding: Držení hokejky
       team: Tým

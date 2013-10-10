@@ -1,5 +1,5 @@
 <div class="well">
-  <h1><%= I18n.t("messages.base.games_of_club") + " " + @team.name %></h1>
+  <h1><%= I18n.t("messages.base.games_of_" + (@team.is_club ? "club" : "team")) + " " + @team.name %></h1>
   <div class="row-fluid">
     <table class="index">
       <thead>
