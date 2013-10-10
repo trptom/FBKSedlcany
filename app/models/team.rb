@@ -111,6 +111,30 @@ class Team < ActiveRecord::Base
 
     return ary;
   end
+  
+  def self.get_options_with_type(atts = nil)
+    atts = atts ? atts : {}
+
+    if (atts[:where])
+      res = Team.where(atts[:where])
+    else
+      res = Team;
+    end
+
+    if (atts[:order_by])
+      res = res.order(atts[:order_by])
+    end
+
+    ary = Array.new
+    if (atts[:empty])
+      ary << [ I18n.t("messages.base.no_team"), "" ]
+    end
+    res.all.each do |item|
+      ary << [item.name + " (" + (item.is_club ? I18n.t("messages.base.club") : I18n.t("messages.base.team")) + ")", item.id];
+    end
+
+    return ary;
+  end
 
   def self.get_club_options(atts = nil)
     atts = atts ? atts : {}
@@ -160,14 +184,23 @@ class Team < ActiveRecord::Base
     return ary;
   end
 
-  def self.get_data_from_cfbu_profile_link(link)
+  def self.get_club_data_from_cfbu_profile_link(link)
+    if link == nil
+      return nil
+    else
+      tmp = link.split("club_id=")
+      return tmp.size > 1 ? tmp[1].split("&")[0] : link
+    end
+  end
+  
+  def self.get_team_data_from_cfbu_profile_link(link)
     if link == nil
       return nil
     else
       tmp = link.split("team_id=")
       return tmp.size > 1 ? tmp[1].split("&")[0] : link
     end
-  end
+  end  
 
   ##############################################################################
 
@@ -187,7 +220,9 @@ class Team < ActiveRecord::Base
     record.cfbu_profile_data = record.cfbu_profile_data != "" ? record.cfbu_profile_data : nil
 
     # zparsuju profile data, kdybych nahodou tam flaknul celej link
-    record.cfbu_profile_data = Team.get_data_from_cfbu_profile_link(record.cfbu_profile_data)
+    record.cfbu_profile_data = record.is_club ?
+        Team.get_club_data_from_cfbu_profile_link(record.cfbu_profile_data) :
+        Team.get_team_data_from_cfbu_profile_link(record.cfbu_profile_data)
   end
 
   # po ulozeni kontroluju, zda jde o tym nebo klub; pokud klub, upravim ho tak,

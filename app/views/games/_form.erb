@@ -12,7 +12,7 @@
         <fieldset class="control-group">
           <%= f.label :season, I18n.t("messages.base.season"), :class => "control-label" %>
           <div class="controls">
-            <%= f.select :season, Time.now.year-GAME_SEASON_MAX_BACK..Time.now.year, :class => "span3" %>
+            <%= f.select :season, options_for_select(get_season_options_desc(Time.now.year), @game.season), :class => "span3" %>
           </div>
         </fieldset>
         <fieldset class="control-group">
@@ -36,19 +36,19 @@
         <fieldset class="control-group">
           <%= f.label :home_team_id, I18n.t("messages.base.home_team"), :class => "control-label" %>
           <div class="controls">
-            <%= f.select :home_team_id, options_for_select(Team.get_options({:order_by => :name}), @game.home_team_id), :class => "span3" %>
+            <%= f.select :home_team_id, options_for_select(Team.get_options_with_type({:order_by => :name}), @game.home_team_id), :class => "span3" %>
           </div>
         </fieldset>
         <fieldset class="control-group">
           <%= f.label :away_team_id, I18n.t("messages.base.away_team"), :class => "control-label" %>
           <div class="controls">
-            <%= f.select :away_team_id, options_for_select(Team.get_options({:order_by => :name}), @game.away_team_id), :class => "span3" %>
+            <%= f.select :away_team_id, options_for_select(Team.get_options_with_type({:order_by => :name}), @game.away_team_id), :class => "span3" %>
           </div>
         </fieldset>
         <fieldset class="control-group">
           <%= f.label :organizer_id, I18n.t("messages.base.organizer"), :class => "control-label" %>
           <div class="controls">
-            <%= f.select :organizer_id, options_for_select(Team.get_options({:order_by => :name}), @game.organizer_id), :class => "span3" %>
+            <%= f.select :organizer_id, options_for_select(Team.get_options_with_type({:order_by => :name}), @game.organizer_id), :class => "span3" %>
           </div>
         </fieldset>
         <fieldset class="control-group">

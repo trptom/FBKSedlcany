@@ -10,6 +10,7 @@ class GamesController < ApplicationController
   def new
     @game = Game.new
     
+    @game.season = Time.now.year
     @game.home_team = nil
     @game.away_team = nil
     @game.league = nil
