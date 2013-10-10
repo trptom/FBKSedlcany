@@ -5,6 +5,7 @@ cs:
 
   messages:
     base:
+      about_team: O týmu
       actions: Akce
       activate: Aktivovat
       activation_state: Aktivační status
