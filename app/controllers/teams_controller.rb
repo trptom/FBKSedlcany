@@ -165,13 +165,14 @@ class TeamsController < ApplicationController
 
   def squad
     @team = params[:id] ? Team.find(params[:id]) : Team.where(:name => TEAM_NAME).first
+    @players = @team.squad.order(:second_name, :first_name).all
 
     respond_to do |format|
       format.html {
       }
       format.json {
         players = []
-        for player in @team.players.all
+        for player in @players
           players << player
         end
 

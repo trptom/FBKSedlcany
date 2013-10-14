@@ -33,8 +33,18 @@ class Team < ActiveRecord::Base
     return url != nil && url != "" ? ActionController::Base.helpers.image_tag(url, atts) : nil
   end
 
-  def games
-    return Game.where("(home_team_id = #{id})OR(away_team_id = #{id})")
+  def games(atts = nil)
+    atts = atts ? atts : {}
+    
+    if is_team || !(atts[:all])
+      return Game.where("(home_team_id = #{id})OR(away_team_id = #{id})")
+    else
+      list = [id]
+      for team in teams
+        list << team.id
+      end
+      return Game.where("(home_team_id IN (?))OR(away_team_id IN (?))", list, list)
+    end
 #    (home_games + away_games).order("start DESC")
   end
 
@@ -42,11 +52,11 @@ class Team < ActiveRecord::Base
     if is_team
       return players
     else
-      list = []
+      list = [id]
       for team in teams
-        list = list + team.players
+        list << team.id
       end
-      return list.uniq
+      return Player.where("team_id IN (?)", list)
     end
   end
 
