@@ -11,7 +11,12 @@
       <tbody>
         <% for player in @players %>
           <tr>
-            <td><%= player.get_name_for_list %></td>
+            <td>
+              <%= link_to player.get_name_for_list, player %>
+              <%= link_to player.cfbu_profile_link, :target => "_blank" do %>
+                <span class="icon-list-alt"></span>
+              <% end %>
+            </td>
             <td><%= player.team_name %></td>
           </tr>
         <% end %>
