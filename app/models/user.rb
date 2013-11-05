@@ -67,14 +67,14 @@ class User < ActiveRecord::Base
     end
   end
 
-  def get_role_str(atts)
+  def get_role_str(atts = nil)
     atts = atts.kind_of?(Hash) ? atts : Hash.new
     ret = "";
     for r in role
       if ret != ""
         ret +=  atts[:separator] ? atts[:separator] : ", "
       end
-      ret += I18n.t(ROLE_MESSAGES[r])
+      ret += I18n.t(ROLE_MESSAGES[r.to_s])
     end
     return ret
   end
