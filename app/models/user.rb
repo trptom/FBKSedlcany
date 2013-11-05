@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
     save
   end
 
-  def get_block_state_str(atts)
+  def get_block_state_str(atts = nil)
     atts = atts.kind_of?(Hash) ? atts : Hash.new
     if is_blocked
       atts[:blocked_str] = atts[:blocked_str] ? atts[:blocked_str] : I18n.t("messages.base.blocked")

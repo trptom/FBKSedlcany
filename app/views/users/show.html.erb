@@ -12,10 +12,11 @@
     <%= I18n.t "messages.base.role" %>:
     <%= @user.get_role_str(nil) %>
   </div>
-  <div class="row-fluid">
-    <%= I18n.t "messages.base.blocked" %>:
-    <%= @user.get_block_state_str(nil) %>
-  </div>
+  <% if @user.is_blocked %>
+    <div class="row-fluid">
+      <%= @user.get_block_state_str() %>
+    </div>
+  <%end %>
 
   <% if users_filter("block", { :user => current_user, :entity => @user } ) %>
     <div class="container row-fluid">
