@@ -1,9 +1,14 @@
 <% if @articles %>
   <% for article in @articles %>
-    <div class="well">
-      <h4><%= article.title %></h4>
-      <%= article.annotation %>
-      <%#= TODO doladit tuhle funkci, aby neusekavala text uvnitr tagu a pak aktivovat article.get_annotation %>
+    <div class="article">
+      <img src="./gsags" />
+      <div class="title">
+          <%= article.title %>
+      </div>
+      <div class="content">
+        <%= article.annotation %>
+        <%#= TODO doladit tuhle funkci, aby neusekavala text uvnitr tagu a pak aktivovat article.get_annotation %>
+      </div>
       <div class="footer">
         <%= I18n.t("messages.base.author") %>: <%= link_to article.user.username, article.user %> |
         <%= I18n.t("messages.base.published") %>: <%= I18n.l article.created_at %> |

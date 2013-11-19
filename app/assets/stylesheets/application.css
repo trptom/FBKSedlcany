@@ -10,5 +10,5 @@
  *
  *= require_self
  *= require_tree ./bootstrap
- *= require_tree ./global
+ *= require_tree ./skins/modern/global
  */

@@ -1,0 +1,57 @@
+#counter {
+    position: fixed;
+    right: 5px;
+    top: 5px;
+}
+
+body {
+    background-image: url('../../../page_backgrounds/1.jpg');
+    background-size: 100% auto;
+    background-attachment: fixed;
+}
+
+#page.container {
+    border: solid #000000 1px;
+    background-color: rgba(255,255,255,0.7);
+}
+
+#page.container > #page-title {
+    background-color: #ffffff;
+    border-bottom: #000000 solid 1px;
+    padding: 5px;
+    text-align: center;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+#page.container > .content {
+    padding: 10px;
+}
+
+#page.container > .content > #right-side-panel {
+    float: right;
+    width: 150px;
+}
+
+#page.container > .content > #right-side-panel > div {
+    border: solid #000000 1px;
+    background-color: #efefef;
+}
+
+#page.container > .content > #right-side-panel > div:not(:first-of-type) {
+    margin-top: 10px;
+}
+
+#page.container > .content > #right-side-panel > div > .title {
+    border-bottom: solid #000000 1px;
+    background-color: #ffffbb;
+    padding: 2px 5px 2px 5px;
+}
+
+#page.container > .content > #right-side-panel > div > .content {
+    padding: 2px 5px 2px 5px;
+}
+
+#page.container > .content > #page-data {
+    width: 760px;
+}

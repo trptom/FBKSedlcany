@@ -123,8 +123,8 @@ module ApplicationHelper
   end
 
   def get_additional_styles
-    ctrl_style_url = "pages/" + params[:controller] + "/overall.css"
-    page_style_url = "pages/" + params[:controller] + "/" + params[:action] + ".css"
+    ctrl_style_url = "skins/modern/pages/" + params[:controller] + "/overall.css"
+    page_style_url = "skins/modern/pages/" + params[:controller] + "/" + params[:action] + ".css"
 
     res = Array.new
 

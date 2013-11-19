@@ -2,10 +2,6 @@ ul.nav > li > .btn-toolbar {
     margin: 0px;
 }
 
-.container.contanier-content {
+#page.container {
     margin-top: 60px;
-}
-
-.container.contanier-content > .well {
-    border: solid 2px #dba400;
 }

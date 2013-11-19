@@ -15,10 +15,18 @@
   <body>
     <%= render "templates/menu" %>
     <%= render "templates/login_form" %>
-    <div class="container contanier-content">
-      <%= render "templates/notes" %>
-      <%= render "templates/errors" %>
-      <%= yield %>
+    <div id="page" class="container">
+      <div id="page-title">
+        <%= I18n.t "messages.titles." + params[:controller] + "." + params[:action] %>
+      </div>
+      <div class="content">
+        <%= render "templates/notes" %>
+        <%= render "templates/errors" %>
+        <%= render "templates/rightside" %>
+        <div id="page-data">
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </body>
 </html>

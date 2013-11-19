@@ -299,6 +299,10 @@ cs:
     activation_states:
       active: Aktivní
       pending: Neaktivován
+    titles:
+      articles:
+        newest: Články (nejnovější)
+      
 
   ##############################################################################
   # FORMATTING PART
