@@ -60,3 +60,9 @@ MAX_COMPETITION_GROUP = 20
 
 # informace o zapase
 GAME_SEASON_MAX_BACK = 10 # o kolik let muzu jit pri vytvareni/editaci zapasu max. nazpatek
+
+# defaultni obrazky
+DEFAULT_IMAGES = {
+  :article_image => "default/no_photo.jpg",
+  :player_icon => "default/no_photo.jpg"
+}

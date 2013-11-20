@@ -56,7 +56,7 @@ class Player < ActiveRecord::Base
     url = icon_url(:full)
     return url != nil && url != "" ?
       ActionController::Base.helpers.image_tag(url) :
-      ActionController::Base.helpers.image_tag(ActionController::Base.helpers.asset_path("no_photo.jpg"))
+      ActionController::Base.helpers.image_tag(ActionController::Base.helpers.asset_path(DEFAULT_IMAGES[:player_icon]))
   end
 
   def self.get_data_from_cfbu_profile_link(link)
