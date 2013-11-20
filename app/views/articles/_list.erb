@@ -1,7 +1,7 @@
 <% if @articles %>
   <% for article in @articles %>
     <div class="article">
-      <img src="./gsags" />
+      <%= image_tag (article.image_url != nil ? article.image_url : "TODO nacitani defaultniho obrazku"), :alt => "TODO" %>
       <div class="title">
           <%= article.title %>
       </div>

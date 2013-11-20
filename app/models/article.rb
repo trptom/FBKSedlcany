@@ -4,8 +4,10 @@ class Article < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :marks, dependent: :destroy
   
-  attr_accessible :annotation, :content, :title, :comments, :user, :atricle_categories, :markings
+  attr_accessible :annotation, :content, :title, :comments, :user, :atricle_categories, :markings, :image
 
+  mount_uploader :image, ArticleImageUploader
+  
   scope :newest, ->(limit = ARTICLES_LIST_PAGE_LIMIT) {
     order("created_at DESC")
         .limit(limit)
