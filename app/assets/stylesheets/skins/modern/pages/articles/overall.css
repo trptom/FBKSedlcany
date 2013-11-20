@@ -28,4 +28,13 @@
 
 #page-data > .article > .footer {
     font-size: 80%;
+    padding: 3px 10px 3px 10px;
+}
+
+#page-data > .article.detail > .title {
+    border-bottom: solid #000000 1px;
+}
+
+#page-data > .article.detail > .footer {
+    border-top: solid #000000 1px;
 }

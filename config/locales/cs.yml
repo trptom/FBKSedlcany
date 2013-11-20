@@ -302,7 +302,11 @@ cs:
     titles:
       articles:
         newest: Články (nejnovější)
-      
+        best: Články (nejlépe hodnocené)
+        most_commented: Články (nejvíce komentované)
+        show: Detail článku
+        edit: Editace článku
+        new: Nový článek
 
   ##############################################################################
   # FORMATTING PART

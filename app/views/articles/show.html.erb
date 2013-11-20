@@ -1,6 +1,10 @@
-<div class="well">
-  <h1><%= @article.title %></h1>
-  <%= @article.content.html_safe %>
+<div class="article detail">
+  <div class="title">
+    <%= @article.title %>
+  </div>
+  <div class="content">
+    <%= @article.content.html_safe %>
+  </div>
   <div class="footer">
     <%= I18n.t("messages.base.author") %>: <%= link_to @article.user.username, @article.user %>
     | <%= I18n.t("messages.base.published") %>: <%= I18n.l @article.created_at %>

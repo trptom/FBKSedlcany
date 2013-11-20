@@ -12,7 +12,7 @@ body {
 
 #page.container {
     border: solid #000000 1px;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255,255,255,0.8);
 }
 
 #page.container > #page-title {
@@ -31,11 +31,13 @@ body {
 #page.container > .content > #right-side-panel {
     float: right;
     width: 150px;
+    margin-bottom: 10px;
 }
 
 #page.container > .content > #right-side-panel > div {
     border: solid #000000 1px;
     background-color: #efefef;
+    font-size: 90%;
 }
 
 #page.container > .content > #right-side-panel > div:not(:first-of-type) {
