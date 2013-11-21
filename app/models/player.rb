@@ -79,4 +79,15 @@ class Player < ActiveRecord::Base
     # zparsuju profile data, kdybych nahodou tam flaknul celej link
     record.cfbu_profile_data = Player.get_data_from_cfbu_profile_link(record.cfbu_profile_data)
   end
+  
+  ##############################################################################
+  
+  scope :randomize, -> {
+    order('random()')
+  }
+  
+  scope :birthday, ->(date = Date.today) {
+    where('(extract(day from birthday) = ?)AND(extract(month from birthday) = ?)',
+      date.mday, date.mon)
+  }
 end

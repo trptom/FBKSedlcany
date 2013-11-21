@@ -1,46 +1,78 @@
 <%# TODO komplet prava strana %>
 <div id="right-side-panel">
+  <% if Game.past.count > 0 %>
+    <div class="last-games">
+      <div class="title">
+        <%= I18n.t "messages.base.last_games" %>
+      </div>
+      <div class="content">
+        <% for past_game in Game.past.order("start DESC").limit(RIGHTSIDE_PANEL[:last_games_count]) %>
+          <div class="line">
+            <%= link_to past_game.full_str(:type => :short), past_game %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
+  <% if Game.future.count > 0 %>
+    <div class="next-games">
+      <div class="title">
+        <%= I18n.t "messages.base.following_games" %>
+      </div>
+      <div class="content">
+        <% for future_game in Game.future.order(:start).limit(RIGHTSIDE_PANEL[:next_games_count]) %>
+          <div class="line">
+            <%= link_to future_game.full_str(:type => :short), future_game %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
+  <% if Player.birthday.count > 0 %>
+    <div class="birthdays">
+      <div class="title">
+        <%= I18n.t "messages.base.today_celebrates" %>
+      </div>
+      <div class="content">
+        <% for celebrator in Player.birthday %>
+          <div class="line">
+            <%= link_to celebrator.get_name do %>
+              <div>
+                <%= image_tag celebrator.icon_url %>
+              </div>
+              <div>
+                <%= celebrator.get_name %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
   <div class="random-players">
     <div class="title">
-      Náhodní hráči
+      <%= I18n.t "messages.base.random_players" %>
     </div>
     <div class="content">
-      fhdjaflk<br />
-      fhdjaflk<br />
-      fhdjaflk<br />
-    </div>
-  </div>
-  
-  <div class="last-games">
-    <div class="title">
-      Poslední zápasy
-    </div>
-    <div class="content">
-      fhdjaflk<br />
-      fhdjaflk<br />
-      fhdjaflk<br />
-    </div>
-  </div>
-  
-  <div class="next-games">
-    <div class="title">
-      Nadcházející zápasy
-    </div>
-    <div class="content">
-      fhdjaflk<br />
-      fhdjaflk<br />
-      fhdjaflk<br />
+      <% for random_player in Player.randomize.limit(RIGHTSIDE_PANEL[:random_players_count]) %>
+        <div class="line">
+          <%= link_to random_player.get_name, random_player %>
+        </div>
+      <% end %>
     </div>
   </div>
   
   <div class="sponsors">
     <div class="title">
-      Sponzoři
+      <%= I18n.t "messages.base.sponsors" %>
     </div>
     <div class="content">
-      fhdjaflk<br />
-      fhdjaflk<br />
-      fhdjaflk<br />
+      <div class="line">
+        <%= image_tag "sponsors/mlekarny.gif" %>
+      </div>
     </div>
   </div>
 </div>

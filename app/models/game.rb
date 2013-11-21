@@ -50,6 +50,20 @@ class Game < ActiveRecord::Base
       "http://fis.cfbu.cz/index.php?pageid=2519&onlycontent=1&record_id=" + cfbu_profile_data :
       nil;
   end
+  
+  def full_str(atts = nil)
+    atts = atts ? atts : {}
+    atts[:type] = atts[:type] ? atts[:type] : :full
+    
+    case atts[:type]
+    when :short
+      return home_team.short_name.to_s + " " + result_str + " " + away_team.short_name.to_s
+    when :extra_short
+      return home_team.shortcut.to_s + " " + result_str + " " + away_team.shortcut.to_s
+    else
+      return home_team.name.to_s + " " + result_str + " " + away_team.name.to_s
+    end
+  end
 
   def self.get_data_from_cfbu_profile_link(link)
     if link == nil
@@ -67,4 +81,14 @@ class Game < ActiveRecord::Base
     # zparsuju profile data, kdybych nahodou tam flaknul celej link
     record.cfbu_profile_data = Game.get_data_from_cfbu_profile_link(record.cfbu_profile_data)
   end
+  
+  ##############################################################################
+  
+  scope :past, ->(to_date = DateTime.now) {
+    where("start < ?", to_date)
+  }
+  
+  scope :future, ->(to_date = DateTime.now) {
+    where("start >= ?", to_date)
+  }
 end

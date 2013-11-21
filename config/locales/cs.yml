@@ -54,6 +54,7 @@ cs:
       email: E-mail
       error: Chyba!
       first_name: Křestní jméno
+      following_games: Nadcházející zápasy
       game: Zápas
       games: Zápasy
       games_of_club: Zápasy oddílu
@@ -75,6 +76,7 @@ cs:
       images: Obrázky
       info: Informace
       insert_image: Vložit obrázek
+      last_games: Poslední zápasy
       league: Liga
       leagues: Ligy
       left: Levá
@@ -124,6 +126,7 @@ cs:
       players_without_team: Hráči bez týmu
       portrait: Portrét
       published: Publikováno
+      random_players: Náhodní hráči
       record_created: Záznam vytvořen
       register: Registrovat
       result: Výsledek
@@ -140,6 +143,7 @@ cs:
       show: Zobrazit
       show_article: Zobrazit článek
       source_file: Zdrojový soubor
+      sponsors: Sponzoři
       squad: Soupiska
       squad_of_club: Soupiska oddílu
       squad_of_team: Soupiska týmu
@@ -151,6 +155,7 @@ cs:
       teams: Týmy
       teams_count: Počet týmů
       title: Nadpis
+      today_celebrates: Dnes slaví
       unblock: Odblokovat
       update_club: Upravit oddíl
       update_game: Upravit zápas

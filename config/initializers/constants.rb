@@ -66,3 +66,10 @@ DEFAULT_IMAGES = {
   :article_image => "default/no_photo.jpg",
   :player_icon => "default/no_photo.jpg"
 }
+
+# panel na prave strane app
+RIGHTSIDE_PANEL = {
+  :random_players_count => 3,
+  :last_games_count => 3,
+  :next_games_count => 3
+}
