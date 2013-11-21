@@ -48,10 +48,27 @@ body {
     border-bottom: solid #000000 1px;
     background-color: #ffffbb;
     padding: 2px 5px 2px 5px;
+    text-align: center;
 }
 
-#page.container > .content > #right-side-panel > div > .content {
+#page.container > .content > #right-side-panel > div > .content {}
+
+#page.container > .content > #right-side-panel > div > .content > .line {
     padding: 2px 5px 2px 5px;
+}
+
+#page.container > .content > #right-side-panel > div > .content > .line:not(:last-of-type) {
+    border-bottom: solid #999999 1px;
+}
+
+#page.container > .content > #right-side-panel > .last-games .result,
+#page.container > .content > #right-side-panel > .next-games .result {
+    float: right;
+}
+
+#page.container > .content > #right-side-panel > .birthdays > .content,
+#page.container > .content > #right-side-panel > .random-players > .content {
+    text-align: center;
 }
 
 #page.container > .content > #page-data {

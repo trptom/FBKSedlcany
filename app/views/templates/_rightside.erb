@@ -8,7 +8,9 @@
       <div class="content">
         <% for past_game in Game.past.order("start DESC").limit(RIGHTSIDE_PANEL[:last_games_count]) %>
           <div class="line">
-            <%= link_to past_game.full_str(:type => :short), past_game %>
+            <div class="result"><%= link_to past_game.result_str, past_game %></div>
+            <div class="team1"><%= link_to past_game.home_team.short_name, past_game.home_team %></div>
+            <div class="team2"><%= link_to past_game.away_team.short_name, past_game.away_team %></div>
           </div>
         <% end %>
       </div>
@@ -23,7 +25,9 @@
       <div class="content">
         <% for future_game in Game.future.order(:start).limit(RIGHTSIDE_PANEL[:next_games_count]) %>
           <div class="line">
-            <%= link_to future_game.full_str(:type => :short), future_game %>
+            <div class="result"><%= link_to future_game.result_str, future_game %></div>
+            <div class="team1"><%= link_to future_game.home_team.short_name, future_game.home_team %></div>
+            <div class="team2"><%= link_to future_game.away_team.short_name, future_game.away_team %></div>
           </div>
         <% end %>
       </div>
