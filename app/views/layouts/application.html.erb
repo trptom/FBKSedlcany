@@ -16,9 +16,12 @@
     <%= render "templates/menu" %>
     <%= render "templates/login_form" %>
     <div id="page" class="container">
-      <div id="page-title">
-        <%= I18n.t "messages.titles." + params[:controller] + "." + params[:action] %>
-      </div>
+      <%# titulek jen pokud pro nej mam message %>
+      <% if !(I18n.t "messages.titles." + params[:controller] + "." + params[:action]).starts_with?("translation missing: ") %>
+        <div id="page-title">
+          <%= I18n.t "messages.titles." + params[:controller] + "." + params[:action] %>
+        </div>
+      <% end %>
       <div class="content">
         <%= render "templates/notes" %>
         <%= render "templates/errors" %>

@@ -1,7 +1,7 @@
 <% if @articles %>
   <% for article in @articles %>
     <div class="article">
-      <%= image_tag (article.image_url != nil ? article.image_url : DEFAULT_IMAGES[:article_image]), :alt => I18n.t("messages.base.image") %>
+      <%= image_tag article.get_image_or_default_url(:small), :alt => I18n.t("messages.base.image") %>
       <div class="title">
           <%= article.title %>
       </div>

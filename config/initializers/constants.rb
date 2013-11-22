@@ -19,6 +19,10 @@ TEAMS_WITH_VIEWABLE_GAMES = [
 
 # pocet clanku na stranku
 ARTICLES_LIST_PAGE_LIMIT = 10
+# maximalni pocet zvyraznenych clanku (s obrazkem) na home
+TOP_ARTICLES_LIMIT = 5
+# maximalni pocet nezvyraznenych clanku (bez obrazku) na home
+OTHER_ARTICLES_LIMIT = 20
 
 # max. delka anotace, parsovane z contentu (ve znacich)
 ARTICLE_PARSED_ANNOTATION_LENGTH = 500
@@ -63,7 +67,10 @@ GAME_SEASON_MAX_BACK = 10 # o kolik let muzu jit pri vytvareni/editaci zapasu ma
 
 # defaultni obrazky
 DEFAULT_IMAGES = {
-  :article_image => "default/no_photo.jpg",
+  :article_image => {
+    :large => "default/no_photo.jpg",
+    :small => "default/no_photo.jpg"
+  },
   :player_icon => "default/no_photo.jpg"
 }
 

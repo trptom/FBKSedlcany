@@ -66,4 +66,12 @@ class Article < ActiveRecord::Base
 
     return str == content ? str : str + "..."
   end
+  
+  def get_image_or_default_url(type = :small)
+    if image_url != nil
+      return image_url(type)
+    else
+      return DEFAULT_IMAGES[:article_image][type]
+    end
+  end
 end

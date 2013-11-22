@@ -5,6 +5,11 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
 
   process :convert => 'png'
   process :resize_to_fit => [200, 10000]
+  version :small
+
+  version :large do
+    process :resize_to_fit => [400, 10000]
+  end
 
   def extension_white_list
     %w(jpg jpeg png gif bmp)

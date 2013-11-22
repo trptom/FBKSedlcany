@@ -1,0 +1,30 @@
+.top-articles > table {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.top-articles > table .image-cell {
+    width: 400px;
+}
+
+.top-articles > table .image-cell > .image {
+    width: 400px;
+}
+
+.top-articles > table .title {
+    vertical-align: middle;
+}
+
+.top-articles > table .title > a {
+    padding: 10px 10px 10px 50px;
+    display: block;
+}
+
+.top-articles > table .title.selected {
+    background-color: #000000;
+}
+
+.top-articles > table .title.selected > a {
+    color: #ffffff;
+    text-decoration: underline;
+}
