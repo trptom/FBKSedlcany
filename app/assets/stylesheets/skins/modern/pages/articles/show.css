@@ -1,0 +1,38 @@
+#page-data > .article.detail > .title {
+    border-bottom: solid #000000 1px;
+}
+
+#page-data > .article.detail > .footer {
+    border-top: solid #000000 1px;
+}
+
+#page-data > .article.detail > .content {
+    
+}
+
+#page-data > .article.detail > .comments {
+    padding: 10px;
+    border-top: solid #000000 1px;
+}
+
+#page-data > .article.detail > .comments > .comment:not(:first-of-type) {
+    border-top: solid #666666 1px;
+}
+
+#page-data > .article.detail > .comments > .comment .subcomments {
+    padding-left: 20px;
+}
+
+#page-data > .article.detail > .new-comment {
+    padding: 10px;
+}
+
+#page-data > .article.detail > .new-comment > form {
+    display: block;
+    width: auto;
+}
+
+#page-data > .article.detail > .new-comment input,
+#page-data > .article.detail > .new-comment textArea {
+    width: 90%;
+}

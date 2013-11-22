@@ -1,31 +1,29 @@
 <div class="well">
-  <h1><%= @form_title %></h1>
-  <div class="row">
-    <div class="span8 offset2">
-      <%= form_for @article, :html => { :class => "form-horizontal"} do |f| %>
-        <fieldset class="control-group">
-          <%= f.label :title, "TODO", :class => "control-label" %>
-          <div class="controls">
-            <%= f.text_field :title, :class => "span3" %>
-          </div>
-        </fieldset>
-
-        <fieldset class="control-group">
-          <%= f.label :annotation, "TODO", :class => "control-label" %>
-          <div class="controls">
-            <%= f.text_area :annotation, :rows => 3, :class => "" %>
-          </div>
-        </fieldset>
-
-        <div>
-          <%= f.cktext_area :content, :rows => 10, :class => "input-xlarge" %>
-        </div>
-
-        <fieldset class="form-actions">
-          <%= f.submit @form_submit, :class => "btn btn-primary" %>
-          <%= f.submit I18n.t("messages.base.form.reset"), :type => "reset", :class => "btn" %>
-        </fieldset>
-      <% end %>
+  <%= form_for @article, :html => { :class => "form-horizontal"} do |f| %>
+    <fieldset class="control-group">
+      <%= f.label :title, I18n.t("messages.base.title"), :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :title, :class => "span3" %>
+      </div>
+    </fieldset>
+  
+    <fieldset class="control-group">
+      <%= f.label :annotation, I18n.t("messages.base.annotation"), :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_area :annotation, :rows => 3, :class => "" %>
+      </div>
+    </fieldset>
+  
+    <div>
+      <div>
+        <%= I18n.t("messages.base.content") %>
+      </div>
+      <%= f.cktext_area :content, :rows => 10, :class => "input-xlarge" %>
     </div>
-  </div>
+
+    <fieldset class="form-actions">
+      <%= f.submit @form_submit, :class => "btn btn-primary" %>
+      <%= f.submit I18n.t("messages.base.form.reset"), :type => "reset", :class => "btn" %>
+    </fieldset>
+  <% end %>
 </div>
