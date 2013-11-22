@@ -152,7 +152,7 @@ module PermissionsHelper
     case action
     when "show"
       return true
-    when "new", "create"
+    when "new", "create", "react"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :commenter ],
         :user => atts[:user]
@@ -163,7 +163,7 @@ module PermissionsHelper
         :user => atts[:user]
       }) && comment.comments.length == 0 # || (comment && atts[:user] == comment.user) # pro mazani vlastnich
     else
-      logger.info "ACCESS DENIED, atts: " + atts
+      logger.info "ACCESS DENIED, atts: " + atts.to_s
       return false
     end
   end
