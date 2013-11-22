@@ -15,8 +15,26 @@
     border-top: solid #000000 1px;
 }
 
+#page-data > .article.detail > .comments .comment > .title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#page-data > .article.detail > .comments .comment > .title > .icons > * {
+    cursor: pointer;
+}
+
+#page-data > .article.detail > .comments > .comment {
+    padding: 10px 0px 10px 0px;
+}
+
+#page-data > .article.detail > .comments > .comment .comment,
+#page-data > .article.detail > .comments > .comment form {
+    padding-top: 20px;
+}
+
 #page-data > .article.detail > .comments > .comment:not(:first-of-type) {
-    border-top: solid #666666 1px;
+    border-top: solid #999999 1px;
 }
 
 #page-data > .article.detail > .comments > .comment .subcomments {
@@ -27,12 +45,14 @@
     padding: 10px;
 }
 
-#page-data > .article.detail > .new-comment > form {
-    display: block;
+#page-data > .article.detail > .new-comment > form,
+#page-data > .article.detail > .comments > .comment > .subcomments > form {
     width: auto;
 }
 
-#page-data > .article.detail > .new-comment input,
-#page-data > .article.detail > .new-comment textArea {
+#page-data > .article.detail > .new-comment input[type=text],
+#page-data > .article.detail > .new-comment textArea,
+#page-data > .article.detail > .comments > .comment > .subcomments input[type=text],
+#page-data > .article.detail > .comments > .comment > .subcomments textArea {
     width: 90%;
 }

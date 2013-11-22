@@ -1,12 +1,14 @@
-<div class="comment<%= comment.comment ? nil : " root" %>">
+<div class="comment<%= comment.comment ? nil : " root" %> comment-<%= comment.id %>">
   <div class="title">
     <%= comment.title %>
     (<%= link_to comment.user.username, comment.user %>, <%= l comment.updated_at %>)
     <div class="pull-right icons"
-         onmouseover="$(this.parentNode.parentNode.parentNode.parentNode).addClass('active')"
-         onmouseout="$(this.parentNode.parentNode.parentNode.parentNode).removeClass('active')">
-      <% if comments_filter("new", { :user => current_user, :comment => comment}) %>
-        <%= link_to "", react_comment_path(comment), :class => "icon-retweet", :title => I18n.t("messages.articles.show.answer_comment") %>
+         onmouseover="$(this.parentNode.parentNode.parentNode.parentNode).addClass('active');"
+         onmouseout="$(this.parentNode.parentNode.parentNode.parentNode).removeClass('active');">
+      <% if comments_filter("react", { :user => current_user, :comment => comment}) %>
+        <span class="icon-retweet"
+              title="<%= I18n.t("messages.articles.show.answer_comment") %>"
+              onclick="$('#react-<%= comment.id %>-form').toggle();"></span>
       <% end %>
       <% if comments_filter("edit", { :user => current_user, :comment => comment}) %>
         <%= link_to "", edit_comment_path(comment), :method => :delete, :class => "icon-edit", :title => I18n.t("messages.articles.show.edit_comment") %>
@@ -19,11 +21,16 @@
   <div class="content">
     <%= comment.content %>
   </div>
-  <% if comment.comments.length > 0 %>
   <div class="subcomments">
+    <%= form_for @comment, :html => { :class => 'non-displayed', :id => "react-"+comment.id.to_s+"-form" } do |f| %>
+      <%= hidden_field_tag "comment[title]", "RE: "+comment.title.to_s, :id => "reaction-"+comment.id.to_s+"-title" %>
+      <%= f.text_area :content, :id => "reaction-"+comment.id.to_s+"-content", :rows => 2 %>
+      <%= f.hidden_field :article_id, :id => "reaction-"+comment.id.to_s+"-article" %>
+      <%= hidden_field_tag "comment[comment_id]", comment.id, :id => "reaction-"+comment.id.to_s+"-comment" %>
+      <%= f.submit I18n.t("messages.articles.show.add_comment"), :class => "btn btn-primary" %>
+    <% end %>
     <% for item in comment.comments.order(COMMENTS_ORDER).all %>
       <%= render :partial => 'comment', :locals => {:comment => item} %>
     <% end %>
   </div>
-  <% end %>
 </div>

@@ -4,6 +4,10 @@
     top: 5px;
 }
 
+.non-displayed {
+    display: none;
+}
+
 body {
     background-image: url('../../../page_backgrounds/1.jpg');
     background-size: 100% auto;
