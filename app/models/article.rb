@@ -29,23 +29,29 @@ class Article < ActiveRecord::Base
         .limit(limit)
   }
   
-  scope :contains, ->(phrase) {
+  scope :contains_text, ->(phrase) {
     phrase = phrase.downcase
     where("(lower(title) LIKE ?)OR(lower(title) LIKE ?)", "%#{phrase}%", "%#{phrase}%")
   }
   
   scope :published_at, ->(min = nil, max = nil) {
+    condition = "(0 = 0)"
+    ary = []
     if min && max
-      return where('(created_at >= ?)AND(created_at <= ?)', min, max)
+      condition = '(created_at >= ?)AND(created_at <= ?)'
+      ary << min
+      ary << max
     else
       if min
-        return where('(created_at >= ?)', min)
+        condition = '(created_at >= ?)'
+        ary << min
       end
       if max
-        return where('(created_at <= ?)', max)
+        condition = '(created_at <= ?)'
+        ary << max
       end
     end
-    return all
+    where(condition, ary)
   }
 
   def get_mark_points
