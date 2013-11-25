@@ -1,4 +1,4 @@
-<div class="bordered-form">
+<div class="bordered">
   <%= form_for @user, :html => { :class => "form-horizontal"} do |f| %>
     <fieldset class="control-group">
       <%= label_tag :title, I18n.t("messages.base.username"), :class => "control-label", :disabled => true %>
@@ -49,7 +49,7 @@
 </div>
   
   <% if users_filter("block", { :user => current_user, :entity => @user } ) %>
-    <div class="bordered-form">
+    <div class="bordered">
       <%= form_for @user, :url => { :action => "block", :id => @user.id }, :method => :post, :html => { :class => "form-horizontal" } do |f| %>
         <fieldset class="control-group">
           <%= label_tag :block_expires_at, I18n.t("messages.base.block_until"), :class => "control-label" %>
@@ -69,7 +69,7 @@
   <% end %>
 
   <% if users_filter("unblock", { :user => current_user, :entity => @user } ) %>
-    <div class="bordered-form">
+    <div class="bordered">
       <%= form_for @user, :url => { :action => "unblock", :id => @user.id }, :method => :post, :html => { :class => "form-horizontal" } do |f| %>
         <div class="centered">
           <%= @user.get_block_state_str() %>

@@ -168,6 +168,11 @@ class TeamsController < ApplicationController
   def squad
     @team = params[:id] ? Team.find(params[:id]) : Team.where(:name => TEAM_NAME).first
     @players = @team.squad.order(:second_name, :first_name).all
+    
+    @title_params = {
+      :teamOrClub => I18n.t("messages.base.of_" + (@team.is_club ? "club" : "team")),
+      :teamName => TEAM_NAME
+    }
 
     respond_to do |format|
       format.html {

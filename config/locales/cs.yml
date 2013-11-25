@@ -118,6 +118,8 @@ cs:
       not_blocked: Aktivní
       not_presented: Neuvedeno
       note: Poznámka
+      of_club: oddílu
+      of_team: týmu
       old_password: Staré heslo
       organizer: Pořadatel
       other_actions: Další akce
@@ -150,8 +152,6 @@ cs:
       source_file: Zdrojový soubor
       sponsors: Sponzoři
       squad: Soupiska
-      squad_of_club: Soupiska oddílu
-      squad_of_team: Soupiska týmu
       status: Stav
       stick_holding: Držení hokejky
       team: Tým
@@ -320,6 +320,9 @@ cs:
         search: Hledání článku
       teams:
         about: O týmu %{teamName}
+        squad: Soupiska %{teamOrClub} %{teamName}
+        index_of_clubs: Seznam oddílů
+        index_of_teams: Seznam týmů
       users:
         show: Detail uživatele %{username}
 

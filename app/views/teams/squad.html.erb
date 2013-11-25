@@ -1,26 +1,23 @@
-<div class="well">
-  <h1><%= I18n.t("messages.base.squad_of_" + (@team.is_club ? "club" : "team")) + " " + @team.name %></h1>
-  <div class="row-fluid">
-    <table class="index">
-      <thead>
+<div class="bordered">
+  <table class="index">
+    <thead>
+      <tr>
+        <td><%= I18n.t("messages.base.player") %></td>
+        <td><%= I18n.t("messages.base.team") %></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% for player in @players %>
         <tr>
-          <td><%= I18n.t("messages.base.player") %></td>
-          <td><%= I18n.t("messages.base.team") %></td>
+          <td>
+            <%= link_to player.get_name_for_list, player %>
+            <%= link_to player.cfbu_profile_link, :target => "_blank" do %>
+              <span class="icon-list-alt"></span>
+            <% end %>
+          </td>
+          <td><%= player.team_name %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% for player in @players %>
-          <tr>
-            <td>
-              <%= link_to player.get_name_for_list, player %>
-              <%= link_to player.cfbu_profile_link, :target => "_blank" do %>
-                <span class="icon-list-alt"></span>
-              <% end %>
-            </td>
-            <td><%= player.team_name %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+      <% end %>
+    </tbody>
+  </table>
 </div>
