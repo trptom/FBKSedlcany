@@ -19,7 +19,7 @@
       <%# titulek jen pokud pro nej mam message %>
       <% if !(I18n.t "messages.titles." + params[:controller] + "." + params[:action]).starts_with?("translation missing: ") %>
         <div id="page-title">
-          <%= I18n.t "messages.titles." + params[:controller] + "." + params[:action] %>
+          <%= I18n.t "messages.titles." + params[:controller] + "." + params[:action], @title_params ? @title_params : nil %>
         </div>
       <% end %>
       <div class="content">
