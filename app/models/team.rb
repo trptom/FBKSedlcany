@@ -37,13 +37,13 @@ class Team < ActiveRecord::Base
     atts = atts ? atts : {}
     
     if is_team || !(atts[:all])
-      return Game.where("(home_team_id = #{id})OR(away_team_id = #{id})")
+      return Game.where("(home_team_id = #{id})OR(away_team_id = #{id})").order("start DESC")
     else
       list = [id]
       for team in teams
         list << team.id
       end
-      return Game.where("(home_team_id IN (?))OR(away_team_id IN (?))", list, list)
+      return Game.where("(home_team_id IN (?))OR(away_team_id IN (?))", list, list).order("start DESC")
     end
 #    (home_games + away_games).order("start DESC")
   end

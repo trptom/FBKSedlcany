@@ -10,13 +10,13 @@
       </tr>
     </thead>
     <tbody>
-      <% for game in @team.games.all %>
+      <% for game in @team.games(:all => true).all %>
         <tr>
           <td><%= I18n.l game.start %></td>
           <td><%= game.league.short_name %></td>
           <td><%= game.home_team.short_name %></td>
           <td><%= game.away_team.short_name %></td>
-          <td><%= game.cfbu_profile_link ? link_to(game.result_str({:periods => true}), game.cfbu_profile_link) : game.result_str({:periods => true}) %></td>
+          <td><%= game.cfbu_profile_link ? link_to(game.result_str({:periods => true}), game.cfbu_profile_link, :target => "_blank") : game.result_str({:periods => true}) %></td>
         </tr>
       <% end %>
     </tbody>

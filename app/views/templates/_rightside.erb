@@ -8,9 +8,15 @@
       <div class="content">
         <% for past_game in Game.past.order("start DESC").limit(RIGHTSIDE_PANEL[:last_games_count]) %>
           <div class="line">
-            <div class="result"><%= link_to past_game.result_str, past_game %></div>
-            <div class="team1"><%= link_to past_game.home_team.short_name, past_game.home_team %></div>
-            <div class="team2"><%= link_to past_game.away_team.short_name, past_game.away_team %></div>
+            <div class="result">
+              <%= past_game.cfbu_profile_link ? link_to(past_game.result_str, past_game.cfbu_profile_link, :target => "_blank") : past_game.result_str %>
+            </div>
+            <div class="team1">
+              <%= past_game.home_team.cfbu_profile_link ? link_to(past_game.home_team.short_name, past_game.home_team.cfbu_profile_link, :target => "_blank") :  past_game.home_team.short_name %>
+            </div>
+            <div class="team2">
+              <%= past_game.away_team.cfbu_profile_link ? link_to(past_game.away_team.short_name, past_game.away_team.cfbu_profile_link, :target => "_blank") :  past_game.away_team.short_name %>
+            </div>
           </div>
         <% end %>
       </div>
@@ -25,9 +31,15 @@
       <div class="content">
         <% for future_game in Game.future.order(:start).limit(RIGHTSIDE_PANEL[:next_games_count]) %>
           <div class="line">
-            <div class="result"><%= link_to future_game.result_str, future_game %></div>
-            <div class="team1"><%= link_to future_game.home_team.short_name, future_game.home_team %></div>
-            <div class="team2"><%= link_to future_game.away_team.short_name, future_game.away_team %></div>
+            <div class="result">
+              <%= future_game.cfbu_profile_link ? link_to(future_game.result_str, future_game.cfbu_profile_link, :target => "_blank") : future_game.result_str %>
+            </div>
+            <div class="team1">
+              <%= future_game.home_team.cfbu_profile_link ? link_to(future_game.home_team.short_name, future_game.home_team.cfbu_profile_link, :target => "_blank") :  future_game.home_team.short_name %>
+            </div>
+            <div class="team2">
+              <%= future_game.away_team.cfbu_profile_link ? link_to(future_game.away_team.short_name, future_game.away_team.cfbu_profile_link, :target => "_blank") :  future_game.away_team.short_name %>
+            </div>
           </div>
         <% end %>
       </div>
