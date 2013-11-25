@@ -1,6 +1,8 @@
 class TeamsController < ApplicationController
   def about
-    # jen template s textem
+    @title_params = {
+      :teamName => TEAM_NAME
+    }
   end
 
   def index_of_teams

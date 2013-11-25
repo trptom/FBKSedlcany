@@ -318,6 +318,8 @@ cs:
         edit: Editace článku
         new: Nový článek
         search: Hledání článku
+      teams:
+        about: O týmu %{teamName}
       users:
         show: Detail uživatele %{username}
 
