@@ -316,6 +316,8 @@ cs:
         edit: Editace článku
         new: Nový článek
         search: Hledání článku
+      users:
+        show: Detail uživatele %{username}
 
   ##############################################################################
   # FORMATTING PART

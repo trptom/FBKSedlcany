@@ -8,6 +8,10 @@
     display: none;
 }
 
+.centered {
+    text-align: center;
+}
+
 body {
     background-image: url('../../../page_backgrounds/1.jpg');
     background-size: 100% auto;
@@ -77,4 +81,9 @@ body {
 
 #page.container > .content > #page-data {
     width: 760px;
+}
+
+#page-data .line > .title {
+    font-weight: bold;
+    display: inline-block;
 }

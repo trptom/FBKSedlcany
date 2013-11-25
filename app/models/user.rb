@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def block(to_date = nil)
+    logger.debug "blocking until: " + to_date
     update_attributes(
       :block_expires_at => to_date,
       :blocked => true
@@ -74,6 +75,7 @@ class User < ActiveRecord::Base
       if ret != ""
         ret +=  atts[:separator] ? atts[:separator] : ", "
       end
+      logger.debug "key: " + r.to_s
       ret += I18n.t(ROLE_MESSAGES[r.to_s])
     end
     return ret

@@ -10,6 +10,10 @@ class UsersController < ApplicationController
     if !@user
       page_not_found
     end
+    
+    @title_params = {
+      :username => @user.username
+    }
   end
 
   def edit
@@ -144,12 +148,10 @@ class UsersController < ApplicationController
 
   def block
     @user = User.find(params[:id])
-    @user.block(DateTime.new(
-        params[:user]["block_expires_at(1i)"].to_i,
-        params[:user]["block_expires_at(2i)"].to_i,
-        params[:user]["block_expires_at(3i)"].to_i,
-        params[:user]["block_expires_at(4i)"].to_i,
-        params[:user]["block_expires_at(5i)"].to_i))
+    
+    params[:user][:block_expires_at_date] = params[:user][:block_expires_at_date] == "" ? "1900-01-01" : params[:user][:block_expires_at_date];
+    params[:user][:block_expires_at_time] = params[:user][:block_expires_at_time] == "" ? "00:00:00" : params[:user][:block_expires_at_time];
+    @user.block(params[:user][:block_expires_at_date] + " " + params[:user][:block_expires_at_time])
 
     redirect_to :back
   end

@@ -14,6 +14,7 @@ gem 'cloudinary'
 
 # graficke komponenty
 gem 'bootstrap-datepicker-rails' #datum
+gem 'bootstrap-timepicker-rails' #cas
 
 #testovaci gemy
 gem 'simplecov', :require => false, :group => :test

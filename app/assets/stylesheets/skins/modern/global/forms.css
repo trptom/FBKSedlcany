@@ -7,10 +7,14 @@
 }
 
 .bordered-form > form {
-    padding-top: 10px;
+    padding-top: 20px;
     margin: 0px;
 }
 
 .bordered-form > form > .form-actions {
     margin-bottom: 0px;
+}
+
+.bordered-form:not(:first-child) {
+    margin-top: 20px;
 }

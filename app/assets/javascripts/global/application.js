@@ -1,8 +1,15 @@
 $(document).ready(function() {
     $('[data-behaviour~=datepicker]').datepicker({
         format: 'yyyy-mm-dd'
-    }).on('changeDate', function(ev){
-        $('[data-behaviour~=datepicker]').datepicker('hide');
+    });
+    
+    $('[data-behaviour~=timepicker]').timepicker({
+        minuteStep: 1,
+        template: 'modal',
+        appendWidgetTo: 'body',
+        showSeconds: true,
+        showMeridian: false,
+        defaultTime: false
     });
 });
 
