@@ -1,55 +1,50 @@
-<div class="well">
-  <h1><%= I18n.t("messages.users.new.title") %></h1>
-  <div class="row">
-    <div class="span8 offset2">
-      <%= form_for @user, :html => { :class => "form-horizontal"} do |f| %>
-        <fieldset class="control-group">
-          <%= f.label :title, I18n.t("messages.base.username"), :class => "control-label" %>
-          <div class="controls">
-            <%= f.text_field :username, :class => "span3" %>
-          </div>
-        </fieldset>
+<div class="bordered">
+  <%= form_for @user, :html => { :class => "form-horizontal"} do |f| %>
+    <fieldset class="control-group">
+      <%= f.label :title, I18n.t("messages.base.username"), :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :username, :class => "span3" %>
+      </div>
+    </fieldset>
 
-        <fieldset class="control-group">
-          <%= f.label :title, I18n.t("messages.base.email"), :class => "control-label" %>
-          <div class="controls">
-            <%= f.text_field :email, :class => "span3" %>
-          </div>
-        </fieldset>
+    <fieldset class="control-group">
+      <%= f.label :title, I18n.t("messages.base.email"), :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :email, :class => "span3" %>
+      </div>
+    </fieldset>
 
-        <fieldset class="control-group">
-          <%= f.label :title, I18n.t("messages.base.password"), :class => "control-label" %>
-          <div class="controls">
-            <%= f.password_field :password, :class => "span3" %>
-          </div>
-        </fieldset>
+    <fieldset class="control-group">
+      <%= f.label :title, I18n.t("messages.base.password"), :class => "control-label" %>
+      <div class="controls">
+        <%= f.password_field :password, :class => "span3" %>
+      </div>
+    </fieldset>
 
-        <fieldset class="control-group">
-          <%= f.label :title, I18n.t("messages.base.password_confirmation"), :class => "control-label" %>
-          <div class="controls">
-            <%= f.password_field :password_confirmation, :class => "span3" %>
-          </div>
-        </fieldset>
+    <fieldset class="control-group">
+      <%= f.label :title, I18n.t("messages.base.password_confirmation"), :class => "control-label" %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation, :class => "span3" %>
+      </div>
+    </fieldset>
 
-        <fieldset class="control-group">
-          <%= f.label :title, I18n.t("messages.base.first_name"), :class => "control-label" %>
-          <div class="controls">
-            <%= f.text_field :first_name, :class => "span3" %>
-          </div>
-        </fieldset>
+    <fieldset class="control-group">
+      <%= f.label :title, I18n.t("messages.base.first_name"), :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :first_name, :class => "span3" %>
+      </div>
+    </fieldset>
 
-        <fieldset class="control-group">
-          <%= f.label :title, I18n.t("messages.base.second_name"), :class => "control-label" %>
-          <div class="controls">
-            <%= f.text_field :second_name, :class => "span3" %>
-          </div>
-        </fieldset>
+    <fieldset class="control-group">
+      <%= f.label :title, I18n.t("messages.base.second_name"), :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :second_name, :class => "span3" %>
+      </div>
+    </fieldset>
 
-        <fieldset class="form-actions">
-          <%= f.submit I18n.t("messages.base.register"), :class => "btn btn-primary" %>
-          <%= f.submit I18n.t("messages.base.form.reset"), :type => "reset", :class => "btn" %>
-        </fieldset>
-      <% end %>
-    </div>
-  </div>
+    <fieldset class="form-actions">
+      <%= f.submit I18n.t("messages.base.register"), :class => "btn btn-primary" %>
+      <%= f.submit I18n.t("messages.base.form.reset"), :type => "reset", :class => "btn" %>
+    </fieldset>
+  <% end %>
 </div>

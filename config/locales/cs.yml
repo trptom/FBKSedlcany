@@ -337,7 +337,11 @@ cs:
         index_of_clubs: Seznam oddílů
         index_of_teams: Seznam týmů
       users:
+        index: Seznam uživatel
         show: Detail uživatele %{username}
+        edit: Editace uživatele %{username}
+        change_password: Změna hesla uživatele %{username}
+        new: Registrace nového uživatele
     wiki:
       sedlcany_open:
         _title: Sedlčany Open
@@ -347,6 +351,7 @@ cs:
         index_2011: Sedlčany Open 2011
         index_2012: Sedlčany Open 2012
         index_2013: Sedlčany Open 2013
+        index_2014: Sedlčany Open 2014
 
   ##############################################################################
   # FORMATTING PART

@@ -18,6 +18,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    
+    @title_params = {
+      :username => @user.username
+    }
   end
 
   def update
@@ -53,6 +57,10 @@ class UsersController < ApplicationController
 
   def change_password
     @user = User.find(params[:id])
+    
+    @title_params = {
+      :username => @user.username
+    }
   end
 
   def update_password
