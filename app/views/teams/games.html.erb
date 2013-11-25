@@ -1,27 +1,24 @@
-<div class="well">
-  <h1><%= I18n.t("messages.base.games_of_" + (@team.is_club ? "club" : "team")) + " " + @team.name %></h1>
-  <div class="row-fluid">
-    <table class="index">
-      <thead>
+<div class="bordered">
+  <table class="index">
+    <thead>
+      <tr>
+        <td><%= I18n.t("messages.base.date") %></td>
+        <td><%= I18n.t("messages.base.competition") %></td>
+        <td><%= I18n.t("messages.base.home_team") %></td>
+        <td><%= I18n.t("messages.base.away_team") %></td>
+        <td><%= I18n.t("messages.base.result") %></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% for game in @team.games.all %>
         <tr>
-          <td><%= I18n.t("messages.base.date") %></td>
-          <td><%= I18n.t("messages.base.competition") %></td>
-          <td><%= I18n.t("messages.base.home_team") %></td>
-          <td><%= I18n.t("messages.base.away_team") %></td>
-          <td><%= I18n.t("messages.base.result") %></td>
+          <td><%= I18n.l game.start %></td>
+          <td><%= game.league.short_name %></td>
+          <td><%= game.home_team.short_name %></td>
+          <td><%= game.away_team.short_name %></td>
+          <td><%= game.cfbu_profile_link ? link_to(game.result_str({:periods => true}), game.cfbu_profile_link) : game.result_str({:periods => true}) %></td>
         </tr>
-      </thead>
-      <tbody>
-        <% for game in @team.games.all %>
-          <tr>
-            <td><%= I18n.l game.start %></td>
-            <td><%= game.league.name %></td>
-            <td><%= game.home_team.name %></td>
-            <td><%= game.away_team.name %></td>
-            <td><%= game.result_str({:periods => true}) %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+      <% end %>
+    </tbody>
+  </table>
 </div>

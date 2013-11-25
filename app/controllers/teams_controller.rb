@@ -171,7 +171,7 @@ class TeamsController < ApplicationController
     
     @title_params = {
       :teamOrClub => I18n.t("messages.base.of_" + (@team.is_club ? "club" : "team")),
-      :teamName => TEAM_NAME
+      :teamName => @team.name
     }
 
     respond_to do |format|
@@ -193,6 +193,11 @@ class TeamsController < ApplicationController
   
   def games
     @team = params[:id] ? Team.find(params[:id]) : Team.where(:name => TEAM_NAME).first
+    
+    @title_params = {
+      :teamOrClub => I18n.t("messages.base.of_" + (@team.is_club ? "club" : "team")),
+      :teamName => @team.name
+    }
     
     respond_to do |format|
       format.html {

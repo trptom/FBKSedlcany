@@ -60,8 +60,6 @@ cs:
       following_games: Nadcházející zápasy
       game: Zápas
       games: Zápasy
-      games_of_club: Zápasy oddílu
-      games_of_team: Zápasy týmu
       go_to_detail: Jít na detail
       go_to_list: Jít na seznam
       group: Skupina
@@ -321,6 +319,7 @@ cs:
       teams:
         about: O týmu %{teamName}
         squad: Soupiska %{teamOrClub} %{teamName}
+        games: Zápasy %{teamOrClub} %{teamName}
         index_of_clubs: Seznam oddílů
         index_of_teams: Seznam týmů
       users:
