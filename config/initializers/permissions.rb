@@ -22,7 +22,7 @@ ROLES = [
 
 ROLE_MESSAGES = Hash.new
 for key in ROLES
-  ROLE_MESSAGES[key] = "messages.roles." + key.to_s
+  ROLE_MESSAGES[key.to_s] = "messages.roles." + key.to_s
 end
 
 DEFAULT_ROLE = [
