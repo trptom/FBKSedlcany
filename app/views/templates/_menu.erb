@@ -12,10 +12,10 @@
           <div class="btn-toolbar">
             <% if current_user %>
               <div class="btn-group">
-                <a class="btn btn-warning" href="<%= current_user_url %>">
+                <%= link_to current_user, :class => "btn btn-warning" do %>
                   <span class="icon-user"></span>
                   <%= current_user.username %>
-                </a>
+                <% end %>
                 <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
                   <span class="caret"></span>
                 </div>
