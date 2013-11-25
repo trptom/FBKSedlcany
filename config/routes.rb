@@ -32,6 +32,7 @@ FBKSedlcany::Application.routes.draw do
       get :newest
       get :best
       get :most_commented
+      get :search
     end
 
     member do

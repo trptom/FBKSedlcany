@@ -29,6 +29,7 @@ cs:
       comment: Komentář
       comments_count: Počet komentářů
       competition: Soutěž
+      contains_text: Obsahuje text
       content: Obsah
       create_article: Vytvořit článek
       create_club: Vytvořit oddíl
@@ -157,6 +158,7 @@ cs:
       teams: Týmy
       teams_count: Počet týmů
       title: Nadpis
+      to: do
       today_celebrates: Dnes slaví
       unblock: Odblokovat
       update_club: Upravit oddíl
@@ -171,6 +173,7 @@ cs:
       form:
         submit: Odeslat
         reset: Smazat změny
+        search: Vyhledat
     articles:
       new:
         create: Vytvořit článek

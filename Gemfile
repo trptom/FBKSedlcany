@@ -12,6 +12,9 @@ gem 'sorcery'
 gem 'carrierwave'
 gem 'cloudinary'
 
+# graficke komponenty
+gem 'bootstrap-datepicker-rails' #datum
+
 #testovaci gemy
 gem 'simplecov', :require => false, :group => :test
 group :test do

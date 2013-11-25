@@ -15,4 +15,5 @@
 //= require ckeditor/init
 //= require_tree ./bootstrap
 //= require_tree ./ckeditor
+//= require bootstrap-datepicker
 //= require_tree ./global

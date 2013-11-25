@@ -28,6 +28,25 @@ class Article < ActiveRecord::Base
         .order("avg_marks DESC, created_at DESC")
         .limit(limit)
   }
+  
+  scope :contains, ->(phrase) {
+    phrase = phrase.downcase
+    where("(lower(title) LIKE ?)OR(lower(title) LIKE ?)", "%#{phrase}%", "%#{phrase}%")
+  }
+  
+  scope :published_at, ->(min = nil, max = nil) {
+    if min && max
+      return where('(created_at >= ?)AND(created_at <= ?)', min, max)
+    else
+      if min
+        return where('(created_at >= ?)', min)
+      end
+      if max
+        return where('(created_at <= ?)', max)
+      end
+    end
+    return all
+  }
 
   def get_mark_points
     sum = 0

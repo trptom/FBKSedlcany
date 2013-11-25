@@ -1,0 +1,16 @@
+.bordered-form {
+    border: solid #000000 1px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    padding: 0px;
+    overflow: hidden;
+}
+
+.bordered-form > form {
+    padding-top: 10px;
+    margin: 0px;
+}
+
+.bordered-form > form > .form-actions {
+    margin-bottom: 0px;
+}

@@ -1,0 +1,27 @@
+<div class="search-form bordered-form">
+  <form action="/articles/search" class="form-horizontal">
+    <%= hidden_field :search, true %>
+    <fieldset class="control-group">
+      <%= label_tag :contains, I18n.t("messages.base.contains_text"), :class => "control-label" %>
+      <div class="controls">
+        <%= text_field_tag :contains, params[:contains] %>
+      </div>
+    </fieldset>
+    <fieldset class="control-group">
+      <%= label_tag :start, I18n.t("messages.base.date"), :class => "control-label" %>
+      <div class="input-daterange" id="datepicker" data-behaviour='datepicker'>
+        <div class="controls">
+          <%= text_field_tag :start, params[:start], :class => "input-small" %>
+          <span class="add-on"><%= I18n.t "messages.base.to" %></span>
+          <%= text_field_tag :end, params[:end], :class => "input-small" %>
+        </div>
+      </div>
+    </fieldset>
+    
+    <fieldset class="form-actions">
+      <%= submit_tag I18n.t("messages.base.form.search"), :class => "btn btn-primary" %>
+    </fieldset>
+  </form>
+</div>
+
+<%= render "list" %>

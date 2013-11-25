@@ -1,3 +1,10 @@
+$(document).ready(function() {
+    $('[data-behaviour~=datepicker]').datepicker({
+        format: 'yyyy-mm-dd'
+    }).on('changeDate', function(ev){
+        $('[data-behaviour~=datepicker]').datepicker('hide');
+    });
+});
 
 /**
  * Prida zadany text do prave aktivni (focused) textarey. Pokud neni zadna area
