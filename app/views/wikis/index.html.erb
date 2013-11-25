@@ -1,0 +1,46 @@
+<div class="bordered">
+  <table class="index">
+    <thead>
+      <tr>
+        <td><%= I18n.t("messages.base.section") %></td>
+        <td><%= I18n.t("messages.base.name") %></td>
+        <td><%= I18n.t("messages.base.show_in_menu") %></td>
+        <td class="btn-group">&nbsp;</td>
+      </tr>
+    </thead>
+    <tbody>
+      <% for wiki in @wikis %>
+        <tr>
+          <td><%= wiki.section %></td>
+          <td><%= wiki.name %></td>
+          <td><%= I18n.t "messages.base." + (wiki.show_in_menu ? "_yes" : "_no") %></td>
+          <td class="btn-group">
+            <span class="btn" data-toggle="dropdown">
+              <%= I18n.t("messages.base.actions") %>
+            </span>
+            <span class="btn dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </span>
+            <ul class="dropdown-menu">
+              <li>
+                <%= link_to I18n.t("messages.base.show"), wiki %>
+              </li>
+              <li>
+                <%= link_to I18n.t("messages.base.edit"), edit_wiki_path(wiki) %>
+              </li>
+              <li>
+                <%= link_to I18n.t("messages.base.delete"), wiki,
+                      :confirm => I18n.t("messages.wikis.index.delete_confirmation"),
+                      :method => :delete %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+  <fieldset class="form-actions">
+    <%= link_to I18n.t("messages.base.new_wiki_page"), new_wiki_url, :class => "btn btn-primary" %>
+  </fieldset>
+</div>

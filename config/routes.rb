@@ -4,6 +4,7 @@ FBKSedlcany::Application.routes.draw do
   get "oauths/callback"
   match "oauth/callback" => "oauths#callback"
   match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+  match "wiki/:section/:name" => "wikis#show"
 
   resources :users do
     collection do
@@ -82,6 +83,10 @@ FBKSedlcany::Application.routes.draw do
   end
 
   resources :images do
+    
+  end
+  
+  resources :wikis do
     
   end
 

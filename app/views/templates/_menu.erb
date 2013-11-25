@@ -74,6 +74,25 @@
                 </li>
               </ul>
             </div>
+            
+            <% menu_structure = Wiki.get_menu_structure %>
+            <% menu_structure.each_key do |menu_section_key| %>
+              <div class="btn-group">
+                <div class="btn btn-warning" data-toggle="dropdown">
+                  <%= I18n.t("messages.wiki."+menu_section_key.to_s+"._title") %>
+                </div>
+                <div class="btn dropdown-toggle btn-warning" data-toggle="dropdown">
+                  <span class="caret"></span>
+                </div>
+                <ul class="dropdown-menu">
+                  <% for item in menu_structure[menu_section_key] %>
+                    <li>
+                      <%= link_to I18n.t("messages.wiki."+menu_section_key.to_s+"."+item.name), "/wiki/"+menu_section_key.to_s+"/"+item.name %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
 
             <% menu = get_admin_menu_structure %>
             <% if menu %>

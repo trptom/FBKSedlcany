@@ -26,6 +26,7 @@ module ApplicationHelper
         :halls => [],
         :users => [],
         :images => [],
+        :wikis => [],
       },
       :messages => {
         :articles => I18n.t("messages.base.articles"),
@@ -36,6 +37,7 @@ module ApplicationHelper
         :halls => I18n.t("messages.base.halls"),
         :users => I18n.t("messages.base.users"),
         :images => I18n.t("messages.base.images"),
+        :wikis => I18n.t("messages.base.wiki_pages"),
       }
     }
 
@@ -99,6 +101,11 @@ module ApplicationHelper
     # OBRAZKY
     if images_filter("index", { :user => current_user })
       menu[:structure][:images] << link_to(I18n.t("messages.base.list_images"), images_path)
+    end
+    
+    # WIKINY
+    if wikis_filter("index", { :user => current_user })
+      menu[:structure][:wikis] << link_to(I18n.t("messages.base.list_of_wiki_pages"), wikis_path)
     end
 
     # ... a tady to vsechno spocitam, jestli mam co vratit ...

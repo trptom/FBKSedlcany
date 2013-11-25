@@ -39,6 +39,7 @@ cs:
       create_player: Vytvořit hráče
       create_team: Vytvořit tým
       create_team_or_club: Vytvořit tým/oddíl
+      create_wiki_page: Vytvořit Wiki stránku
       date: Datum
       date_of_birth: Datum narození
       delete: Smazat
@@ -90,6 +91,7 @@ cs:
       list_of_players: Seznam hráčů
       list_of_teams: Seznam týmů
       list_of_users: Seznam uživatel
+      list_of_wiki_pages: Seznam Wiki stránek
       logical_folder: Logická složka
       login: Přihlásit
       login_via_facebook: Přihlásit přes Facebook účet.
@@ -107,7 +109,9 @@ cs:
       new_password: Nové heslo
       new_team: Nový tým
       new_team_or_club: Nový tým/oddíl
+      new_wiki_page: Nová stránka Wiki
       nick_name: Přezdívka
+      _no: Ne
       no_club: Žádný oddíl
       no_images: Žádné obrázky
       no_marks: Žádné známky
@@ -143,10 +147,12 @@ cs:
       search: Hledat
       season: Sezóna
       second_name: Příjmení
+      section: Sekce
       short_name: Krátký název
       shortcut: Zkratka
       show: Zobrazit
       show_article: Zobrazit článek
+      show_in_menu: Zobrazit v menu
       source_file: Zdrojový soubor
       sponsors: Sponzoři
       squad: Soupiska
@@ -166,10 +172,14 @@ cs:
       update_image: Upravit obrázek
       update_team: Upravit tým
       upload_image: Nahrát obrázek
+      update_wiki_page: Upravit Wiki stránku
       username: Uživatelské jméno
       users: Uživatelé
       warning: Varování!
       weight: Váha
+      wiki_page_deleted: Wiki stránka smazána
+      wiki_pages: Wiki stránky
+      _yes: Ano
       form:
         submit: Odeslat
         reset: Smazat změny
@@ -248,7 +258,7 @@ cs:
         update: Upravit soutěž
     games:
       index:
-        delete_confirmation: Opravdu si přejete smazat ento zápas?
+        delete_confirmation: Opravdu si přejete smazat tento zápas?
     halls:
       index:
         new_competition: Nová hala
@@ -266,6 +276,9 @@ cs:
         failed: Přihlašování selhalo.
       destroy:
         succesfull: Uživatel byl úspěšne odhlášen.
+    wikis:
+      index:
+        delete_confirmation: Opravdu si přejete smazat tuto wiki stránku?
     oauths:
       callback:
         logged_in: Přihlašování pomocí %{provider} účtu proběhlo úspěšně.
@@ -302,6 +315,7 @@ cs:
       games_editor: Editor zápasů
       teams_editor: Editor týmů
       images_uploader: Správce obrázků
+      wikis_editor: Editor Wiki stránek
       commenter: Komentátor
       marker: Může hodnotit
     activation_states:
@@ -324,6 +338,15 @@ cs:
         index_of_teams: Seznam týmů
       users:
         show: Detail uživatele %{username}
+    wiki:
+      sedlcany_open:
+        _title: Sedlčany Open
+        index_2008: Sedlčany Open 2008
+        index_2009: Sedlčany Open 2009
+        index_2010: Sedlčany Open 2010
+        index_2011: Sedlčany Open 2011
+        index_2012: Sedlčany Open 2012
+        index_2013: Sedlčany Open 2013
 
   ##############################################################################
   # FORMATTING PART

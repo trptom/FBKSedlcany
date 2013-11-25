@@ -15,6 +15,7 @@ ROLES = [
   :games_editor,
   :teams_editor, # vztahuje se na oddily i tymy
   :images_uploader,
+  :wikis_editor, # muze editovat veskere wiki stranky
 
   :commenter, # muze komentovat
   :marker # muze znamkovat
