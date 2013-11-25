@@ -315,6 +315,7 @@ cs:
         show: Detail článku
         edit: Editace článku
         new: Nový článek
+        search: Hledání článku
 
   ##############################################################################
   # FORMATTING PART
