@@ -106,6 +106,7 @@ cs:
       new_club: Nový oddíl
       new_game: Nový zápas
       new_hall: Nová hala
+      new_password: Nové heslo
       new_team: Nový tým
       new_team_or_club: Nový tým/oddíl
       nick_name: Přezdívka
@@ -117,6 +118,7 @@ cs:
       not_blocked: Aktivní
       not_presented: Neuvedeno
       note: Poznámka
+      old_password: Staré heslo
       organizer: Pořadatel
       other_actions: Další akce
       password: Heslo
