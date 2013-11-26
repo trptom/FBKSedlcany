@@ -133,9 +133,16 @@ class ArticlesController < ApplicationController
   
   def search
     if (params[:search])
-      @articles = Article.published_at(params[:start] != "" ? params[:start] : nil, params[:end] != "" ? params[:end] : nil)
+      @articles = Article
       
-      if (params[:contains] != "")
+      if (params[:start] && params[:start] != "")
+        @articles = @articles.published_after(params[:start])
+      end
+      if (params[:end] && params[:end] != "")
+        @articles = @articles.published_before(params[:end])
+      end
+      
+      if (params[:contains] && params[:contains] != "")
         @articles = @articles.contains_text(params[:contains])
         #@articles = @articles.where("(lower(content) = lower(?)) OR (lower(title) = lower(?))", params[:contains], params[:contains])
       end

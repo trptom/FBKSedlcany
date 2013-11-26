@@ -34,24 +34,16 @@ class Article < ActiveRecord::Base
     where("(lower(title) LIKE ?)OR(lower(title) LIKE ?)", "%#{phrase}%", "%#{phrase}%")
   }
   
-  scope :published_at, ->(min = nil, max = nil) {
-    condition = "(0 = 0)"
-    ary = []
-    if min && max
-      condition = '(created_at >= ?)AND(created_at <= ?)'
-      ary << min
-      ary << max
-    else
-      if min
-        condition = '(created_at >= ?)'
-        ary << min
-      end
-      if max
-        condition = '(created_at <= ?)'
-        ary << max
-      end
-    end
-    where(condition, ary)
+  scope :published_between, ->(min_date, max_date) {
+    published_before(max_date).published_after(min_date)
+  }
+  
+  scope :published_before, ->(max_date) {
+    where('(created_at <= ?)', max_date)
+  }
+  
+  scope :published_after, ->(min_date) {
+    where('(created_at >= ?)', min_date)
   }
 
   def get_mark_points
