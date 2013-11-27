@@ -56,7 +56,9 @@ cs:
       edit_of_game: Editace zápasu
       edit_of_team: Editace týmu
       email: E-mail
+      end_of_event: Konec události
       error: Chyba!
+      events: Události
       first_name: Křestní jméno
       following_games: Nadcházející zápasy
       game: Zápas
@@ -86,6 +88,7 @@ cs:
       list_images: Procházet obrázky
       list_of_clubs: Seznam oddílů
       list_of_competitions: Seznam soutěži
+      list_of_events: Seznam událostí
       list_of_games: Seznam zápasů
       list_of_halls: Seznam hal
       list_of_players: Seznam hráčů
@@ -156,6 +159,7 @@ cs:
       source_file: Zdrojový soubor
       sponsors: Sponzoři
       squad: Soupiska
+      start_of_event: Začátek události
       status: Stav
       stick_holding: Držení hokejky
       team: Tým
@@ -316,6 +320,7 @@ cs:
       teams_editor: Editor týmů
       images_uploader: Správce obrázků
       wikis_editor: Editor Wiki stránek
+      events_editor: Editor událostí
       commenter: Komentátor
       marker: Může hodnotit
     activation_states:

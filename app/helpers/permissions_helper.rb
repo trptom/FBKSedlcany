@@ -111,8 +111,12 @@ module PermissionsHelper
       @res = plugins_filter(atts[:action], {
         :user => atts[:user],
       })
-    when "wiki", "wikis"
+    when "wikis"
       @res = wikis_filter(atts[:action], {
+        :user => atts[:user],
+      })
+    when "events"
+      @res = events_filter(atts[:action], {
         :user => atts[:user],
       })
     else
@@ -327,8 +331,6 @@ module PermissionsHelper
         :roles => [ :root, :admin, :images_editor ],
         :user => atts[:user]
       })
-    when "squad"
-      return true
     else
       return false
     end
@@ -341,6 +343,18 @@ module PermissionsHelper
     when "edit", "update", "new", "create", "index", "destroy"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :wikis_editor ],
+        :user => atts[:user]
+      })
+    else
+      return false
+    end
+  end
+  
+  def events_filter(action, atts)
+    case action
+    when "edit", "update", "new", "create", "index", "destroy"
+      return has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :events_editor ],
         :user => atts[:user]
       })
     else
