@@ -89,6 +89,10 @@ FBKSedlcany::Application.routes.draw do
   resources :wikis do
     
   end
+  
+  resources :events do
+    
+  end
 
   namespace :home do
     get :error

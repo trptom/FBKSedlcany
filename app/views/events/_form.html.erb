@@ -1,0 +1,66 @@
+<%= form_for(@event) do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br />
+    <%= f.datetime_select :start %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br />
+    <%= f.datetime_select :end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<div class="bordered">
+  <%= form_for @event, :html => { :class => "form-horizontal"} do |f| %>
+    <fieldset class="control-group">
+      <%= f.label :title, I18n.t("messages.base.name"), :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :name, :class => "span3" %>
+      </div>
+    </fieldset>
+  
+    <fieldset class="control-group">
+      <%= f.label :name, I18n.t("messages.base.description"), :class => "control-label" %>
+      <div class="controls">
+        <%= f.text_field :description, :class => "span3" %>
+      </div>
+    </fieldset>
+
+    <fieldset class="control-group">
+      <%= label_tag :start_date, I18n.t("messages.base.start_of_event"), :class => "control-label" %>
+      <div class="controls input-append date" data-behaviour="datepicker">
+        <%= f.text_field :start_date, :value => "", :class => "span2" %><span class="add-on"><i class="icon-th"></i></span>
+      </div>
+      <div class='input-append bootstrap-timepicker'>
+        <%= f.text_field :start_time, :class => "input-small", :value => "", "data-behaviour" => "timepicker" %>
+        <span class='add-on'><i class='icon-time'></i></span>
+      </div> 
+    </fieldset>
+  
+    <fieldset class="control-group">
+      <%= label_tag :end_date, I18n.t("messages.base.end_of_event"), :class => "control-label" %>
+      <div class="controls input-append date" data-behaviour="datepicker">
+        <%= f.text_field :end_date, :value => "", :class => "span2" %><span class="add-on"><i class="icon-th"></i></span>
+      </div>
+      <div class='input-append bootstrap-timepicker'>
+        <%= f.text_field :end_time, :class => "input-small", :value => "", "data-behaviour" => "timepicker" %>
+        <span class='add-on'><i class='icon-time'></i></span>
+      </div> 
+    </fieldset>
+
+    <fieldset class="form-actions">
+      <%= f.submit @form_submit, :class => "btn btn-primary" %>
+    </fieldset>
+  <% end %>
+</div>
