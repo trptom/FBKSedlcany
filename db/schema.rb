@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131127083718) do
+ActiveRecord::Schema.define(:version => 20131127225801) do
 
   create_table "article_categories", :force => true do |t|
     t.string   "name",        :null => false
@@ -189,7 +189,7 @@ ActiveRecord::Schema.define(:version => 20131127083718) do
     t.datetime "block_expires_at"
     t.string   "activation_state"
     t.string   "activation_token"
-    t.datetime "activation_expires_at"
+    t.datetime "activation_token_expires_at"
     t.string   "reset_password_token"
     t.datetime "reset_password_token_expires_at"
     t.datetime "reset_password_email_sent_at"
