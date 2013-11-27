@@ -201,6 +201,8 @@ module PermissionsHelper
         :user => atts[:user]
       }) && user && user.id != current_user.id && user.is_blocked
     when "activate"
+      return true
+    when "activate_manually"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :users_editor ],
         :user => atts[:user]
