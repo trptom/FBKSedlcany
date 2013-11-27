@@ -68,8 +68,8 @@ GAME_SEASON_MAX_BACK = 10 # o kolik let muzu jit pri vytvareni/editaci zapasu ma
 # defaultni obrazky
 DEFAULT_IMAGES = {
   :article_image => {
-    :large => "default/no_photo.jpg",
-    :small => "default/no_photo.jpg"
+    :large => "default/default_article_image.jpg",
+    :small => "default/default_article_image_small.jpg"
   },
   :player_icon => "default/no_photo.jpg"
 }
