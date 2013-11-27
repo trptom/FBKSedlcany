@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  before_filter :redirect_if_production
+#  before_filter :redirect_if_production
 
 #  #kdyz potrebuju resetovat prihlaseneho uzivatele
 #  def aaa
