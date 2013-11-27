@@ -300,7 +300,7 @@ cs:
         login: Přihlásit se
     mailers:
       user_mailer:
-        welcome: Vítejte na stránkách <%= TEAM_NAME %>
+        welcome: Vítejte na stránkách %{teamName}
         account_activated: Účet aktivován
         password_updated: Vaše heslo bylo resetováno
     roles:

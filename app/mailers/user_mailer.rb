@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
     @url = "http://fbksedlcany.herokuapp.com"
     @url_activation  = "http://fbksedlcany.herokuapp.com/users/#{user.activation_token}/activate?src=email"
     mail(:to => user.email,
-         :subject => I18n.t("messages.mailers.user_mailer.welcome"))
+         :subject => I18n.t("messages.mailers.user_mailer.welcome", :teamName => TEAM_NAME))
   end
 
   def activation_success_email(user)
