@@ -1,7 +1,7 @@
 # coding:utf-8
 
 class UserMailer < ActionMailer::Base
-  default from: "info@kucharka.com"
+  default from: "no-reply@fbksedlcany.com"
 
   def activation_needed_email(user)
     @user = user
