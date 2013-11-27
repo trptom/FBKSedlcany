@@ -109,7 +109,7 @@ FBKSedlcany::Application.routes.draw do
   match 'current_user' => 'users#show', :as => :current_user
   match 'home' => 'home#index', :as => :current_user
 
-  root :to => 'articles#newest'
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
