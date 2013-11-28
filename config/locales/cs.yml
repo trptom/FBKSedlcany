@@ -177,6 +177,7 @@ cs:
       update_team: Upravit tým
       upload_image: Nahrát obrázek
       update_wiki_page: Upravit Wiki stránku
+      user_activated: Uživatel byl úspěšně aktivován!
       username: Uživatelské jméno
       users: Uživatelé
       warning: Varování!
@@ -304,7 +305,7 @@ cs:
         login: Přihlásit se
     mailers:
       user_mailer:
-        welcome: Vítejte na stránkách <%= TEAM_NAME %>
+        welcome: Vítejte na stránkách %{teamName}
         account_activated: Účet aktivován
         password_updated: Vaše heslo bylo resetováno
     roles:

@@ -43,7 +43,7 @@
                 </li>
                 <% if user.is_blocked %>
                   <li>
-                    <%= link_to I18n.t("messages.base.activate"), "/users/#{user.id}/activate" %>
+                    <%= link_to I18n.t("messages.base.activate"), "/users/#{user.id}/activate_manually" %>
                   </li>
                 <% else %>
                   <li>

@@ -172,6 +172,17 @@ class UsersController < ApplicationController
   end
 
   def activate
+    if (@user = User.load_from_activation_token(params[:id]))
+      @user.activate!
+      UserMailer.activation_success_email(@user).deliver
+      # presmeruju na seznam uzivatelu, pokud neni zdrojem aktivace email
+      redirect_to "/home", notice: I18n.t("messages.base.user_activated")
+    else
+      not_authenticated
+    end
+  end
+  
+  def activate_manually
     @user = User.find(params[:id])
     @user.activate!
 
