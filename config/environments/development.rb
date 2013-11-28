@@ -34,4 +34,6 @@ FBKSedlcany::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  config.logger = Logger.new("#{Rails.root}/log/#{ENV['RAILS_ENV']}.log", 50, 1048576)
 end
