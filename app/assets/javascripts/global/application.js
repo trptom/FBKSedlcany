@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // defaultni chovani pro datepiskery a timepickery
     $('[data-behaviour~=datepicker]').datepicker({
         format: 'yyyy-mm-dd'
     });
@@ -10,6 +11,11 @@ $(document).ready(function() {
         showSeconds: true,
         showMeridian: false,
         defaultTime: false
+    });
+    
+    // defaultni chovani divu s linkem
+    $('div[data-link]').click(function(e) {
+        location.href = $(this).attr("data-link");
     });
 });
 

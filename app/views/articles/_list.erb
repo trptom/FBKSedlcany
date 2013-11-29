@@ -1,6 +1,6 @@
 <% if @articles %>
   <% for article in @articles %>
-    <div class="article">
+    <div class="article" data-link="<%= article_url(article) %>">
       <%= image_tag article.get_image_or_default_url(:small), :alt => I18n.t("messages.base.image") %>
       <div class="title">
           <%= article.title %>
@@ -10,10 +10,9 @@
         <%#= TODO doladit tuhle funkci, aby neusekavala text uvnitr tagu a pak aktivovat article.get_annotation %>
       </div>
       <div class="footer">
-        <%= I18n.t("messages.base.author") %>: <%= link_to article.user.username, article.user %> |
+        <%= I18n.t("messages.base.author") %>: <%= article.user.username %> |
         <%= I18n.t("messages.base.published") %>: <%= I18n.l article.created_at %> |
-        <%= I18n.t("messages.base.comments_count") %>: <%= article.comments.count %> |
-        <%= link_to I18n.t("messages.articles.list.show_article"), article %>
+        <%= I18n.t("messages.base.comments_count") %>: <%= article.comments.count %>
       </div>
     </div>
   <% end %>

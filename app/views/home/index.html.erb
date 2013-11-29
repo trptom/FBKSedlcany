@@ -45,7 +45,7 @@
 <% if @top_articles.count != @other_articles.count %>
 <div class="other-articles">
   <% for id in TOP_ARTICLES_LIMIT..@other_articles.count-1 %>
-  <div class="article article-<%= id %>">
+  <div class="article article-<%= id %>" data-link="<%= article_url(@other_articles[id]) %>">
     <%= image_tag @other_articles[id].get_image_or_default_url(:small), :class => "image", :alt => I18n.t("messages.base.image") %>
     <div class="title"><%= @other_articles[id].title %></div>
     <div class="content"><%= @other_articles[id].title %></div>
