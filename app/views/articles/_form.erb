@@ -8,6 +8,14 @@
     </fieldset>
   
     <fieldset class="control-group">
+      <%= f.label :image, I18n.t("messages.base.image"), :class => "control-label" %>
+      <div class="controls">
+        <%= f.hidden_field :image_cache %>
+        <%= f.file_field :image %>
+      </div>
+    </fieldset>
+  
+    <fieldset class="control-group">
       <%= f.label :annotation, I18n.t("messages.base.annotation"), :class => "control-label" %>
       <div class="controls">
         <%= f.text_area :annotation, :rows => 3, :class => "" %>

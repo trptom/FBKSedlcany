@@ -4,7 +4,17 @@ class Article < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :marks, dependent: :destroy
   
-  attr_accessible :annotation, :content, :title, :comments, :user, :atricle_categories, :markings, :image
+  attr_accessible(
+    :title,
+    :annotation,
+    :content,
+    :comments,
+    :user,
+    :atricle_categories,
+    :markings,
+    :image,
+    :image_cache
+  )
 
   mount_uploader :image, ArticleImageUploader
   
