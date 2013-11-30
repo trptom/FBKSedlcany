@@ -59,9 +59,10 @@ function createAdderPlugin(options) {
         linkURL: "/[#v#]",
 
         success: function( adder , ui , response ) {
-            var items = response[adder.loadItemIndex]
+            var items = response[adder.loadItemIndex];
             for (var a=0; a<items.length; a++) {
                 if (items[a].value) {
+                    items[a].value = items[a].value.replace(/"/g, "[quot]");
                     ui.add(items[a].value, items[a].label, items[a].title);
                 } else {
                     ui.startGroup(items[a].label);
@@ -73,10 +74,16 @@ function createAdderPlugin(options) {
         },
         onClick: function( adder , editor , value ) {
             if (value != "") {
-                value = value.split("|");
+                var splittedValue = value.split("|");
                 editor.focus();
                 editor.fire( 'saveSnapshot' );
-                editor.insertHtml("<a href=\"" + adder.linkURL.replace("[#v#]", value[0]) + "\">" + value[1] + "</a>");
+                switch (splittedValue.length) {
+                    case 2:
+                        editor.insertHtml("<a href=\"" + adder.linkURL.replace("[#v#]", splittedValue[0]) + "\">" + splittedValue[1].replace(/\[quot\]/g, "\"") + "</a>");
+                        break;
+                    default: 
+                        editor.insertHtml(value);
+                }
                 editor.fire( 'saveSnapshot' );
             }
         },
@@ -106,7 +113,7 @@ CKEDITOR_ADDTEAM_PLUGIN = createAdderPlugin({
     title: "Přidat tým",
     voiceLabel: "Přidat tým",
     dataURL: "/plugins/ckeditor_addteam",
-    linkURL: "/teams/[#v#]"
+    linkURL: "[#v#]" // dostavam celou url
 });
 
 CKEDITOR.plugins.add(CKEDITOR_ADDPLAYER_PLUGIN.name, CKEDITOR_ADDPLAYER_PLUGIN);

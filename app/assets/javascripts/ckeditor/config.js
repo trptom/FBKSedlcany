@@ -50,7 +50,7 @@ CKEDITOR.editorConfig = function( config )
         { name: 'tools', items : [
                 'Maximize',
                 '-',
-                'About' ] },
+                'About' ] }
     ];
 };
 //

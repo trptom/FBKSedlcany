@@ -45,8 +45,9 @@ class PluginsController < ApplicationController
       :label => I18n.t("messages.base.teams")
     }
     for team in @list
+      link = team.cfbu_profile_link
       @items << {
-        :value => team.id.to_s + "|" + team.name,
+        :value => (link ? (team.id.to_s + "|") : "") + team.name,
         :label => team.short_name,
         :title => team.name
       }
