@@ -199,18 +199,15 @@ class TeamsController < ApplicationController
       :teamName => @team.name
     }
     
+    @games = @team.games(:all => true).order(:start, :round).all
+    
     respond_to do |format|
       format.html {
       }
       format.json {
-        games = []
-        for game in @team.games.all
-          games << game
-        end
-
         render json: {
           :team => @team,
-          :players => players
+          :games => @games
         }
       }
     end

@@ -10,7 +10,7 @@
       </tr>
     </thead>
     <tbody>
-      <% for game in @team.games(:all => true).all %>
+      <% for game in @games %>
         <tr>
           <td><%= I18n.l game.start %></td>
           <td><%= game.league.short_name %></td>
