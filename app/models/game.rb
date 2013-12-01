@@ -21,20 +21,20 @@ class Game < ActiveRecord::Base
     atts[:periods] = atts[:periods] ? atts[:periods] : false
 
     ret = ""
-    ret += score && score[:total] && score[:total][:home] && score[:total][:away] != "" ? score[:total][:home].to_s : "-"
+    ret += score && score["total"] && score["total"]["home"] && score["total"]["away"] != "" ? score["total"]["home"].to_s : "-"
     ret += ":"
-    ret += score && score[:total] && score[:total][:away] && score[:total][:away] != "" ? score[:total][:away].to_s : "-"
+    ret += score && score["total"] && score["total"]["away"] && score["total"]["away"] != "" ? score["total"]["away"].to_s : "-"
     
-    if (score && score[:note])
-      ret += score[:note]
+    if (score && score["note"])
+      ret += score["note"]
     end
 
     if (atts[:periods])
       ret += " ("
       for a in 0..2
-        ret += score && score[:periods] && score[:periods][:home] && score[:periods][:home][a] && score[:periods][:home][a] != "" ? score[:periods][:home][a].to_s : "-"
+        ret += score && score["periods"] && score["periods"]["home"] && score["periods"]["home"][a] && score["periods"]["home"][a] != "" ? score["periods"]["home"][a].to_s : "-"
         ret += ":"
-        ret += score && score[:periods] && score[:periods][:away] && score[:periods][:away][a] && score[:periods][:away][a] != "" ? score[:periods][:away][a].to_s : "-"
+        ret += score && score["periods"] && score["periods"]["away"] && score["periods"]["away"][a] && score["periods"]["away"][a] != "" ? score["periods"]["away"][a].to_s : "-"
         if a < 2
           ret += ","
         end
