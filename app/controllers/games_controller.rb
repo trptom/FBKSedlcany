@@ -71,15 +71,15 @@ class GamesController < ApplicationController
     @game.update_attributes(params[:game]);
     
     @game.score = {
-      :total => {
-        :home => params[:game][:score][:total][:home],
-        :away => params[:game][:score][:total][:away]
+      "total" => {
+        "home" => params[:game][:score][:total][:home],
+        "away" => params[:game][:score][:total][:away]
       },
-      :periods => {
-        :home => params[:game][:score][:periods][:home],
-        :away => params[:game][:score][:periods][:away]
+      "periods" => {
+        "home" => params[:game][:score][:periods][:home],
+        "away" => params[:game][:score][:periods][:away]
       },
-      :note => params[:game][:score][:note]
+      "note" => params[:game][:score][:note]
     }
     
     @game.editor = current_user
