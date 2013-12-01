@@ -68,10 +68,8 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @m1 = params[:game][:score].to_S
     @game.update_attributes(params[:game]);
     @game.editor = current_user
-    @m2 = @game.score.to_s
     
     @res = @game.save
 
