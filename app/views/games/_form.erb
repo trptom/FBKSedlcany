@@ -61,7 +61,7 @@
           <%= f.label "score[total][home]", I18n.t("messages.base.score"), :class => "control-label" %>
           <div class="controls score">
             <div>
-              <%= text_field_tag "game[score][total][home]", (@game.score && @game.score[:total] ? @game.score[:total][:home] : nil), :id => "game_score_total_home" %> (
+              <%= text_field_tag "game[score][total][home]", (@game.score && @game.score["total"] ? @game.score["total"]["home"] : nil), :id => "game_score_total_home" %> (
               <%= text_field_tag "game[score][periods][home][]", (@game.score && @game.score[:periods] && @game.score[:periods][:home] ? @game.score[:periods][:home][0] : nil), :id => "game_score_periods_1_home" %>,
               <%= text_field_tag "game[score][periods][home][]", (@game.score && @game.score[:periods] && @game.score[:periods][:home] ? @game.score[:periods][:home][1] : nil), :id => "game_score_periods_2_home" %>,
               <%= text_field_tag "game[score][periods][home][]", (@game.score && @game.score[:periods] && @game.score[:periods][:home] ? @game.score[:periods][:home][2] : nil), :id => "game_score_periods_3_home" %>)
