@@ -12,7 +12,8 @@
       <div class="footer">
         <%= I18n.t("messages.base.author") %>: <%= article.user.username %> |
         <%= I18n.t("messages.base.published") %>: <%= I18n.l article.created_at %> |
-        <%= I18n.t("messages.base.comments_count") %>: <%= article.comments.count %>
+        <%= I18n.t("messages.base.comments_count") %>: <%= article.comments.count %> |
+        <%= I18n.t("messages.base.rating") %>: <%= article.get_average_mark_str %>
       </div>
     </div>
   <% end %>
