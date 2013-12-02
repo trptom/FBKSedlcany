@@ -7,7 +7,7 @@
       </div>
       <div class="content">
         <% for past_game in Game.past.order("start DESC").limit(RIGHTSIDE_PANEL[:last_games_count]) %>
-          <div class="line">
+          <div class="line" title="<%= I18n.l past_game.start %>">
             <div class="result">
               <%= past_game.cfbu_profile_link ? link_to(past_game.result_str, past_game.cfbu_profile_link, :target => "_blank") : past_game.result_str %>
             </div>
@@ -30,7 +30,7 @@
       </div>
       <div class="content">
         <% for future_game in Game.future.order(:start).limit(RIGHTSIDE_PANEL[:next_games_count]) %>
-          <div class="line">
+        <div class="line" title="<%= I18n.l future_game.start %>">
             <div class="result">
               <%= future_game.cfbu_profile_link ? link_to(future_game.result_str, future_game.cfbu_profile_link, :target => "_blank") : future_game.result_str %>
             </div>
