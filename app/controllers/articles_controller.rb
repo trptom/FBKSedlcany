@@ -97,37 +97,50 @@ class ArticlesController < ApplicationController
   end
 
   def best
-    # TODO - otestovat
     @articles = Article.top_marked
   end
 
   def most_commented
-    # TODO - otestovat
     @articles = Article.most_commented
   end
 
   # nastaveni, uprava nebo smazani
   def set_mark
-    @article = @article.find(params[:id])
+    @article = Article.find(params[:id])
     @mark = Mark.where(:user_id => current_user.id, :article_id => params[:id]).first
+    
+    logger.info(@article.to_s)
+    logger.info(@mark.to_s)
 
     if (!params[:value] || !(params[:value].to_i) ||
           params[:value].to_i < MARK_MIN || params[:value].to_i > MARK_MAX)
+      logger.info "wrong params[value]"
       if (@mark)
         @res = @mark.destroy
       else
         @res = true
       end
     else
+      logger.info "good params[value]"
       if (@mark)
+        @mark.value = params[:value]
+      else
         @mark = Mark.new(
           :user_id => current_user.id,
           :article_id => @article.id,
           :value => params[:value]
         )
-      else
-
       end
+      @mark.save
+    end
+    
+    respond_to do |format|
+      format.json {
+        render json: {
+          :result => @res,
+          :avg => @article.get_average_mark_str
+        }
+      }
     end
   end
   
@@ -150,4 +163,20 @@ class ArticlesController < ApplicationController
       @articles = @articles.all
     end
   end
+  
+#  def rate
+#    @article = @article.find(params[:id])
+#    @mark = @article.marks.where(:user_id => current_user.id).first
+#    if !@mark
+#      @mark = Mark.new({
+#          :article => @article,
+#          :user => current_user,
+#          :value => params[:value]
+#      })
+#    else
+#      @mark.value = params[:value]
+#    end
+#    
+#    @mark.save
+#  end
 end

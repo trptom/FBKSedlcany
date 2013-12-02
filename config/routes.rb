@@ -38,7 +38,7 @@ FBKSedlcany::Application.routes.draw do
     end
 
     member do
-      post :add_mark
+      post :set_mark
     end
   end
 

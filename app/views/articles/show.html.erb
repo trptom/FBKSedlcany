@@ -1,4 +1,6 @@
 <div class="article detail">
+  <input type="hidden" id="article-id" value="<%= @article.id %>" />
+  
   <div class="title">
     <%= @article.title %>
   </div>
@@ -27,7 +29,11 @@
   <% end %>
   
   <div class="footer">
-    <%= I18n.t("messages.base.author") %>: <%= link_to @article.user.username, @article.user %>
+    <div class="rating">
+      <%= I18n.t "messages.base.rating" %>:
+      <input id="rating-input" value="<%= @article.get_average_mark(0) %>" class="rating" data-max="5" data-min="1" data-clearable="<%= I18n.t "messages.base.delete" %>" name="article_rating" type="number" />
+    </div> (<span id='avg-rating'><%= @article.get_average_mark_str %></span>)
+    | <%= I18n.t("messages.base.author") %>: <%= link_to @article.user.username, @article.user %>
     | <%= I18n.t("messages.base.published") %>: <%= I18n.l @article.created_at %>
     <% if articles_filter("edit", { :user => current_user, :article => @article }) %>
       | <%= link_to I18n.t("messages.base.edit"), edit_article_path(@article) %>

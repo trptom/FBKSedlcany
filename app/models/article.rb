@@ -64,16 +64,24 @@ class Article < ActiveRecord::Base
     return sum
   end
 
-  def get_average_mark
-    return marks.count > 0 ? get_mark_points / marks.count : nil
+  def get_average_mark(round = nil)
+    if marks.count > 0
+      logger.info "get_mark_points " + get_mark_points.to_s
+      logger.info "count " + marks.count.to_s
+      avg = get_mark_points / marks.count
+      logger.info "avg: " + avg.to_s
+      return round = nil ? avg : avg.round(round)
+    else
+      return nil
+    end
   end
 
   def get_average_mark_str
-    mark = get_average_mark
+    mark = get_average_mark(ROUND_MARK_TO_DECIMAL)
     if mark == nil
       return I18n.t("messages.base.no_marks")
     else
-      return mark.round(ROUND_MARK_TO_DECIMAL).to_s
+      return mark.to_s
     end
   end
 
