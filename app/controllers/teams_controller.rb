@@ -192,7 +192,7 @@ class TeamsController < ApplicationController
   end
   
   def games
-    @team = params[:id] ? Team.find(params[:id]) : Team.where(:name => TEAM_NAME).first
+    @team = params[:id] ? Team.find(params[:id]) : Team.my_club
     
     @title_params = {
       :teamOrClub => I18n.t("messages.base.of_" + (@team.is_club ? "club" : "team")),

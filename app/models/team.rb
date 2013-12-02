@@ -210,7 +210,11 @@ class Team < ActiveRecord::Base
       tmp = link.split("team_id=")
       return tmp.size > 1 ? tmp[1].split("&")[0] : link
     end
-  end  
+  end
+  
+  def self.my_club
+    my_clubs.first
+  end
 
   ##############################################################################
 
@@ -220,6 +224,10 @@ class Team < ActiveRecord::Base
 
   scope :teams, -> {
     where("(level > 0) OR (id != club_id)")
+  }
+  
+  scope :my_clubs, -> {
+    clubs.order(:created_at).where(:name => TEAM_NAME)
   }
 
   before_validation do |record|
