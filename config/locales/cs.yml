@@ -1,3 +1,5 @@
+# coding:utf-8
+
 cs:
   ##############################################################################
   # MESSAGES PART
@@ -20,6 +22,7 @@ cs:
       block_expires_at: Blokace vyprší
       block_until: Zablokovat do
       blocked: Zablokován
+      cfbu_profile: "Profil na webu ČFbU"
       cfbu_url_data: Data pro vytvoření odkazu na ČFbU
       cfbu_url_data_hint: Může být i kompletní url propojené stránky, potrebná data z ní už se zpracují automaticky
       change_password: Změnit heslo
@@ -336,6 +339,8 @@ cs:
         edit: Editace článku
         new: Nový článek
         search: Hledání článku
+      players:
+        show: "Hráč: %{playerName}"
       teams:
         about: O týmu %{teamName}
         squad: Soupiska %{teamOrClub} %{teamName}

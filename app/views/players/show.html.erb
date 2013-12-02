@@ -1,7 +1,6 @@
-<div class="well">
-  <h1><%= @player.get_name %></h1>
+<div class="">
   <div class="row-fluid">
-    <div class="pull-left">
+    <div class="pull-left bordered">
       <%= @player.profile_image %>
     </div>
 
@@ -45,6 +44,17 @@
         end
       %></div>
     </div>
+    
+    <% if @player.cfbu_profile_link %>
+      <div class="line">
+        <div class="title"><%= I18n.t("messages.base.cfbu_profile") %>:</div>
+        <div class="value">
+          <%= link_to @player.cfbu_profile_link, :target => "_blank" do %>
+            <span class="icon-list-alt"></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 
   <div class="row-fluid">

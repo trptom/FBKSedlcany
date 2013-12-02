@@ -1,6 +1,10 @@
 class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
+    
+    @title_params = {
+      :playerName => @player.get_name_for_list
+    }
   end
 
   def new
