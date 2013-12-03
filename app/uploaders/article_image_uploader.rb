@@ -4,11 +4,11 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   process :convert => 'png'
-  process :resize_to_fit => [200, nil]
+  process :resize_and_pad => [200, 150]
   version :small
 
   version :large do
-    process :resize_to_fit => [400, nil]
+    process :resize_and_pad => [400, 300]
   end
 
   def extension_white_list
