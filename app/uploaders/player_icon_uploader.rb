@@ -37,11 +37,11 @@ class PlayerIconUploader < CarrierWave::Uploader::Base
   process :convert => 'png'
 
   version :full do
-    process :resize_to_fit => [200, 200]
+    process :resize_and_pad => [200, 200]
   end
 
   version :small do
-    process :resize_to_fit => [80,80]
+    process :resize_and_pad => [80,80]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
