@@ -45,7 +45,7 @@
   <div class="article article-<%= id %>" data-link="<%= article_url(@other_articles[id]) %>">
     <%= image_tag @other_articles[id].get_image_or_default_url(:small), :class => "image", :alt => I18n.t("messages.base.image") %>
     <div class="title"><%= @other_articles[id].title %></div>
-    <div class="content"><%= @other_articles[id].annotation %></div>
+    <div class="content"><%= @other_articles[id].get_annotation %></div>
   </div>
   <% end %>
 </div>
