@@ -6,7 +6,7 @@
           <%= article.title %>
       </div>
       <div class="content">
-        <%= article.annotation %>
+        <%= article.get_annotation.html_safe %>
         <%#= TODO doladit tuhle funkci, aby neusekavala text uvnitr tagu a pak aktivovat article.get_annotation %>
       </div>
       <div class="footer">
