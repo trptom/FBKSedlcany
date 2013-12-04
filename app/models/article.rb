@@ -90,7 +90,7 @@ class Article < ActiveRecord::Base
       return annotation;
     end
 
-    tmp = content.split(" ")
+    tmp = content.gsub(/<[^>]+>/, "").split(" ")
     str = ""
     a = 0
 
