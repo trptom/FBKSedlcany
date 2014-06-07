@@ -82,7 +82,7 @@ Rails.application.config.sorcery.configure do |config|
 
   config.facebook.key = "131410173606"
   config.facebook.secret = "3bbae143add139e71bd34bf4668358d1"
-  config.facebook.callback_url = "http://fbksedlcany.cz/oauth/callback?provider=facebook"
+  config.facebook.callback_url = "http://fbksedlcany.herokuapp.com/oauth/callback?provider=facebook"
   config.facebook.user_info_mapping = {
     :email => "email",
     :username => "username",
