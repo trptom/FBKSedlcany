@@ -80,3 +80,13 @@ RIGHTSIDE_PANEL = {
   :last_games_count => 3,
   :next_games_count => 3
 }
+
+# hracske pozice
+POSITION = {
+  :goalkeeper => 0,
+  :defender_left => 1,
+  :defender_right => 2,
+  :wing_left => 3,
+  :wing_right => 4,
+  :center => 5
+}

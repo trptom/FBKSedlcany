@@ -4,6 +4,8 @@
       <tr>
         <td><%= I18n.t("messages.base.player") %></td>
         <td><%= I18n.t("messages.base.team") %></td>
+        <td><%= I18n.t("messages.base.shirt_number") %></td>
+        <td><%= I18n.t("messages.base.position") %></td>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +18,8 @@
             <% end %>
           </td>
           <td><%= player.team_name %></td>
+          <td><%= player.shirt_number %></td>
+          <td><%= player.position %></td>
         </tr>
       <% end %>
     </tbody>

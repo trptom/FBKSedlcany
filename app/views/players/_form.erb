@@ -74,6 +74,13 @@
             <%= f.text_field :cfbu_profile_data, :class => "span3" %>
           </div>
         </fieldset>
+        
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.shirt_number"), :class => "control-label" %>
+          <div class="controls">
+            <%= f.number_field :shirt_number, :class => "span3", :min => 1, :max => 99 %>
+          </div>
+        </fieldset>
 
         <fieldset class="control-group">
           <span title="<%= I18n.t("messages.players.form.icon_title") %>">

@@ -4,11 +4,13 @@
 class Player < ActiveRecord::Base
   attr_accessible :first_name, :second_name, :nick_name, :birthday, :note,
     :icon, :icon_cache, :cfbu_profile_data,
-    :team, :team_id, :weight, :height, :stick_holding
+    :team, :team_id, :weight, :height, :stick_holding, :shirt_number, :position
 
   belongs_to :team
 
   mount_uploader :icon, PlayerIconUploader
+  
+  serialize :position
 
   def get_name
     if (first_name == nil && second_name == nil)

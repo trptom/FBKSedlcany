@@ -140,6 +140,7 @@ cs:
       players_count: Počet hráčů
       players_without_team: Hráči bez týmu
       portrait: Portrét
+      position: Post
       published: Publikováno
       random_players: Náhodní hráči
       rating: Hodnocení
@@ -155,6 +156,7 @@ cs:
       season: Sezóna
       second_name: Příjmení
       section: Sekce
+      shirt_number: Číslo dresu
       short_name: Krátký název
       shortcut: Zkratka
       show: Zobrazit
