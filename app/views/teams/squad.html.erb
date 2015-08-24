@@ -3,7 +3,8 @@
     <thead>
       <tr>
         <td><%= I18n.t("messages.base.player") %></td>
-        <td><%= I18n.t("messages.base.team") %></td>
+        <!-- requested to not show team -->
+        <!--<td><%= I18n.t("messages.base.team") %></td>-->
         <td><%= I18n.t("messages.base.shirt_number") %></td>
         <td><%= I18n.t("messages.base.position") %></td>
       </tr>
@@ -17,7 +18,7 @@
               <span class="icon-list-alt"></span>
             <% end %>
           </td>
-          <td><%= player.team_name %></td>
+          <!--<td><%= player.team_name %></td>-->
           <td><%= player.shirt_number %></td>
           <td><%= player.position_str %></td>
         </tr>
