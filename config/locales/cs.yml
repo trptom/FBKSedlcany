@@ -191,6 +191,24 @@ cs:
       wiki_page_deleted: Wiki stránka smazána
       wiki_pages: Wiki stránky
       _yes: Ano
+      positions:
+        long:
+          pos_0: Brankář
+          pos_1: Obránce
+          pos_2: Útočník
+        short:
+          pos_0: B
+          pos_1: O
+          pos_2: Ú
+      position_sides:
+        long:
+          side_0: Střed
+          side_1: Levá
+          side_2: Pravá
+        short:
+          side_0: S
+          side_1: L
+          side_2: P
       form:
         submit: Odeslat
         reset: Smazat změny

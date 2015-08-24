@@ -61,6 +61,65 @@ class Player < ActiveRecord::Base
       ActionController::Base.helpers.image_tag(ActionController::Base.helpers.asset_path(DEFAULT_IMAGES[:player_icon]))
   end
 
+  def position_str(format = "long", separator = ", ", default = "")
+    if position == nil
+      return default
+    end
+    
+    items = []
+    
+    for pos in position
+      str = I18n.t("messages.base.positions.#{format}.pos_#{pos.id}")
+      sides = []
+      
+      if pos.sides != nil
+        for side in pos.sides
+          sides << I18n.t("messages.base.position_sides.#{format}.side_#{side}")
+        end
+      end
+      
+      if sides.length > 0
+        str = "#{str} (#{sides.join(', ')})";
+      end
+    end
+    
+    return items.join(separator)
+  end
+  
+  def is_position(position_id)
+    if (position == nil)
+      return false
+    end
+    
+    for pos in position
+      if pos[:id] == position_id
+        return true
+      end
+    end
+    
+    return false
+  end
+  
+  def is_side(position_id, side_id)
+    if (position == nil)
+      return false
+    end
+    
+    for pos in position
+      if pos[:id] == position_id
+        if pos[:sides] != nil
+          for side in pos[:sides]
+            if side == side_id.to_s
+              return true
+            end
+          end
+        end
+      end
+    end
+    
+    return false
+  end
+  
   def self.get_data_from_cfbu_profile_link(link)
     if link == nil
       return nil

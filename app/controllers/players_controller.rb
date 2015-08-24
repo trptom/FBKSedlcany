@@ -1,3 +1,6 @@
+# coding:utf-8
+include PlayersHelper 
+
 class PlayersController < ApplicationController
   def show
     @player = Player.find(params[:id])
@@ -15,8 +18,9 @@ class PlayersController < ApplicationController
   end
 
   def create
+    params[:player][:position] = PlayersHelper::get_position_hash(params[:player_pos])
     @player = Player.new(params[:player])
-
+    
     @res = @player.save
 
     respond_to do |format|
@@ -52,6 +56,8 @@ class PlayersController < ApplicationController
   end
 
   def update
+    params[:player][:position] = PlayersHelper::get_position_hash(params[:player_pos])
+    
     @player = Player.find(params[:id])
     @player.update_attributes(params[:player]);
 

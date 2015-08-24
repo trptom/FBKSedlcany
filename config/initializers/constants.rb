@@ -84,9 +84,12 @@ RIGHTSIDE_PANEL = {
 # hracske pozice
 POSITION = {
   :goalkeeper => 0,
-  :defender_left => 1,
-  :defender_right => 2,
-  :wing_left => 3,
-  :wing_right => 4,
-  :center => 5
+  :defender => 1,
+  :attacker => 2
+}
+
+POSITION_SIDE = {
+  :center => 0,
+  :left => 1,
+  :right => 2
 }

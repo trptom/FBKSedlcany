@@ -81,6 +81,41 @@
             <%= f.number_field :shirt_number, :class => "span3", :min => 1, :max => 99 %>
           </div>
         </fieldset>
+        
+        <fieldset class="control-group">
+          <%= f.label :title, I18n.t("messages.base.position"), :class => "control-label" %>
+          <div class="controls">
+            <div>
+              <input type="checkbox" name="player_pos[goalkeeper][used]"<%= @player.is_position(POSITION[:goalkeeper]) ? " checked" : "" %> />
+              <%= I18n.t("messages.base.positions.long.pos_#{POSITION[:goalkeeper]}") %>
+            </div>
+            <div>
+              <input type="checkbox" name="player_pos[defender][used]"<%= @player.is_position(POSITION[:defender]) ? " checked" : "" %> />
+              <%= I18n.t("messages.base.positions.long.pos_#{POSITION[:defender]}") %>
+              (
+              <input type="checkbox" name="player_pos[defender][side][]"<%= @player.is_side(POSITION[:defender], POSITION_SIDE[:left]) ? " checked" : "" %> value="<%= POSITION_SIDE[:left] %>" />
+              <%= I18n.t("messages.base.position_sides.long.side_#{POSITION_SIDE[:left]}") %>
+              ,
+              <input type="checkbox" name="player_pos[defender][side][]"<%= @player.is_side(POSITION[:defender], POSITION_SIDE[:right]) ? " checked" : "" %> value="<%= POSITION_SIDE[:right] %>" />
+              <%= I18n.t("messages.base.position_sides.long.side_#{POSITION_SIDE[:right]}") %>
+              )
+            </div>
+            <div>
+              <input type="checkbox" name="player_pos[attacker][used]"<%= @player.is_position(POSITION[:attacker]) ? " checked" : "" %> />
+              <%= I18n.t("messages.base.positions.long.pos_#{POSITION[:attacker]}") %>
+              (
+              <input type="checkbox" name="player_pos[defender][side][]"<%= @player.is_side(POSITION[:attacker], POSITION_SIDE[:left]) ? " checked" : "" %> value="<%= POSITION_SIDE[:left] %>" />
+              <%= I18n.t("messages.base.position_sides.long.side_#{POSITION_SIDE[:left]}") %>
+              ,
+              <input type="checkbox" name="player_pos[defender][side][]"<%= @player.is_side(POSITION[:attacker], POSITION_SIDE[:center]) ? " checked" : "" %> value="<%= POSITION_SIDE[:center] %>" />
+              <%= I18n.t("messages.base.position_sides.long.side_#{POSITION_SIDE[:center]}") %>
+              ,
+              <input type="checkbox" name="player_pos[defender][side][]"<%= @player.is_side(POSITION[:attacker], POSITION_SIDE[:right]) ? " checked" : "" %> value="<%= POSITION_SIDE[:right] %>" />
+              <%= I18n.t("messages.base.position_sides.long.side_#{POSITION_SIDE[:right]}") %>
+              )
+            </div>
+          </div>
+        </fieldset>
 
         <fieldset class="control-group">
           <span title="<%= I18n.t("messages.players.form.icon_title") %>">
