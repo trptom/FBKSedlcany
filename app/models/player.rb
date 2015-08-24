@@ -69,11 +69,11 @@ class Player < ActiveRecord::Base
     items = []
     
     for pos in position
-      str = I18n.t("messages.base.positions.#{format}.pos_#{pos.id}")
+      str = I18n.t("messages.base.positions.#{format}.pos_#{pos[:id]}")
       sides = []
       
-      if pos.sides != nil
-        for side in pos.sides
+      if pos[:sides] != nil
+        for side in pos[:sides]
           sides << I18n.t("messages.base.position_sides.#{format}.side_#{side}")
         end
       end
@@ -81,6 +81,8 @@ class Player < ActiveRecord::Base
       if sides.length > 0
         str = "#{str} (#{sides.join(', ')})";
       end
+      
+      items << str;
     end
     
     return items.join(separator)
