@@ -10,6 +10,7 @@ cs:
       about_team: O týmu
       actions: Akce
       activate: Aktivovat
+      active: Aktivní
       activation_state: Aktivační status
       age: Věk
       annotation: Anotace
@@ -29,6 +30,7 @@ cs:
       club: Oddíl
       club_deleted: Oddíl smazán!
       club_name: Název oddílu
+      code: Kód
       comment: Komentář
       comments_count: Počet komentářů
       competition: Soutěž
@@ -40,6 +42,7 @@ cs:
       create_game: Vytvořit zápas
       create_hall: Vytvořit halu
       create_player: Vytvořit hráče
+      create_survey: Vytvořit anketu
       create_team: Vytvořit tým
       create_team_or_club: Vytvořit tým/oddíl
       create_wiki_page: Vytvořit Wiki stránku
@@ -95,6 +98,7 @@ cs:
       list_of_games: Seznam zápasů
       list_of_halls: Seznam hal
       list_of_players: Seznam hráčů
+      list_of_surveys: Seznam anket
       list_of_teams: Seznam týmů
       list_of_users: Seznam uživatel
       list_of_wiki_pages: Seznam Wiki stránek
@@ -113,6 +117,7 @@ cs:
       new_game: Nový zápas
       new_hall: Nová hala
       new_password: Nové heslo
+      new_survey: Nová anketa
       new_team: Nový tým
       new_team_or_club: Nový tým/oddíl
       new_wiki_page: Nová stránka Wiki
@@ -168,6 +173,7 @@ cs:
       start_of_event: Začátek události
       status: Stav
       stick_holding: Držení hokejky
+      surveys: Ankety
       team: Tým
       team_deleted: Tým smazán!
       team_name: Název týmu
@@ -186,6 +192,7 @@ cs:
       user_activated: Uživatel byl úspěšně aktivován!
       username: Uživatelské jméno
       users: Uživatelé
+      view: Náhled
       warning: Varování!
       weight: Váha
       wiki_page_deleted: Wiki stránka smazána
@@ -312,6 +319,16 @@ cs:
       callback:
         logged_in: Přihlašování pomocí %{provider} účtu proběhlo úspěšně.
         created: První přihlášení pomocí %{provider} účtu proběhlo úspěšně. Byl pro Vás vytvořen nový účet s názvem %{username}.
+    surveys:
+      index:
+        new_competition: Nová anketa
+        delete_confirmation: Opravdu si přejete smazat tuto anketu?
+      new:
+        title: Nová anketa
+        create: Vytvořit anketu
+      edit:
+        title: Editace ankety
+        update: Upravit anketu
     templates:
       menu:
         title: <%= TEAM_NAME_SHORT %>

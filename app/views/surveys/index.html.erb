@@ -1,0 +1,52 @@
+<div class="well">
+  <h1><%= I18n.t("messages.base.list_of_surveys") %></h1>
+  <div class="row-fluid">
+    <table class="index">
+      <thead>
+        <tr>
+          <td><%= I18n.t("messages.base.name") %></td>
+          <td><%= I18n.t("messages.base.active") %></td>
+          <td>&nbsp;</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% for survey in @surveys %>
+          <tr>
+            <td><%= survey.name %></td>
+            <td><%= I18n.t("messages.base._" + (survey.active ? "yes" : "no") ) %></td>
+            <td class="btn-group">
+              <span class="btn" data-toggle="dropdown">
+                <%= I18n.t("messages.base.actions") %>
+              </span>
+              <span class="btn dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </span>
+              <ul class="dropdown-menu">
+                <% if surveys_filter("show", { :survey => survey, :user => current_user }) %>
+                  <li><%= link_to I18n.t("messages.base.show"), survey %></li>
+                <% end %>
+
+                <% if surveys_filter("edit", { :survey => survey, :user => current_user }) %>
+                  <li><%= link_to I18n.t("messages.base.edit"), edit_survey_path(survey) %></li>
+                <% end %>
+
+                <% if surveys_filter("destroy", { :survey => survey, :user => current_user }) %>
+                  <li><%= link_to I18n.t("messages.base.delete"), survey,
+                    :confirm => I18n.t("messages.surveys.index.delete_confirmation"),
+                    :method => :delete %></li>
+                <% end %>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2">
+            <%= link_to I18n.t("messages.base.new_survey"), new_survey_path, :class => "btn" %>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

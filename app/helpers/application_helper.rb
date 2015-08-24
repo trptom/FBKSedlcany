@@ -27,7 +27,8 @@ module ApplicationHelper
         :users => [],
         :images => [],
         :wikis => [],
-        :events => []
+        :events => [],
+        :surveys => [],
       },
       :messages => {
         :articles => I18n.t("messages.base.articles"),
@@ -39,7 +40,8 @@ module ApplicationHelper
         :users => I18n.t("messages.base.users"),
         :images => I18n.t("messages.base.images"),
         :wikis => I18n.t("messages.base.wiki_pages"),
-        :events => I18n.t("messages.base.events")
+        :events => I18n.t("messages.base.events"),
+        :surveys => I18n.t("messages.base.surveys")
       }
     }
 
@@ -115,6 +117,14 @@ module ApplicationHelper
       menu[:structure][:events] << link_to(I18n.t("messages.base.list_of_events"), events_path)
     end
 
+    # ANKETY
+    if surveys_filter("index", { :user => current_user })
+      menu[:structure][:surveys] << link_to(I18n.t("messages.base.list_of_surveys"), surveys_path)
+    end
+    if surveys_filter("new", { :user => current_user })
+      menu[:structure][:surveys] << link_to(I18n.t("messages.base.create_survey"), new_survey_path)
+    end
+    
     # ... a tady to vsechno spocitam, jestli mam co vratit ...
     count  =0;
     menu[:structure].keys.sort.each do |key|

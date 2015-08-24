@@ -258,7 +258,7 @@ module PermissionsHelper
   end
 
   def halls_filter(action, atts)
-    hall = atts[:hall] ? atts[:hall] : (atts[:hall_id] ? League.find_by_id(atts[:hall_id]) : nil)
+    hall = atts[:hall] ? atts[:hall] : (atts[:hall_id] ? Hall.find_by_id(atts[:hall_id]) : nil)
 
     case action
     when "show"
@@ -273,8 +273,24 @@ module PermissionsHelper
     end
   end
 
+  def surveys_filter(action, atts)
+    survey = atts[:survey] ? atts[:survey] : (atts[:survey_id] ? League.find_by_id(atts[:survey_id]) : nil)
+
+    case action
+    when "show"
+      return true
+    when "edit", "update", "new", "create", "index", "destroy"
+      return has_at_least_one_of_roles({
+        :roles => [ :root, :admin, :halls_editor ],
+        :user => atts[:user]
+      })
+    else
+      return false
+    end
+  end
+  
   def games_filter(action, atts)
-    game = atts[:game] ? atts[:game] : (atts[:game_id] ? League.find_by_id(atts[:game_id]) : nil)
+    game = atts[:game] ? atts[:game] : (atts[:game_id] ? Game.find_by_id(atts[:game_id]) : nil)
 
     case action
     when "show"

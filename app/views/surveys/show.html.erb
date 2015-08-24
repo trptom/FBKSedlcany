@@ -1,0 +1,24 @@
+<div class="">
+  <div class="row-fluid">
+    <div class="line">
+      <div class="title"><%= I18n.t("messages.base.name") %>:</div>
+      <div class="value"><%= @survey.name %></div>
+    </div>
+
+    <% if @survey.description %>
+      <div class="line">
+        <div class="title"><%= I18n.t("messages.base.description") %>:</div>
+        <div class="value"><%= @survey.description %></div>
+      </div>
+    <% end %>
+
+    <div class="line">
+      <div class="title"><%= I18n.t("messages.base.active") %>:</div>
+      <div class="value"><%= I18n.t("messages.base._" + (@survey.active ? "yes" : "no") ) %></div>
+    </div>
+
+    <div class="line">
+      <div class="title"><%= I18n.t("messages.base.view") %>:</div>
+      <div class="value"><%= @survey.code.html_safe %></div>
+    </div>
+</div>

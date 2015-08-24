@@ -82,6 +82,10 @@ FBKSedlcany::Application.routes.draw do
   resources :halls do
 
   end
+  
+  resources :surveys do
+
+  end
 
   resources :images do
     

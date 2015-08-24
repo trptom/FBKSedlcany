@@ -80,6 +80,19 @@
       <% end %>
     </div>
   </div>
+    
+  <div class="surveys">
+    <div class="title">
+      <%= I18n.t "messages.base.surveys" %>
+    </div>
+    <div class="content">
+      <% for survey in Survey.where(:active => true).order("created_at DESC").all %>
+        <div class="line">
+          <%= survey.code.html_safe %>
+        </div>
+      <% end %>
+    </div>
+  </div>
   
   <div class="sponsors">
     <div class="title">
