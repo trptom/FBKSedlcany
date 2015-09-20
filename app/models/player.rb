@@ -7,6 +7,8 @@ class Player < ActiveRecord::Base
     :team, :team_id, :weight, :height, :stick_holding, :shirt_number, :position
 
   belongs_to :team
+  
+  has_many :player_stats, dependent: :destroy
 
   mount_uploader :icon, PlayerIconUploader
   

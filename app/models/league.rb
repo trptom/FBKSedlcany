@@ -1,4 +1,5 @@
 class League < ActiveRecord::Base
+  has_many :player_stats, dependent: :destroy
   has_many :league_teams, dependent: :destroy
   has_many :games, dependent: :destroy
 

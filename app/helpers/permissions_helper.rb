@@ -295,7 +295,7 @@ module PermissionsHelper
     case action
     when "show"
       return true
-    when "edit", "update", "new", "create", "index", "destroy"
+    when "edit", "update", "new", "create", "index", "destroy", "add_stats", "delete_stats"
       return has_at_least_one_of_roles({
         :roles => [ :root, :admin, :games_editor ],
         :user => atts[:user]

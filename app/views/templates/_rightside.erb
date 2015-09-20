@@ -32,7 +32,7 @@
         <% for future_game in Game.future.order(:start).limit(RIGHTSIDE_PANEL[:next_games_count]) %>
         <div class="line" title="<%= I18n.l future_game.start %>">
             <div class="result">
-              <%= future_game.cfbu_profile_link ? link_to(future_game.result_str, future_game.cfbu_profile_link, :target => "_blank") : future_game.result_str %>
+              <%= future_game.get_link %>
             </div>
             <div class="team1">
               <%= future_game.home_team.cfbu_profile_link ? link_to(future_game.home_team.short_name, future_game.home_team.cfbu_profile_link, :target => "_blank") :  future_game.home_team.short_name %>

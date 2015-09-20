@@ -3,6 +3,9 @@
 # kam ma byt presmerovavano pri not_found
 NOT_FOUND_PAGE_URL = "/404.html"
 
+# mam pouzivat odkazy na CFBU (nebo jinej externi zdroj)?
+USE_EXTERNAL_LINKS = false
+
 # nastaveni napr. pro textace
 TEAM_NAME = "TJ Tatran Sedlčany florbal"
 TEAM_NAME_SHORT = "Florbal Sedlčany"

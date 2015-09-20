@@ -10,11 +10,13 @@ class Game < ActiveRecord::Base
   belongs_to :hall
 
   serialize :score
+  serialize :player_stats
 
   attr_accessible :home_team_id, :away_team_id, :organizer_id, :home_team, :away_team, :organizer,
       :creator_id, :editor_id, :creator, :editor,
       :league_id, :hall_id, :league, :hall,
-      :start, :season, :round, :score, :cfbu_profile_data
+      :start, :season, :round, :score, :cfbu_profile_data,
+      :player_stats # object in format {:home => [array of home player ids], :away => [array of away player ids]}
 
   def result_str(atts = nil)
     atts = atts ? atts : {}
@@ -62,6 +64,24 @@ class Game < ActiveRecord::Base
       return home_team.shortcut.to_s + " " + result_str + " " + away_team.shortcut.to_s
     else
       return home_team.name.to_s + " " + result_str + " " + away_team.name.to_s
+    end
+  end
+  
+  def get_link
+    if USE_EXTERNAL_LINKS
+      if cfbu_profile_link
+        return ActionController::Base.helpers.link_to(
+          result_str,
+          cfbu_profile_link,
+          :target => "_blank")
+      else
+        return result_str
+      end
+    else
+#      return Rails.application.routes.url_helpers.game_url(self)
+      return ActionController::Base.helpers.link_to(
+        result_str,
+        Rails.application.routes.url_helpers.game_path(self))
     end
   end
 

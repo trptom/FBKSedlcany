@@ -5,6 +5,7 @@ class Team < ActiveRecord::Base
   has_many :teams, :class_name => 'Team', :foreign_key => 'club_id'
   
   has_many :players
+  has_many :player_stats, dependent: :destroy
   has_many :league_teams, dependent: :destroy
 
   has_many :home_games, :class_name => 'Game', :foreign_key => 'home_team_id'

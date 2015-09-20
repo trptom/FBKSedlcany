@@ -51,12 +51,14 @@
             <%= f.select :organizer_id, options_for_select(Team.get_options_with_type({:order_by => :name}), @game.organizer_id), :class => "span3" %>
           </div>
         </fieldset>
-        <fieldset class="control-group">
-          <%= f.label :title, I18n.t("messages.base.cfbu_url_data"), :title => I18n.t("messages.base.cfbu_url_data_hint"), :class => "control-label" %>
-          <div class="controls">
-            <%= f.text_field :cfbu_profile_data, :class => "span3" %>
-          </div>
-        </fieldset>
+        <% if USE_EXTERNAL_LINKS %>
+          <fieldset class="control-group">
+            <%= f.label :title, I18n.t("messages.base.cfbu_url_data"), :title => I18n.t("messages.base.cfbu_url_data_hint"), :class => "control-label" %>
+            <div class="controls">
+              <%= f.text_field :cfbu_profile_data, :class => "span3" %>
+            </div>
+          </fieldset>
+        <% end %>
         <fieldset class="control-group">
           <%= f.label "score[total][home]", I18n.t("messages.base.score"), :class => "control-label" %>
           <div class="controls score">

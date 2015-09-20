@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150824064648) do
+ActiveRecord::Schema.define(:version => 20150905094100) do
 
   create_table "article_categories", :force => true do |t|
     t.string   "name",        :null => false
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20150824064648) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "cfbu_profile_data"
+    t.text     "player_stats"
   end
 
   add_index "games", ["away_team_id"], :name => "index_games_on_away_team_id"
@@ -144,6 +145,29 @@ ActiveRecord::Schema.define(:version => 20150824064648) do
 
   add_index "marks", ["article_id"], :name => "index_marks_on_article_id"
   add_index "marks", ["user_id"], :name => "index_marks_on_user_id"
+
+  create_table "player_stats", :force => true do |t|
+    t.integer  "player_id",                       :null => false
+    t.integer  "games_played",     :default => 0, :null => false
+    t.integer  "goals",            :default => 0, :null => false
+    t.integer  "assists",          :default => 0, :null => false
+    t.integer  "penalty_minutes",  :default => 0, :null => false
+    t.integer  "red_cards_1",      :default => 0, :null => false
+    t.integer  "red_cards_2",      :default => 0, :null => false
+    t.integer  "red_cards_3",      :default => 0, :null => false
+    t.float    "avg_ranking"
+    t.text     "games_descriptor"
+    t.integer  "league_id",                       :null => false
+    t.integer  "team_id",                         :null => false
+    t.integer  "season",                          :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "player_stats", ["league_id"], :name => "index_player_stats_on_league_id"
+  add_index "player_stats", ["player_id"], :name => "index_player_stats_on_player_id"
+  add_index "player_stats", ["season"], :name => "index_player_stats_on_season"
+  add_index "player_stats", ["team_id"], :name => "index_player_stats_on_team_id"
 
   create_table "players", :force => true do |t|
     t.string   "first_name",        :null => false

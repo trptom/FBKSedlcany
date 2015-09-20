@@ -127,4 +127,49 @@ class GamesController < ApplicationController
       }
     end
   end
+  
+  # Adds new PlayerStats record to _Player_ and saves _Players_' id into _Game_
+  # stats.
+  #
+  # ==== Required params
+  # _id_:: id of _Game_ into which are stats appended.
+  # _player_id_:: id of _Player_ who owns this stats.
+  # _team_id_:: id of _Team_ for which _Player_ played this game.
+  # _player_team_:: name of _Team_ for which _Player_ played this game. ("home"
+  # or "away")
+  # _player_stats_:: hash of stats. For better understanding what needs to be
+  # filled in, see _PlayerStats_' class documentation.
+  #
+  # ==== Format
+  # * JSON
+  def add_stats
+    @game = Game.find(params[:id])
+    @player_stats_all = Player.find(params[:player_id]).player_stats.where(
+      :season => @game.season,
+      :league_id => @game.league_id,
+      :team_id => params[:team_id]
+    )
+    
+    if @player_stats_all.count > 0
+      @player_stats = @player_stats_all.first
+    else
+      @player_stats = PlayerStats.new(
+        :player_id => params[:player_id],
+        :league_id => @game.league_id,
+        :team_id => params[:team_id]
+      )
+    end
+    
+    @player_stats.add_game_desrriptor(params[:player_stats])
+    @game.stats[params[:player_team] << params[:player_id]]
+    
+    ActiveRecord::Base.transaction do
+      @player_stats.save
+      @game.save
+    end
+  end
+  
+  def delete_stats
+    
+  end
 end
